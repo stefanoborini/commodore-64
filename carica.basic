@@ -1,0 +1,13 @@
+
+
+;carica.prg ==0801==
+   10 input"";a$:f$=a$
+   20 open 1,8,0,a$
+   30 get#1,a$
+   40 if st<>66then load""+f$+"",8,1:goto100
+  100 close1
+  110 open15,8,15
+  120 input#15,b$,c$,d$,e$
+  130 printb$,c$,d$,e$
+  160 close15
+

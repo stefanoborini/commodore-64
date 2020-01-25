@@ -1,0 +1,40 @@
+
+
+;mcd-mcm.prg ==0801==
+   10 print"{clr}":printchr$(14)
+   20 print"{down}{down}{down}{down}{down}{rght}{rght}{rght}{rght}1)M.C.D.{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}2)m.c.m."
+   30 input "{down}{down}{down}{down}{down}{down}";a$
+   35 if a$<"1"or a$>"2"then 10
+   40 on val(a$) goto 100,300
+   60 end
+  100 rem *****massimo comun divisore*****
+  110 print"{clr}":printchr$(142):print"immetti i due numeri di cui vuoi"
+  120 print"calcolare l' m.c.d."
+  130 input a,b
+  140 if a>b goto 180
+  150 t=a
+  160 a=b
+  170 b=t
+  180 q=int(a/b)
+  185 r=a-b*q
+  186 if r=0 goto 220
+  190 a=b
+  200 b=r
+  210 goto 180
+  220 print:print"{down}{down}m.c.d.=";b
+  230 fori=1to1000:nexti:run
+  300 rem ****minimo comune multiplo****
+  310 print"{clr}":print"IMMETTI{$a0}I{$a0}DUE{$a0}NUMERI"
+  320 input a,b
+  330 if a>b goto 350
+  340 t=a:a=b:b=t
+  350 if a/b=int(a/b) goto 420
+  360 d=int(a/b)
+  370 d=d+1
+  380 m=d*b
+  390 r=m-a*int(m/a)
+  400 if r<>0 goto 370
+  410 a=m
+  420 print"m.c.m.=";a
+  430 fori=1to1000:next:run
+

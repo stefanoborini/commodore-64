@@ -76,3 +76,7 @@ Some kind of "road scrolling" simulation. It seems very slow, but it might be th
 ## Numeri romani
 
 Converts numerical value to roman numeral
+
+## mcd-mcm
+
+Computes greatest common divisor and lowest common multiple of a pair of numbers

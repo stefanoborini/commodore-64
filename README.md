@@ -141,10 +141,16 @@ It's extremely slow and I am not sure which function is plotting.
 ## Dome Dweller
 
 Some sort of space-themed resource management game that apparently I extended
-from a starting base from a guy called tim hartnell.
+from a starting base from a guy called tim hartnell. I found only a reference to [this book
+called "games for your
+atari"](https://archive.org/stream/ataribooks-games-for-your-atari/gamesforyouratari_djvu.txt)
+where there's some text about dome dweller
 
 ![image](dome-dweller-1.png)
 ![image](dome-dweller-2.png)
+
+So my guess is that I read about dome dweller concept somewhere (not the above
+book, I never heard of it) and wrote the game myself on that concept.
 
 # A, AA
 

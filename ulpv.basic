@@ -1,0 +1,8 @@
+
+
+;ulpv.prg ==0801==
+    5 print"{clr}"
+   10 st$="ciao,mi chiamo stefano"
+   30 for a=1 to len(st$):print mid$(st$,a,1);:for i=0 to200:nexti:nexta
+   60 end
+

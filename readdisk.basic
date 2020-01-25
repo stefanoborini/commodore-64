@@ -1,0 +1,101 @@
+  150 print
+  160 print
+  165 print
+  200 sp$=" ":nl$=chr$(0):hx$="0123456789abcdef"
+  210 fs$="":for i=64 to 95:fs$=fs$+"{rvon}"+chr$(i)+"{rvof}":next i
+  220 ss$="  ":for i=192 to 223:ss$=ss$+"{rvon}"+chr$(i)+"{rvof}":next i
+  240 dim a$(15),nb(2)
+  251 d$="0"
+  253 print"     {rvon}s{rvof}creen or {rvon}p{rvof}rinter"
+  254 get jj$:if jj$="" then 254
+  255 if jj$="s" then print "      {down}{rvon}screen{rvof}"
+  256 if jj$="p" then print "      {down}{rvon}printer{rvof}"
+  260 open 15,8,15,"i"+d$:gosub 650
+  265 open 4,4
+  270 open 2,8,2,"#":gosub 650
+  280 rem
+  290 rem carica settore e traccia
+  300 rem
+  310 rem
+  320 input"{down}{down}{rght}{rght}traccia, settore";t,s
+  330 if t=0 or t>35 then print#15,"i"d$:close 2 :close 4: close 15:end
+  340 if jj$="s" then print "{down}{rght}{rght}traccia"t"settore"s"{down}"
+  341 if jj$="p" then print#4:print#4,"traccia"t"settore"s:print#4
+  350 print#15,"u1:2,"d$;t;s:gosub 650
+  360 rem
+  370 rem leggi il byte 0
+  390 rem
+  400 print#15,"b-p:2,1"
+  410 print#15,"m-r"chr$(0)chr$(5)
+  420 get#15,a$(0):if a$(0)="" then a$(0)=nl$
+  428 if jj$="s" then 430
+  430 if jj$="p" then 460
+  431 rem
+  432 rem legge il resto
+  433 rem
+  434 rem
+  436 k=1:nb(1)=asc(a$(0))
+  438 for j=0 to 63:if j=32 then gosub 710:if z$="n" then j=80:goto 450
+  440 for i=k to 3
+  442 get#2,a$(i):if a$(i)=""then a$(i)=nl$
+  444 if k=1 and i<2 then nb(2)=asc(a$(i))
+  446 next i:k=0
+  448 a$="":b$=":":n=j*4:gosub 790:a$=a$+":"
+  450 for i=0 to 3:n=asc(a$(i)):gosub 790
+  452 c$=a$(i):gosub 850:b$=b$+c$
+  454 next i:if jj$="s" then print a$b$
+  458 next j:goto 571
+  460 rem
+  462 rem legge display stampante
+  464 rem
+  466 k=1:nb(1)=asc(a$(0))
+  468 for j=0to15
+  470 for i=kto15
+  472 get#2,a$(i):if a$(i)="" then a$(i)=nl$
+  474 if k=1 and i<2 then nb(2)=asc(a$(i))
+  476 next i:k=0
+  478 a$="":b$=":":n=j*16:gosub 790:a$=a$+":"
+  480 for i=0 to 15:n=asc(a$(i)):gosub 790:if z$="n" then j=40:goto 571
+  482 c$=a$(i):gosub 850:b$=b$+c$
+  484 next i
+  486 if jj$="p" then print#4,a$b$
+  488 next j:goto 571
+  571 rem
+  572 rem prossima traccia e settore
+  573 rem
+  575 print"prossima traccia e settore"nb(1)nb(2)"{down}"
+  580 print"la vuoi"
+  590 get z$:if z$="" then 590
+  600 if z$="s" then t=nb(1):s=nb(2):goto 330
+  610 if z$="n" then 320
+  620 goto 590
+  630 rem
+  640 rem
+  650 rem subroutines
+  660 rem
+  670 rem error routine
+  680 input#15,en,em$,et,es:if en=0 then return
+  690 print"{rvon}disk error{rvof}"en,em$,et,es
+  700 end
+  710 rem
+  720 rem continuo messaggio schermo
+  730 rem
+  740 print"{down}{rght}{rght}{rght}{rght}continua (s/n)"
+  750 get z$:if z$=""then 750
+  760 if z$="n" then return
+  770 if z$<>"s" then 750
+  780 print"{clr}track" t " sector"s:return
+  790 rem
+  800 rem byte del disco da hex
+  810 rem
+  820 a1=int(n/16):a$=a$+mid$(hx$,a1+1,1)
+  830 a2=int(n-16*a1):a$=a$+mid$(hx$,a2+1,1)
+  840 a$=a$+sp$:return
+  850 rem
+  860 rem byte ad asc
+  870 rem
+  880 rem
+  890 if asc(c$)<32 then c$=" ":return
+  910 if asc(c$)<128 or asc(c$)>159 then return
+  920 c$=mid$(ss$,3*(asc(c$)-127),3):return
+

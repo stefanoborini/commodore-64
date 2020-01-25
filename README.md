@@ -48,3 +48,7 @@ Prints one letter at a time, slowly.
 ## Elicottero
 
 A little toy program that flies a helicopter sprite. Interestingly had a code quick save feature at line 63998-63999.
+
+# Mastermind
+
+Play mastermind (guess the number)

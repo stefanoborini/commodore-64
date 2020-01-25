@@ -1,0 +1,40 @@
+
+
+;mastermind.prg ==0801==
+   10 print"{clr}":sp$="{up}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}"
+   15 sc$="{up}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}"
+   20 input"numero di cifre";n
+   25 if n>10 or n<1 then 10
+   30 for i=0 to n-1
+   40 n(i)=int(rnd(0)*10)
+   50 if i=0 then 70
+   60 for j=0 to i-1:if n(i)<>n(j) then next j:goto 70
+   65 goto 40
+   70 next i
+   90 print"{clr}":nt=1
+  100 print"tentativo #";nt
+  120 printsp$;
+  130 input c$
+  140 if len(c$)<>n then printsp$;:goto 130
+  150 for i=0 to n-1:c(i)=val(mid$(c$,i+1,1)):next i
+  160 for i=0 to n-2:for j=i+1 to n-1
+  170 if c(i)=c(j) then 120
+  180 next j:next i
+  190 s=0:b=0:rem strike
+  200 for i= 0 to n-1:if c(i)=n(i) then s=s+1
+  205 next i
+  210 for i=0 to n-1:for j=0 to n-1
+  220 if c(i)=n(j) then b=b+1
+  230 next j:next i
+  240 b=b-s
+  250 printsc$;
+  254 if s=0 then 256
+  255 for i=1 to s:print"{rvon}P{rvof}";:next i
+  256 if b=0 then 265
+  260 for i= 1 to b:print"Q";:nexti
+  265 print
+  270 if s=n then print"hai indovinato":end
+  280 nt=nt+1:if nt<>21 then 100
+  285 print"hai perso. il mio numero era ";
+  290 for i=0 to n-1:printright$(str$(n(i)),1);:next i
+

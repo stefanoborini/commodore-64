@@ -2,4 +2,4 @@
 
 ## Gestione C-64
 
-![image]("gestione c-64.png")
+![image](https://raw.githubusercontent.com/stefanoborini/commodore-64/gestione c-64.png)

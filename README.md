@@ -9,7 +9,9 @@ A & B soft mark).
 
 ## Gestione C-64
 
-Utility I wrote to manage disk and other features of the C64
+Utility I wrote to manage disk and other features of the C64. I had multiple
+versions of this application, and I kept adding more and more features or
+modifying the graphics.
 
 ![image](gestione-c-64.png)
 
@@ -66,3 +68,7 @@ TRON-like game. Probably copied from somewhere.
 ## Blob squasher
 
 Like a snake game, minus the tail growth. Probably copied from somewhere.
+
+## Sim movimento
+
+Some kind of "road scrolling" simulation. It seems very slow, but it might be the emulator. I need to try it on the real hardware.

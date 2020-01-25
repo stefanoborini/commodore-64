@@ -1,0 +1,15 @@
+
+
+;sim-movimento.prg ==0801==
+    5 j=300:h=0
+   10 c$="{red}{cyn}{cyn}{yel}{cyn}{cyn}{grn}{cyn}{cyn}{blu}{cyn}":print"{clr}";:poke 53281,0:poke 53280,0
+   15 s$="{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}"
+   17 t=0:m=8:print"{home}";
+   19 for a=1 to 15
+   20 printleft$(c$,a);tab(15-t);"{rvon}";left$(s$,m)"{blk}"
+   22 m=m+2:t=t+1:for i=1 to j:nexti:nexta
+   25 l$=right$(c$,1)+left$(c$,14):c$=l$
+   26 print"{wht}velocita:";h;" km/h"
+   27 get a$:if a$="i"then j=j-10:h=h+10
+   30 goto 17
+

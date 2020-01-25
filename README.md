@@ -211,3 +211,11 @@ Apparently, it's a program that plays tris against itself and shows statistics o
 ## totogol
 
 No idea. Totogol is a chance game in Italy. I think I used this to estimate probabilities.
+
+## Astronomy
+
+No idea. seems to be a started program about astronomic evaluations
+
+## hanoi
+
+A tower of hanoi game, but I could not get it to work.

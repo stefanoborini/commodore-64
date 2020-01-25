@@ -1,0 +1,173 @@
+
+
+;hanoi.png ==4001==
+  200 if peek(44)=64 then 570
+  210 end
+  570 pg$="la torre di hanoi"
+  580 gosub 4270
+  620 zl=1
+  660 dim cl(8),al(8),po(3),p(3,8)
+  700 poke vi+32,0:pokevi+33,0
+  740 gosub 2950
+  780 print"{clr}";
+  790 print:print"{lblu}quanti dischi (da 2 a 8) ? ";
+  830 gosub 3570:print
+  840 if in$="" then print "ne userai 3":in$="3"
+  880 for i=1 to 500:next i
+  890 if in$>="0" and in$<="9" then 910
+  900 print"non usare ";in$;" per favore.":goto 790
+  910 n=val(in$):if n>8 then print"non possono essere piu' di 8":goto 790
+  920 if n<2 then print"non essere ridicolo!":goto 790
+  960 fori=1to8
+  970 cl(i)=0
+  980 nexti
+  990 fori=1 to 8
+ 1000 t=int(rnd(0)*15+1)
+ 1010 j=1
+ 1020 if cl(j)=t then 1000
+ 1030 j=j+1
+ 1040 if j<i then 1020
+ 1050 cl(i)=t
+ 1060 next i
+ 1100 for i=1 to 8
+ 1110 poke vi+38+i,cl(i)
+ 1120 next i
+ 1160 dn$="{home}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}"
+ 1200 for i=1 to 3:for j=0 to 8:p(i,j)=0:next j,i
+ 1240 p(1,0)=n
+ 1280 print"{clr}";dn$;"{up}{lgrn}"
+ 1290 for i=1 to 5:print
+ 1300 print"{rvon}                                       ";:nexti
+ 1310 print dn$;"{down}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{yel}{rvon}{CBM-D}{rvof}{CBM-Y}{CBM-Y}{rvon}{CBM-F}{rvof}{down}{left}{left}{left}{left}{CBM-H}{wht}#1{yel}{CBM-N}{down}{left}{left}{left}{left}{rvon}{CBM-C}{rvof}{CBM-P}{CBM-P}{rvon}{CBM-V}{rvof}{up}{up}";
+ 1320 print"{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rvon}{CBM-D}{rvof}{CBM-Y}{CBM-Y}{rvon}{CBM-F}{rvof}{down}{left}{left}{left}{left}{CBM-J}{wht}#2{yel}{CBM-N}{down}{left}{left}{left}{left}{rvon}{CBM-C}{rvof}{CBM-O}{CBM-O}{rvon}{CBM-V}{rvof}{up}{up}";
+ 1330 print"{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rvon}{CBM-D}{rvof}{CBM-Y}{CBM-Y}{rvon}{CBM-F}{rvof}{down}{left}{left}{left}{left}{CBM-J}{wht}#3{yel}{CBM-N}{down}{left}{left}{left}{left}{rvon}{CBM-C}{rvof}{CBM-O}{CBM-O}{rvon}{CBM-V}{rvof}{up}";
+ 1380 for i=1 to n
+ 1390 poke vi+21,2^(i-1) or peek(vi+21)
+ 1430 p(1,i)=i
+ 1440 next i
+ 1480 mo=0
+ 1530 tm=ti+60
+ 1540 if ti<tmthen 1540
+ 1580 gosub 2510
+ 1620 print"{lblu}"
+ 1630 pr$="{home}da quale pila ? "
+ 1670 gosub 2330:if in$="" then 1580
+ 1680 f=val(in$)
+ 1690 if p(f,0)=0 then print"{lred}questa pila e'vuota":goto 1530
+ 1700 pr$="a quale pila ? ":gosub 2330:if in$="" then 1580
+ 1710 t=val(in$)
+ 1720 if f=t then print"non e'possibile":goto 1530
+ 1730 if p(t,0)=0 then 1790
+ 1740 if p(f,p(f,0))<p(t,p(t,0)) then print"{lred}mossa non valida":goto 1530
+ 1790 ds=p(f,p(f,0))-1
+ 1800 sx=vi+2*ds:sy=sx+1
+ 1840 for i=al(p(f,0)-1) to 100 step -1
+ 1850 poke sy,i
+ 1860 next i
+ 1900 pp=po(f):pa=po(t)
+ 1910 sp=1
+ 1920 if f>t then sp=-1
+ 1930 for i=pp to pa step sp
+ 1940 poke sx,i
+ 1950 next i
+ 1990 for i=100 to al(p(t,0))
+ 2000 poke sy,i
+ 2010 next i
+ 2050 p(t,0)=p(t,0)+1
+ 2060 p(t,p(t,0))=p(f,p(f,0))
+ 2070 p(f,0)=p(f,0)-1
+ 2110 mo=mo+1
+ 2150 if p(2,0)<>nand p(3,0)<>n then 1530
+ 2160 gosub 2510
+ 2170 print"{wht}{down}           {CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}"
+ 2180 print"           {CBM-K}hai vinto !{CBM-L}"
+ 2190 print"           {CBM-U}{CBM-U}{CBM-U}{CBM-U}{CBM-U}{CBM-U}{CBM-U}{CBM-U}{CBM-U}{CBM-U}{CBM-U}{CBM-U}{CBM-U}"
+ 2200 print"{down}{lblu}hai impiegato";mo;" mosse";" per vincere"
+ 2210 t=2^n-1:print"la piu' corta soluzione "
+ 2220 print"richiede";t;"mosse"
+ 2230 print"{down}{lgrn}giochi ancora ? ";:gosub 3570:print"{clr}"
+ 2240 if in$="n" then gosub 4540:end
+ 2280 restore:clr:gosub 4000:poke vi+21,0:goto 620
+ 2330 printpr$;
+ 2340 gosub 3570:print:if in$="" then return
+ 2350 if in$="f" then gosub 4540:end
+ 2360 if in$>="1" and in$<="3" then return
+ 2370 print"questa pila non c'e'"
+ 2410 for i=1 to 500: next i
+ 2450 print"{up}                      "
+ 2460 print"{up}{up}";pr$;"  ";
+ 2470 goto 2340
+ 2510 print"{home}";
+ 2520 for i=1 to 4:print"{blk}                                      ":nexti
+ 2530 print"{home}";
+ 2540 return
+ 2580 for i1=0 to 20
+ 2590 poke po+i1,0
+ 2600 next i1
+ 2610 for i1=21 to 39 step 3
+ 2620 poke po+i1,si
+ 2630 poke po+i1+1,ce
+ 2640 poke po+i1+2,de
+ 2650 next i1
+ 2660 for i1=42to 62
+ 2670 poke po+i1,0
+ 2680 next i1
+ 2690 return
+ 2730 data 1,255,128,2048
+ 2740 data 3,255,192,2112
+ 2750 data 7,255,224,2176
+ 2760 data 15,255,240,2240
+ 2770 data 31,255,248,2304
+ 2780 data 63,255,252,2368
+ 2790 data 127,255,254,2432
+ 2800 data 255,255,255,2496
+ 2840 data 146,153,160,167,174,181,188,195
+ 2950 rem
+ 2960 for i=0 to 7
+ 2970 poke 2040+i,39-i
+ 2980 next i
+ 3030 for i=0 to 7
+ 3040 read si,ce,de,po
+ 3050 gosub 2580
+ 3060 next i
+ 3140 poke vi+21,0
+ 3180 poke vi+16,0
+ 3220 poke vi+23,0
+ 3230 poke vi+29,255
+ 3270 for i=7 to 0 step -1
+ 3280 read al(i)
+ 3290 next i
+ 3300 for i=0 to 7
+ 3310 poke vi+2*i+1,al(i)
+ 3320 next i
+ 3360 po(1)=72:po(2)=160:po(3)=247
+ 3410 for i= 0 to 7
+ 3420 poke vi+i*2,72
+ 3430 next i
+ 3470 return
+ 3570 for z8=1 to zl:print" ";:next z8
+ 3580 for z8=1 to zl:print"{left}";:next z8
+ 3590 in$="":z7=ti
+ 3630 get z8$:if z8$<>"" then 3730
+ 3670 if z7<ti and not(z6) then print"{CBM-+}{left}";:z6=not(z6):z7=ti+15
+ 3680 if z7<ti and z6 thenprint" {left}";:z6=not(z6):z7=ti+15
+ 3690 goto 3630
+ 3730 z8=asc(z8$):z9=len(in$)
+ 3770 if not((z8>47 and z8<58) or (z8>64 and z8<91)) then 3890
+ 3810 if z9=zl then3630
+ 3850 in$=in$+z8$:printz8$;:goto 3630
+ 3890 if z8=13 then print" {left}";:return
+ 3930 if z8=20 and z9>0 then in$=left$(in$,z9-1):print" {left}{left}";:goto 3630
+ 3940 goto 3630
+ 4000 vi=53248
+ 4040 si=54272
+ 4080 mv=1024
+ 4120 mc=55296
+ 4160 zl=9
+ 4230 return
+ 4270 gosub 4000
+ 4280 poke vi+32,15
+ 4290 poke vi+33,15
+ 4520 return
+ 4540 end
+

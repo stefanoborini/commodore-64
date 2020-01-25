@@ -1,0 +1,30 @@
+
+
+;astronomy.prg ==0801==
+   10 rem elenco subroutines
+   20 rem 10000 creazione subroutines in linguaggio macchina
+   30 rem 10010 posizionamento cursore ** in li,co **
+   40 rem 10020 stampa intestazione
+   50 rem 10030 stampa maschera iniziale
+   60 rem 10030 introduzione dato ** out vi$ **
+  200 vi=53248
+  210 pokevi+32,0:pokevi+33,0:print"{clr}{yel}":li=12:co=12:gosub 10010
+  220 print"attendere, prego":gosub 10000:gosub 10020
+  221 rem *******************************
+  222 rem *******************************
+  223 rem ******inizio programma*********
+  224 rem *******************************
+  225 rem *******************************
+  230 li=7:co=5:gosub 10010:print"1)introduzione data ed ora"
+  300 li=23:co=15:gosub 10010:print"scelta:";:gosub 10030:vi=val(vi$)
+  310 if vi=>1 and vi<=2 then on vi gosub
+ 9999 end
+ 10000 a=49152
+ 10005 readt:if t<>-1 then poke a,t:a=a+1:goto 10005
+ 10009 return
+ 10010 poke 211,co:poke 214,li:sys 58640:return
+ 10020 print"{clr}":sys 49152:li=1:co=13:gosub 10010:print"{rvon}astronomy calc":return
+ 60000 rem dati produzione intestazione sys 49152
+ 60010 data 169,160,170,157,255,3,202,208,250,96,-1
+ 60020 rem                              sys 49162
+

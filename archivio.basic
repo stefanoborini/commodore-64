@@ -1,0 +1,216 @@
+
+
+;archivio.prg ==0801==
+  110 pg$="a r c h i v i o"
+  120 gosub 62000
+  122 la$=""
+  124 open 15,8,15
+  140 print"{clr}{blk}";chr$(14)
+  160 print"{home}";tab(11);"GESTIONE{$a0}ARCHIVIO"
+  170 printtab(11);"{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+  180 print"{down}{down}     Menu' dei comandi"
+  190 print"{down}{down}{down}1)Crea archivio"
+  200 print"{down}2)Cancella archivio"
+  210 print"{down}3)Inserisci in archivio"
+  230 print"{down}4)Definisci archivio di uso"
+  240 print"{down}5)Visualizza archivio"
+  250 print"{down}6)Fine lavoro"
+  270 gosub 10000
+  290 on val(a$) gosub 20000,21000,22000,23000,24000,25000
+  310 goto 140
+ 10000 for i=1 to 10:get a$:next i
+ 10030 get a$:if a$=""then 10030
+ 10050 if (a$>="1")and (a$<="6") then return
+ 10070 poke si+24,15
+ 10080 poke si,0
+ 10090 poke si+1,40
+ 10100 poke si+5,15
+ 10110 poke si+6,240
+ 10120 poke si+4,33
+ 10130 for i=1 to 50 :next i
+ 10150 poke si+24,0
+ 10160 poke si+4,0
+ 10170 goto 10000
+ 11000 poke 214,15:print
+ 11010 print"Attenzione,errore del driver"
+ 11020 print"{down}Numero:";e
+ 11030 print"tipo:";e$
+ 11040 print"blocco:";t;s
+ 11060 print#15,"i"
+ 11080 print"{down}{rvon}RETURN{rvof} per continuare"
+ 11090 get in$:if in$<>chr$(13) then11090
+ 11100 return
+ 20000 print"{clr}";tab(13);"CREA ARCHIVIO"
+ 20010 printtab(13);"{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 20030 print"{down}{down}{down}{down}{down}{down}Nome archivio?";
+ 20040 zl=10:gosub 60000:print
+ 20060 if in$="" then return
+ 20100 open 4,8,4,in$+",l,"+chr$(48)
+ 20120 input#15,e,e$,t,s
+ 20140 if e<20 then 20250
+ 20160 gosub 11000
+ 20180 close 4
+ 20210 return
+ 20250 print#15,"p"chr$(4)chr$(1)chr$(0)chr$(1)
+ 20260 print#4,"2"
+ 20290 close 4
+ 20310 return
+ 21000 print"{clr}";tab(11);"CANCELLA{$a0}ARCHIVIO"
+ 21010 print tab(11);"{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 21050 print"{down}{down}{down}{down}Nome archivio?";
+ 21060 zl=10:gosub 60000:print
+ 21080 if in$="" then return
+ 21081 if in$=la$ then la$=""
+ 21100 print#15,"s0:"+in$
+ 21110 input#15,e,e$,t,s
+ 21130 if e=1 then return
+ 21160 gosub 11000
+ 21220 return
+ 22000 print"{clr}";tab(7);"inserizione di un elemento"
+ 22001 printtab(7);"{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 22009 if la$<>""then 22040
+ 22010 print"{down}{down}{down}{down}Attenzione,l' archivio"
+ 22020 print"{down}non e'stato definito"
+ 22021 print"{down}Inserizione impossibile"
+ 22022 print"{down}{down}{down}{rvon}RETURN{rvof} per proseguire"
+ 22023 get in$:if in$<>chr$(13) then 22023
+ 22024 return
+ 22040 open 4,8,4,la$
+ 22070 print#15,"p"chr$(4)chr$(1)chr$(0)chr$(1)
+ 22080 input#4,bl$
+ 22090 bl=val(bl$)
+ 22120 rl=bl-int(bl/256)*256
+ 22130 rh=int(bl/256)
+ 22150 print#15,"p"chr$(4)chr$(rl)chr$(rh)chr$(1)
+ 22180 poke 214,9:print
+ 22200 print"Cognome? ";tab(15);
+ 22210 zl=15:gosub 60000:print
+ 22220 if in$="" then 22180
+ 22231 print#15,"p"chr$(4)chr$(rl)chr$(rh)chr$(1)
+ 22240 print#4,in$
+ 22260 print#15,"p"chr$(4)chr$(rl)chr$(rh)chr$(17)
+ 22280 poke 214,11:print
+ 22300 print"nome ? ";tab(15);
+ 22310 zl=15:gosub 60000:print
+ 22320 if in$=""then 22280
+ 22340 print#4,in$
+ 22360 print#15,"p"chr$(4)chr$(rl)chr$(rh)chr$(33)
+ 22380 poke 214,13:print
+ 22400 print"Telefono ? ";tab(15);
+ 22410 zl=15:gosub 60000
+ 22420 if in$=""then22380
+ 22440 print#4,in$
+ 22470 bl=bl+1
+ 22500 print#15,"p"chr$(4)chr$(1)chr$(0)chr$(1)
+ 22510 print#4,str$(bl)
+ 22540 close 4
+ 22560 return
+ 23000 print"{clr}";tab(5);"DEFINIZIONE ARCHIVIO LAVORO"
+ 23010 printtab(5);"{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 23020 print"{down}{down}{down}{down}{down}Nome archivio ? ";
+ 23030 zl=10:gosub 60000:print
+ 23040 if in$="" then return
+ 23070 open 4,8,4,in$
+ 23080 input#15,e,e$,t,s
+ 23090 if e< 20 then la$=in$:close 4:return
+ 23110 gosub 11000
+ 23120 close 4
+ 23140 return
+ 24000 print"{clr}";tab(12);"STAMPA ARCHIVIO"
+ 24001 printtab(12);"{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 24003 if la$<>"" then 24010
+ 24004 print"{down}{down}Attenzione,archivio non definito"
+ 24006 print"{down}{down}{down}{rvon}RETURN{rvof} per proseguire"
+ 24008 return
+ 24010 print"Contenuto dell'archivio {rvon}";la$;"{rvof}"
+ 24019 open 4,8,4,la$
+ 24030 print#15,"p"chr$(4)chr$(1)chr$(0)chr$(1)
+ 24050 input#4,bl$
+ 24060 bl=val(bl$)
+ 24110 if bl>2 then24180
+ 24130 print"{down}{down}{down}L'archivio ";la$;" e' vuoto"
+ 24140 print"{down}{down}{rvon}RETURN{rvof} per proseguire"
+ 24150 get in$:if in$<>chr$(13) then 24150
+ 24151 close 4
+ 24160 return
+ 24180 fori=2 to bl-1
+ 24200 rl=i-int(i/256)*256
+ 24210 rh=int(i/256)
+ 24220 print#15,"p"chr$(4)chr$(rl)chr$(rh)chr$(1)
+ 24240 poke 214,14:print
+ 24250 print"Cognome";tab(15);
+ 24260 input#4,in$
+ 24270 printin$
+ 24280 print"{down}Nome             ";tab(15);
+ 24300 print#15,"p"chr$(4)chr$(rl)chr$(rh)chr$(17)
+ 24310 input#4,in$
+ 24320 printin$
+ 24330 print"{down}Telefono         ";tab(15);
+ 24350 print#15,"p"chr$(4)chr$(rl)chr$(rh)chr$(33)
+ 24360 input#4,in$
+ 24370 printin$
+ 24380 print"{down}{down}{down}{rvon}RETURN{rvof} per continuare"
+ 24390 get in$:if in$<>chr$(13) then24390
+ 24410 poke 214,14:print
+ 24420 for i9=1 to 9
+ 24430 print"                                        "
+ 24440 next i9
+ 24460 nexti
+ 24480 poke 214,14:print
+ 24490 print"L' archivio e' terminato"
+ 24500 print"{down}{down}{rvon}RETURN{rvof} per proseguire"
+ 24510 get in$:if in$<>chr$(13) then24510
+ 24530 close 4
+ 24550 return
+ 25000 print"{clr}{down}{down}{down}";chr$(142)
+ 25010 close 15
+ 25011 poke 53281,6:poke 53280,14
+ 25012 print"{lblu}"
+ 25013 print"{clr}{down}{down}"
+ 25020 end
+ 60000 for z8=1 to zl:print" ";:next z8
+ 60010 for z8=1 to zl:print"{left}";:next z8
+ 60020 in$="":z7=ti
+ 60060 get z8$:ifz8$<>""then 60160
+ 60100 if z7<ti and not(z6) then print"{CBM-+}{left}";:z6=not(z6):z7=ti+15
+ 60120 goto 60060
+ 60160 z8=asc(z8$):z9=len(in$)
+ 60200 if not(z8>31 and z8<96) then 60320
+ 60240 if z9=zl then 60060
+ 60280 in$=in$+z8$:print z8$;:goto 60060
+ 60320 if z8=13 thenprint" {left}";:return
+ 60360 if z8=20 and z9>0 then in$=left$(in$,z9-1):print" {left}{left}";:goto 60060
+ 60370 goto 60060
+ 61000 vi=53248
+ 61040 si=54272
+ 61080 mv=1024
+ 61120 mc=55296
+ 61160 zl=9
+ 61200 for i=0 to 24
+ 61210 poke si+i,0
+ 61220 next i
+ 61230 return
+ 62000 gosub 61000
+ 62010 poke vi+32,15
+ 62020 poke vi+33,15
+ 62030 print"{clr}{down}{down}{down}{down}";
+ 62040 printtab(6);"{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}"
+ 62050 for i=1to5
+ 62060 printtab(6);"{rvon}{CBM-K}{rvof}                        {CBM-L}"
+ 62070 nexti
+ 62080 printtab(6);"{CBM-C}{rvon}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{rvof}{CBM-V}"
+ 62090 printtab(6);"{wht}{down}{down}{down}{down}{down}{down}digita {rvon}return{rvof} per proseguire"
+ 62100 print"{home}{down}{down}{down}{down}"
+ 62110 for i=1to5
+ 62120 printtab(7);
+ 62130 forj=1to26
+ 62140 print"{red}{rvon} ";
+ 62150 nextj
+ 62160 print
+ 62170 next i
+ 62210 print"{home}{down}{down}{down}{down}{down}{down}{down}";tab((40-len(pg$))/2);"{rvon}{red}";pg$
+ 62220 get z9$
+ 62230 if z9$<>chr$(13) then 62220
+ 62240 print"{clr}{wht}";
+ 62250 return
+

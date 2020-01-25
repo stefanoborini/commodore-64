@@ -1,0 +1,39 @@
+
+
+;tris.prg ==0801==
+   10 print"{clr}":clr:p=9:s=1
+  125 if p=0 then d3=d3+1:print3:goto 1000
+  130 l=int(rnd(0)*3)
+  140 c=int(rnd(0)*3)
+  145 get a$:if a$=" "then 900
+  150 if peek(1024+c+40*l)=32 then poke 1024+c+40*l,42:p=p-1:goto 160
+  155 goto 125
+  160 if peek(1024)=42 andpeek(1025)=42andpeek(1026)=42 then d1=d1+1:goto 1000
+  170 if peek(1064)=42 andpeek(1065)=42andpeek(1066)=42 then d1=d1+1:goto 1000
+  180 if peek(1104)=42 andpeek(1105)=42andpeek(1106)=42 then d1=d1+1:goto 1000
+  190 if peek(1024)=42 and peek(1064)=42 and peek(1104)=42 then d1=d1+1:goto 1000
+  200 if peek(1025)=42 and peek(1065)=42 and peek(1105)=42 then d1=d1+1:goto 1000
+  210 if peek(1026)=42 and peek(1066)=42 and peek(1106)=42 then d1=d1+1:goto 1000
+  220 if peek(1024)=42 and peek(1065)=42and peek(1106)=42 then d1=d1+1:goto 1000
+  230 if peek(1026)=42 and peek(1065)=42and peek(1104)=42 then d1=d1+1:goto 1000
+  231 if p=0 then d3=d3+1:print3:goto 1000
+  232 l=int(rnd(0)*3)
+  233 c=int(rnd(0)*3)
+  234 if peek(1024+c+40*l)=32 then poke 1024+c+40*l,43:p=p-1:goto 240
+  235 goto 231
+  240 if peek(1024)=43 andpeek(1025)=43andpeek(1026)=43 then d2=d2+1:goto 1000
+  250 if peek(1064)=43 andpeek(1065)=43andpeek(1066)=43 then d2=d2+1:goto 1000
+  260 if peek(1104)=43 andpeek(1105)=43andpeek(1106)=43 then d2=d2+1:goto 1000
+  270 if peek(1024)=43 and peek(1064)=43 and peek(1104)=43 then d2=d2+1:goto 1000
+  280 if peek(1025)=43 and peek(1065)=43 and peek(1105)=43 then d2=d2+1:goto 1000
+  290 if peek(1026)=43 and peek(1066)=43 and peek(1106)=43 then d2=d2+1:goto 1000
+  300 if peek(1024)=43 and peek(1065)=43and peek(1106)=43 then d2=d2+1:goto 1000
+  310 if peek(1026)=43 and peek(1065)=43and peek(1104)=43 then d2=d2+1:goto 1000
+  320 goto 125
+  900 print"{clr}":print"per *=";d1
+  910 print"per +=";d2
+  920 print"patte=";d3
+  925 for i= 1 to 5000: next i
+ 1000 p=9:s=s+1:if s>2then s=1
+ 1002 print"{clr}":on s goto 130,232
+

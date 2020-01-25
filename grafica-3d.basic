@@ -1,0 +1,272 @@
+
+
+;grafica-3d.prg ==4001==
+  100 rem ***********************
+  110 rem grafica tridimensionale
+  120 rem ***********************
+  140 rem variabili utilizzate
+  160 rem m(*,*,2):memorizza le triple cartesiane da visualizzare
+  170 rem
+  180 rem
+  190 rem
+  200 rem
+  210 rem
+  220 rem
+  230 rem
+  240 rem
+  250 rem
+  260 rem
+  270 rem
+  280 rem
+  310 rem
+  320 rem
+  330 def fnz(z)=sin(x+y)
+  340 rem inizia il programma
+  350 pg$="grafica tridimensionale"
+  360 gosub 2990
+  370 rem sfondo blu
+  380 poke vi+32,6:poke vi+33,6
+  390 rem stampo informazioni
+  490 rem controllo poke
+  500 if peek(44)=64 then 640
+  510 rem il programma non puo' iniziare
+  520 print"{clr}{down}{down}{down}"
+  530 print"attenzione:hai dimenticato"
+  540 print"{down}di immettere i seguenti comandi:"
+  550 print"{down}{down}{rvon}1)poke 44,64"
+  560 print"{down}{rvon}2)poke 16384,0"
+  570 rem
+  580 rem
+  590 rem
+  600 end
+  610 rem
+  620 rem
+  630 rem
+  640 print"{clr}{wht}";
+  650 print"quanti punti devo marcare ? ";
+  660 zl=2:gosub 2290
+  670 p=val(in$)
+  680 if p>1 then goto 710
+  690 rem
+  700 goto 640
+  710 p1=p-1
+  720 p2=p*p-1
+  730 rem
+  740 print"{clr}valore minimo di x (>0) ? ";
+  750 zl=10:gosub 2290:print
+  760 rem
+  770 lx=val(in$)
+  780 if lx<=0 then goto 740
+  790 print"{down}valore massimo di x ? ";
+  800 gosub 2290:print
+  810 hx=val(in$)
+  820 rem
+  830 if hx<=lx then goto 740
+  840 rem
+  850 print"{clr}";
+  860 print"valore minimo di y ? ";
+  870 gosub 2290:print
+  880 ly=val(in$)
+  890 print"{down}valore massimo di y ? ";
+  900 gosub 2290:print
+  910 hy=val(in$)
+  920 rem
+  930 if hy<=ly then goto 850
+  931 for a=0 to 400:next a
+  935 print"{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{rvon}attendere prego{rvof}"
+  940 rem
+  950 rem
+  960 px=(hx-lx)/p1
+  970 py=(hy-ly)/p1
+  980 rem
+  990 dim m(p1,p1,2)
+ 1000 rem
+ 1010 for i=0 to p1
+ 1020 for j=0 to p1
+ 1030 x=lx+px*i
+ 1040 y=ly+py*j
+ 1050 m(i,j,1)=y/x
+ 1060 m(i,j,2)=fnz(z)/x
+ 1070 next j
+ 1080 next i
+ 1090 rem
+ 1100 rem
+ 1110 ly=m(0,0,1)
+ 1120 hy=ly
+ 1130 lz=m(0,0,2)
+ 1140 hz=lz
+ 1150 for i=0 to p1
+ 1160 for j=0 to p1
+ 1170 if m(i,j,1)<ly then ly=m(i,j,1)
+ 1180 if m(i,j,1)>hy then hy=m(i,j,1)
+ 1190 if m(i,j,2)<lz then lz=m(i,j,2)
+ 1200 if m(i,j,2)>hz then hz=m(i,j,2)
+ 1210 next j
+ 1220 next i
+ 1230 rem
+ 1240 sy=319/(hy-ly)
+ 1250 sz=199/(hz-lz)
+ 1260 rem
+ 1270 rem
+ 1280 gosub 1670
+ 1290 rem
+ 1300 gosub 1760
+ 1310 rem
+ 1320 co=6:gosub 1790
+ 1330 rem
+ 1340 for i=0 to p1
+ 1350 xp=(m(i,0,1)-ly)*sy
+ 1360 yp=(m(i,0,2)-lz)*sz
+ 1370 for j=0 to p1
+ 1380 xs=(m(i,j,1)-ly)*sy
+ 1390 ys=(m(i,j,2)-lz)*sz
+ 1400 gosub 1870
+ 1410 xp=xs:yp=ys
+ 1420 next j
+ 1430 next i
+ 1440 rem
+ 1450 for i=0 to p1
+ 1460 xp=(m(0,i,1)-ly)*sy
+ 1470 yp=(m(0,i,2)-lz)*sz
+ 1480 for j=1 to p1
+ 1490 xs=(m(j,i,1)-ly)*sy
+ 1500 ys=(m(j,i,2)-lz)*sz
+ 1510 gosub 1870
+ 1520 xp=xs:yp=ys
+ 1530 next j
+ 1540 next i
+ 1550 get a$:if a$=""then 1550
+ 1560 rem
+ 1570 gosub 2170
+ 1580 rem
+ 1590 print"{clr}{down}{down}{down}{down}"
+ 1600 end
+ 1610 rem
+ 1620 rem
+ 1630 rem
+ 1640 rem
+ 1650 rem
+ 1660 rem
+ 1670 poke vi+17,peek(vi+17)or 32
+ 1680 rem
+ 1690 poke vi+24,peek(vi+24) or 8
+ 1700 bm=8192:z0=8:z1=320:z2=7:z3=1/z0
+ 1710 for i=0 to 7
+ 1720 z3(i)=2^i
+ 1730 next i
+ 1740 return
+ 1750 rem
+ 1760 z9=0:for i=bm to bm+7999:poke i,z9:next
+ 1770 return
+ 1780 rem
+ 1790 for i= 1024 to 2023:pokei,co:next
+ 1800 return
+ 1810 rem
+ 1820 by=bm+int(yc*z3)*z1+int(xc*z3)*z0+(yc and z2)
+ 1830 poke by,peek(by) or z3(z2-(xc and z2))
+ 1840 return
+ 1850 rem
+ 1860 rem
+ 1870 if yp=ys then goto 2000
+ 1880 rem
+ 1890 if xs=xp then 2050
+ 1900 rem
+ 1910 m=(yp-ys)/(xp-xs)
+ 1920 if abs(m)>1 then m=1/m:goto 2100
+ 1930 rem
+ 1940 q=ys-xs*m
+ 1950 rem
+ 1960 for xc=xp to xs step sgn(xs-xp)
+ 1970 yc=m*xc+q:gosub 1820:next
+ 1980 return
+ 1990 rem
+ 2000 yc=yp
+ 2010 for xc=xp to xs step sgn(xs-xp)
+ 2020 gosub 1820:next
+ 2030 return
+ 2040 rem
+ 2050 xc=xp
+ 2060 for yc=yp to ys step sgn(ys-yp)
+ 2070 gosub 1820:next
+ 2080 return
+ 2090 rem
+ 2100 q=xs-ys*m
+ 2110 rem
+ 2120 for yc=yp to ys step sgn(ys-yp)
+ 2130 xc=m*yc+q:gosub 1820:next
+ 2140 return
+ 2150 rem
+ 2160 rem
+ 2170 poke vi+17,peek(vi+17)and 223
+ 2180 poke vi+24,peek(vi+24)and 247
+ 2190 return
+ 2210 rem
+ 2220 rem
+ 2230 rem
+ 2240 rem
+ 2250 rem
+ 2270 rem
+ 2290 for z8=1 to zl:print" ";:next z8
+ 2300 for z8=1 to zl:print"{left}";:next z8
+ 2310 in$="":z7=ti
+ 2330 rem
+ 2350 get z8$:if z8$<>""then 2450
+ 2370 rem
+ 2390 if z7<tiand not(z6) then print"{CBM-+}{left}";:z6=not(z6):z7=ti+15
+ 2400 if z7<tiand z6 then print" {left}";:z6=not(z6):z7=ti+15
+ 2410 goto 2350
+ 2430 rem
+ 2450 z8=asc(z8$):z9=len(in$)
+ 2470 rem
+ 2490 if not(z8>31 and z8<96)then 2610
+ 2510 rem
+ 2530 if z9=zl then goto 2350
+ 2550 rem
+ 2570 in$=in$+z8$:printz8$;:goto 2350
+ 2590 rem
+ 2610 if z8=13 then print" {left}";:return
+ 2630 rem
+ 2650 if z8=20 and z9>0 then in$=left$(in$,z9-1):print" {left}{left}";:goto 2350
+ 2660 goto 2350
+ 2680 rem
+ 2700 rem
+ 2720 vi=53248
+ 2740 rem
+ 2760 si=54272
+ 2780 rem
+ 2800 mv=1024
+ 2820 rem
+ 2840 mc=55296
+ 2860 rem
+ 2880 zl=9
+ 2900 rem
+ 2920 for i=0 to 24
+ 2930 poke si+i,0
+ 2940 next i
+ 2950 return
+ 2970 rem routine:stampa il titolo del programma memorizzato in pg$
+ 2990 gosub 2720
+ 3000 poke vi+32,15
+ 3010 poke vi+33,15
+ 3020 print"{clr}{down}{down}{down}{down}";
+ 3030 print tab(6);"U{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}I"
+ 3040 for i=1 to 5
+ 3050 print tab(6);"B                          B"
+ 3060 next i
+ 3070 print tab(6);"J{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}K"
+ 3080 print tab(6);"{wht}{down}{down}{down}{down}{down}{down}digita {rvon}return{rvof} per proseguire"
+ 3090 print"{home}{down}{down}{down}{down}"
+ 3100 for i=1 to 5
+ 3110 print tab(7);
+ 3120 for j=1 to 26
+ 3130 print"{red}{rvon} ";
+ 3140 next j
+ 3150 print
+ 3160 next i
+ 3180 rem
+ 3200 print"{home}{down}{down}{down}{down}{down}{down}{down}";tab((40-len(pg$))/2);"{rvon}{red}";pg$
+ 3210 get z9$
+ 3220 if z9$<>chr$(13) then goto 3210
+ 3230 print"{clr}{wht}";
+ 3240 return
+

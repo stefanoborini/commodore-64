@@ -132,3 +132,8 @@ asks how many letters has a word to guess, then proceeds to ask facts about the 
 facts, it asks to press a key, but since I would be the one at the keyboard, I would not simply play
 a random key. Instead I would write the actual word letter by letter, then it would be printed out
 at the end giving the illusion that it figured it out by itself.
+
+## grafica-3d
+
+Some sort of 3d plot. This is definitely something I copied from a book or programming magazine.
+It's extremely slow and I am not sure which function is plotting.

@@ -152,7 +152,7 @@ where there's some text about dome dweller
 So my guess is that I read about dome dweller concept somewhere (not the above
 book, I never heard of it) and wrote the game myself on that concept.
 
-# A, AA
+## A, AA
 
 Initially, I had no idea what this code was doing. Looks like some kind of
 integration, but I don't know what problem it's supposed to solve.  Then, I
@@ -166,3 +166,6 @@ which is probably where I found the equations.
 ![image](a.png)
 ![image](aa.png)
 
+## graf2
+
+No idea what this does. Apparently it resets the graphic mode and draws some kind of sinusoid at the very top.

@@ -1,0 +1,41 @@
+
+
+;totogol.prg ==0801==
+   10 print"{clr}"
+   20 clr:for i=1 to 3
+   30 a(i)=int(rnd(0)*11)
+   40 if a(i)=0 then 30
+   50 next i
+   60 if a(1)=a(2) or a(1)=a(3) or a(2)=a(3) then 20
+   70 for i=4 to 6
+   80 a(i)=int(rnd(0)*21)
+   90 if a(i)<11 then 70
+  100 next i
+  110 if a(4)=a(5) or a(4)=a(6) or a(5)=a(6) then 70
+  120 for i=7 to 8
+  130 a(i)=int(rnd(0)*31)
+  140 if a(i)<21 then 130
+  150 next i
+  160 if a(7)=a(8) then 120
+  165 h=1
+  170 for i=1 to 8:for j=1 to 8
+  180 if a(i)<a(j) then d=d+1
+  190 next j
+  200 if d=7 then b(h)=a(i):h=h+1:a(i)=31
+  210 d=0:next i
+  220 if h<>9 then 170
+  230 rem verifica per consecutivita'
+  240 for i=1 to 7
+  250 if b(i+1)-b(i)=1 then 20
+  270 next i
+  280 rem verifica per pari e dispari
+  290 p=0:for i=1 to 8
+  300 if int(b(i)/2)=b(i)/2 then p=p+1
+  310 next i
+  320 if p=3 or p=4 or p=5 then p=0:goto 340
+  330 goto 20
+  340 open 4,4:print#4,b(1);b(2);b(3);b(4);b(5);b(6);b(7);b(8)
+  341 close 4
+  342 for i=1 to 8:printb(i);:next i:printchr$(13);
+  350 goto 20
+

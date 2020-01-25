@@ -200,10 +200,14 @@ I suspect that the vice emulator is not really working correctly for these progr
 
 The typical hello world program in basic. 
 
-# life, lif1, lif2, lif3, liv1
+## life, lif1, lif2, lif3, liv1
 
 Some kind of game of life attempt. Could not make them work. Probably I stopped halfway.
 
-# Tris
+## Tris
 
 Apparently, it's a program that plays tris against itself and shows statistics on who wins and who loses.
+
+## totogol
+
+No idea. Totogol is a chance game in Italy. I think I used this to estimate probabilities.

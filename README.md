@@ -175,3 +175,7 @@ No idea what this does. Apparently it resets the graphic mode and draws some kin
 Some kind of program that supposedly draws the top half of a flag that looks like the Windows 3.11 one.
 I think I was trying to make my own logo for one of my programs so that looked like Windows 3.11.
 
+## pigreco
+
+Obviously a computation of an approximation of pi using the ratio of random points falling inside and 
+outside of a circle.

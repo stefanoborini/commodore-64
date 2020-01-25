@@ -1,0 +1,84 @@
+
+
+;simulaz-dadi.prg ==0801==
+    0 clr
+    5 input"{clr}numero";nu
+   10 print"{clr}"
+   20 dima$(2)
+   30 dimb$(2)
+   40 dimc$(2)
+   50 dimd$(2)
+   60 dime$(2)
+   70 dimf$(2)
+   80 a$(0)="Q Q"
+   90 a$(1)="Q Q"
+  100 a$(2)="Q Q"
+  110 b$(0)="Q Q"
+  120 b$(1)=" Q "
+  130 b$(2)="Q Q"
+  140 c$(0)="Q Q"
+  150 c$(1)="   "
+  160 c$(2)="Q Q"
+  170 d$(0)="Q  "
+  180 d$(1)=" Q "
+  190 d$(2)="  Q"
+  200 e$(0)="Q  "
+  210 e$(1)="   "
+  220 e$(2)="  Q"
+  230 f$(0)="   "
+  240 f$(1)=" Q "
+  250 f$(2)="   "
+  260 a=int(rnd(1)*7)
+  270 if a=0 then 260
+  280 if a=6 thengoto 10000
+  290 if a=5 thengoto 20000
+  300 if a=4 thengoto  30000
+  310 if a=3 thengoto  40000
+  320 if a=2 thengoto  50000
+  330 if a=1 thengoto 60000
+  340 if nu=a then print"hai vinto!!!":for m=1to1000:next:run
+  345 if nu<>a then print"hai perso.riprova":for k=1to1000:next:run
+  350 end
+ 10000 print"{clr}          O{CBM-Y}{CBM-Y}{CBM-Y}P"
+ 10010 print"          {CBM-H}";a$(0);"{CBM-N}"
+ 10020 print"          {CBM-H}";a$(1);"{CBM-N}"
+ 10030 print"          {CBM-H}";a$(2);"{CBM-N}"
+ 10035 print"          L{CBM-P}{CBM-P}{CBM-P}{SHIFT-@}"
+ 10036 get m$:ifm$=""then 10036
+ 10040 goto 340
+ 20000 print"{clr}          O{CBM-Y}{CBM-Y}{CBM-Y}P"
+ 20010 print"          {CBM-H}";b$(0);"{CBM-N}"
+ 20020 print"          {CBM-H}";b$(1);"{CBM-N}"
+ 20030 print"          {CBM-H}";b$(2);"{CBM-N}"
+ 20035 print"          L{CBM-P}{CBM-P}{CBM-P}{SHIFT-@}"
+ 20036 get m$:ifm$=""then 20036
+ 20040 goto 340
+ 30000 print"{clr}          O{CBM-Y}{CBM-Y}{CBM-Y}P"
+ 30010 print"          {CBM-H}";c$(0);"{CBM-N}"
+ 30020 print"          {CBM-H}";c$(1);"{CBM-N}"
+ 30030 print"          {CBM-H}";c$(2);"{CBM-N}"
+ 30035 print"          L{CBM-P}{CBM-P}{CBM-P}{SHIFT-@}"
+ 30036 get m$:ifm$=""then 30036
+ 30040 goto 340
+ 40000 print"{clr}          O{CBM-Y}{CBM-Y}{CBM-Y}P"
+ 40010 print"          {CBM-H}";d$(0);"{CBM-N}"
+ 40020 print"          {CBM-H}";d$(1);"{CBM-N}"
+ 40030 print"          {CBM-H}";d$(2);"{CBM-N}"
+ 40035 print"          L{CBM-P}{CBM-P}{CBM-P}{SHIFT-@}"
+ 40036 get m$:ifm$=""then 40036
+ 40040 goto 340
+ 50000 print"{clr}          O{CBM-Y}{CBM-Y}{CBM-Y}P"
+ 50010 print"          {CBM-H}";e$(0);"{CBM-N}"
+ 50020 print"          {CBM-H}";e$(1);"{CBM-N}"
+ 50030 print"          {CBM-H}";e$(2);"{CBM-N}"
+ 50035 print"          L{CBM-P}{CBM-P}{CBM-P}{SHIFT-@}"
+ 50036 get m$:ifm$=""then 50036
+ 50040 goto 340
+ 60000 print"{clr}          O{CBM-Y}{CBM-Y}{CBM-Y}P"
+ 60010 print"          {CBM-H}";f$(0);"{CBM-N}"
+ 60020 print"          {CBM-H}";f$(1);"{CBM-N}"
+ 60030 print"          {CBM-H}";f$(2);"{CBM-N}"
+ 60035 print"          L{CBM-P}{CBM-P}{CBM-P}{SHIFT-@}"
+ 60036 get m$:ifm$=""then 60036
+ 60040 goto 340
+

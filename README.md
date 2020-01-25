@@ -88,3 +88,11 @@ simulates a slot machine. Probably copied from somewhere.
 ## Grafica
 
 changes a letter to a different graphical glyph.
+
+## Labirinto
+
+Various versions of a labyrinth game.
+
+## Conto
+
+I have no idea.

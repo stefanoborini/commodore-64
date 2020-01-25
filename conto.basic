@@ -1,0 +1,29 @@
+
+
+;conto.prg ==0801==
+    0 dim a$(3)
+    1 a$(1)="numeri"
+    2 a$(0)="conto"
+    3 a$(2)="uno,due,tre.."
+    4 a$(3)="aspetta,aspetta"
+    5 print"{clr}"
+   10 a=a+1:if a=301 then b=b+1:print"{clr}{up}":a=0:print"{yel}";a;b
+   15 print"{blu}{up}";a
+   16 if b=130 then goto 9000
+   20 goto 10
+ 9000 print"{clr}"
+ 9010 printtab(14);"ho terminato"
+ 9020 si=54272
+ 9030 poke si,0
+ 9040 poke si+1,50
+ 9050 poke si+5,15
+ 9060 poke si+6,240
+ 9070 poke si+24,15
+ 9080 poke si+4,33
+ 9090 for j=1 to 1000:nextj
+ 9100 poke si+4,0
+ 9110 k=int(rnd(1)*3)
+ 9111 for dj=1 to11000:next dj
+ 9120 save""+a$(k)+"",8
+ 9130 new
+

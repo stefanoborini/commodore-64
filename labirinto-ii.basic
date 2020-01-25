@@ -1,0 +1,169 @@
+
+
+;labirinto-ii.prg ==0801==
+  120 gosub 62000
+  140 dim la(24,39)
+  151 print"{clr}{blk}";
+  152 printtab(10);"l a b i r i n t o"
+  153 print"{down}{down}{down}l'uscita del labirinto e' nell'angolo"
+  154 print"{down}in basso a destra"
+  155 print"{down}{down}{down}         per spostarti utilizza"
+  156 print"{down}la joystick in porta 2"
+  161 poke 214,22:print
+  162 print"{red}{rvon}attendere,labirinto in costruzione{blk}{rvof}"
+  190 for i=0to24
+  200 forj=0to39
+  210 la(i,j)=32+128
+  220 next j
+  230 next i
+  322 di=rnd(-ti)
+  324 pa=3
+  330 r=0:c=0
+  340 la(r,c)=32
+  350 if r=24 and c=39 then 460
+  351 if pa<3 then 370
+  352 pa=0
+  360 di=int(rnd(di)*10)
+  370 if di<3 then c=c+1:goto 410
+  380 if di<6 then r=r+1:goto 410
+  381 if di<8 then r=r-1:goto 410
+  390 c=c-1
+  410 if c=40  then c=39
+  411 if c=-1  then c=0
+  420 if r=25  then r=24
+  430 if r=-1  then r=0
+  432 pa=pa+1
+  440 goto 340
+  460 rem
+  470 i=1
+  490 r1=int(rnd(r1)*25)
+  500 c1=int(rnd(c1)*40)
+  520 r2=int(rnd(r2)*25)
+  530 c2=int(rnd(c2)*40)
+  550 for j=r1 to r2 step sgn(r2-r1)
+  560 la(j,c1)=32
+  580 next j
+  590 for j=c1 to c2 step sgn(c2-c1)
+  610 la(r2,j)=32
+  620 next j
+  650 i=i+1
+  660 if i<11 then 490
+  680 if rnd(0)<.7 then 490
+  691 poke 214,22:print
+  692 print"per iniziare digita {rvon}return{rvof}             "
+  693 get a$:if a$<>chr$(13)then 693
+  710 r=0:c=0
+  712 print"{clr}"
+  730 poke vi+32,5
+  732 ti$="000000"
+  750 gosub10000
+  770 poke mv+c+r*40,81
+  780 poke mc+c+r*40,2
+  800 ifr=24 and c=39 then 2000
+  820 if ti$>"000100"then 3000
+  840 a=peek(56321)
+  851 nr=r:nc=c
+  860 if a=254then nr=r-1:goto 900
+  870 if a=253then nr=r+1:goto 900
+  880 if a=251then nc=c-1:goto 900
+  890 if a=247then nc=c+1:goto 900
+  892 goto 840
+  900 if nr<0 or nr>24 then gosub 20000:goto 820
+  910 if nc<0 or nc>39 then gosub 20000:goto 820
+  920 if la(nr,nc)<>32 then gosub 20000:goto820
+  940 r=nr
+  950 c=nc
+  970 goto 750
+ 2000 tm=ti
+ 2009 fori=1to30
+ 2020 poke vi+32,int(rnd(0)*16)
+ 2030 poke vi+33,int(rnd(0)*16)
+ 2032 for j=1to50:next j
+ 2040 next i
+ 2042 poke vi+32,15
+ 2043 poke vi+33,15
+ 2060 print"{clr}";
+ 2065 for i=1to10:get a$:next i
+ 2070 print"{down}{down}{down}bravo,sei uscito dal labirinto"
+ 2080 print"{down}in ";int(tm/60+.5);" secondi."
+ 2081 print"{down}{down}{down}premi {rvon}return{rvof} per esaminare il labirinto"
+ 2082 get qj$:if qj$<>chr$(13)then2082
+ 2083 goto 3030
+ 2090 print"{down}{down}{down}vuoi riprovare ? (s/n) ";
+ 2100 zl=1:gosub 60000:print
+ 2110 if in$="s"then 151
+ 2140 poke vi+32,14
+ 2150 poke vi+33,6
+ 2170 print"{lblu}"
+ 2180 print"{clr}{down}{down}"
+ 2190 end
+ 3000 print"{clr}{down}mi spiace,hai impiegato troppo"
+ 3010 print"{down}tempo."
+ 3020 print"{down}{down}{down}{down}{down}{down}{down}{down}digita return per esaminare il"
+ 3021 print"labirinto"
+ 3030 get a$:if a$<>chr$(13) then 3030
+ 3090 for r1=0to24
+ 3100 for c1=0to39
+ 3110 po=r1*40+c1
+ 3120 poke mv+po,la(r1,c1)
+ 3130 poke mc+po,5
+ 3140 next c1
+ 3150 next r1
+ 3152 poke mv+r*40+c,81
+ 3153 poke mc+r*40+c,2
+ 3170 for i=0to 4000:nexti
+ 3175 for i=1to10:geta$:next i
+ 3190 print"{clr}{down}{down}{down}{down}"
+ 3200 goto 2090
+ 10000 rp=r-1
+ 10010 rs=r+1
+ 10020 cp=c-1
+ 10030 cs=c+1
+ 10040 if rp<0 then rp=0
+ 10050 if rs>24then rs=24
+ 10060 if cp<0 then cp=0
+ 10070 if cs>39then cs=39
+ 10090 for r1=rp to rs
+ 10100 for c1=cp to cs
+ 10110 po=r1*40+c1
+ 10120 poke mv+po,la(r1,c1)
+ 10130 poke mc+po,5
+ 10140 next c1
+ 10150 next r1
+ 10210 return
+ 20000 poke si,0
+ 20010 poke si+1,50
+ 20020 poke si+5,15
+ 20030 poke si+6,240
+ 20040 poke si+24,15
+ 20050 poke si+4,33
+ 20070 for i=1to 50:next i
+ 20080 poke si+4,0
+ 20090 poke si+24,0
+ 20100 return
+ 60000 for z8=1 to zl:print" ";:next z8
+ 60010 for z8=1 to zl:print"{left}";:next z8
+ 60020 in$="":z7=ti
+ 60060 get z8$:if z8$<>""then 60160
+ 60100 if zt<ti and not(z6) then print"{CBM-+}{left}";:z6=not(z6):z7=ti+15
+ 60110 if z7<ti and z6 thenprint" {left}";:z6=not(z6):z7=ti+15
+ 60120 goto 60060
+ 60160 z8=asc(z8$):z9=len(in$)
+ 60200 if not((z8>47 andz8<58) or(z8>64 and z8<91)) then 60320
+ 60240 if z9=zl then 60060
+ 60280 in$=in$+z8$:printz8$;:goto 60060
+ 60320 if z8=13 then print" {left}";:return
+ 60360 if z8=20 and z9>0 thenin$=left$(in$,z9-1):print" {left}{left}";:goto 60060
+ 60370 goto 60060
+ 61000 vi=53248
+ 61040 si=54272
+ 61080 mv=1024
+ 61120 mc=55296
+ 61160 zl=9
+ 61200 fori=0to24
+ 61210 poke si+i,0
+ 61230 next i:return
+ 62000 gosub 61000
+ 62010 pokevi+32,15:poke vi+33,15
+ 62020 return
+

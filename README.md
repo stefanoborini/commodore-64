@@ -16,6 +16,12 @@ Apparently an image reader from koalapaint data.
 
 Seems to be something that reads a disk block and shows its content in hex
 
-## Archivio.
+## Archivio
 
 Contact archive. Probably copied from somewhere.
+
+## Alta risoluzione
+
+Some sort of spirograph drawing program. Probably copied from somewhere.
+
+![image](alta-risoluzione.png)

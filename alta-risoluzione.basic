@@ -1,0 +1,115 @@
+
+
+;alta-risoluzione.prg ==0801==
+  300 if peek(44)=64 then 440
+  320 print"{clr}{down}{down}attenzione,hai dimenticato di immettere"
+  330 print"i seguenti comandi:"
+  340 print"1)poke 44,64"
+  350 print"1)poke 16384,0"
+  360 print"ora spegni il computer,immettili e rica-"
+  370 print"rica il programma."
+  380 end
+  440 gosub 2270
+  460 print"{clr}{down}{down}{down}{rvon}per giocare ancora digita 'g'{rvof}"
+  462 print"{down}{down}{rvon}per terminare digita 'f'{rvof}"
+  465 print"{down}{down}{down}{down}{down}incremento per il segmento ? ";
+  470 zl=5:gosub1570:print
+  480 ic=val(in$)
+  490 if ic<=0then 460
+  510 print"{down}{down}angolo di rotazione,in gradi"
+  520 print"{down}sessagesimali ? ";
+  530 zl=5:gosub1570:print
+  540 gs=val(in$)
+  545 rem                 12345678901234567890
+  550 if gs=0 then print"{up}                    {up}":goto 520
+  570 gr=gs*~/180:tg=gr
+  600 gosub 950
+  620 gosub 1040
+  640 co=6:gosub 1070
+  660 xp=160
+  670 yp=100
+  680 lu=0
+  700 xs=xp+lu*cos(tg)
+  710 ys=yp+lu*sin(tg)
+  730 if xs>319 or ys>199 then goto 870
+  750 gosub 1150
+  760 xp=xs
+  770 yp=ys
+  780 tg=tg+gr
+  790 tg=tg-int(tg/2/~)*2*~
+  800 lu=lu+ic
+  820 get a$:if a$="f"then840
+  825 if a$="g" then gosub 1450:goto 460
+  829 goto 700
+  840 gosub 1450
+  850 print"{clr}{lblu}"
+  860 poke vi+32,14:poke vi+33,6:end
+  870 get a$:if a$=""then 870
+  880 if a$="f"then 840
+  885 if a$="g" then gosub 1450:goto460
+  887 goto 840
+  950 poke vi+17,peek(vi+17) or 32
+  970 poke vi+24,peek(vi+24) or  8
+  980 bm=8192:z0=8:z1=320:z2=7:z3=1/z0
+  990 for i=0 to 7
+ 1000 z3(i)=2^i
+ 1010 nexti
+ 1020 return
+ 1040 z9=0:for i=bm to bm+7999:poke i,z9:next
+ 1050 return
+ 1070 fori=1024 to 2023:pokei,co:next
+ 1080 return
+ 1100 by=bm+int(yc*z3)*z1+int(xc*z3)*z0+(ycandz2)
+ 1110 poke by,peek(by)or z3(z2-(xc and z2))
+ 1120 return
+ 1150 if yp=ys then 1280
+ 1170 if xs=xp then 1330
+ 1190 m=(yp-ys)/(xp-xs)
+ 1200 if abs(m)>1 then m=1/m:goto1380
+ 1220 q=ys-xs*m
+ 1240 for xc=xp to xs step sgn(xs-xp)
+ 1250 yc=m*xc+q:gosub 1100:next
+ 1260 return
+ 1280 yc=yp
+ 1290 for xc=xp to xs step sgn(xs-xp)
+ 1300 gosub 1100:next
+ 1310 return
+ 1330 xc=xp
+ 1340 for yc=yp to ys step sgn(ys-yp)
+ 1350 gosub 1100:next
+ 1360 return
+ 1380 q=xs-ys*m
+ 1400 for yc=yp to ys step sgn(ys-yp)
+ 1410 xc=m*yc+q:gosub 1100:next
+ 1420 return
+ 1450 poke vi+17,peek(vi+17) and 223
+ 1460 poke vi+24,peek(vi+24) and 247
+ 1470 return
+ 1570 for z8=1 to zl:print" ";:next z8
+ 1580 for z8=1 to zl:print"{left}";:next z8
+ 1590 in$="":z7=ti
+ 1630 get z8$:if z8$<>"" then 1730
+ 1670 if z7<ti and not(z6) then print"{CBM-+}{left}";:z6=not(z6):z7=ti+15
+ 1680 if z7<tiand z6 then print" {left}";:z6=not(z6):z7=ti+15
+ 1690 goto 1630
+ 1730 z8=asc(z8$):z9=len(in$)
+ 1770 if not(z8>31 and z8<96)then  1890
+ 1810 if z9=zl then 1630
+ 1850 in$=in$+z8$:printz8$;:goto 1630
+ 1890 if z8=13 then print" {left}";:return
+ 1930 if z8=20 and z9>0 then in$=left$(in$,z9-1):print" {left}{left}";:goto 1630
+ 1940 goto 1630
+ 2000 vi=53248
+ 2040 si=54272
+ 2080 mv=1024
+ 2120 mc=55296
+ 2160 zl=9
+ 2200 for i=0 to 24
+ 2210 poke si+i,0
+ 2220 next i
+ 2230 return
+ 2270 gosub 2000
+ 2280 poke vi+32,15
+ 2290 poke vi+33,15
+ 2300 return
+

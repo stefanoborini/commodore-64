@@ -1,0 +1,11 @@
+
+
+;pass.prg ==0801==
+    1 g$="ciao"
+    2 for i= 1 to 4:if n=5 then print"bravo":end
+   10 get a$:if a$="" then 10
+   20 h$=h$+a$
+   25 next i
+   30 if h$=g$ then print"esatto":n=n+1:h$="":goto 1
+   35 if h$<>g$ then print"errore":n=n-1:h$="":goto 1
+

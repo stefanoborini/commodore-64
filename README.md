@@ -104,3 +104,7 @@ Computes the average of a set of values
 ## LED
 
 Scrolling of text
+
+## pass
+
+A "password check"

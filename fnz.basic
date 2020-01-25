@@ -1,0 +1,39 @@
+
+
+;fnz.prg ==0801==
+    5 vi=53248
+   10 print"{clr}"
+   20 rem programma di disegno grafici
+   30 rem e derivate ideato e scritto da
+   40 rem stefano borini (detto boro)
+   50 def fny(x)=(x^2-x-2)/(x^2-6*x+5)
+   55 input mf
+   56 gosub 10000
+   60 for i=-10 to 10 step 1/(320/20)
+   70 rem controllo per validita'punto
+   80 x1=i-0.001:y1=fny(x1)
+   90 x2=i-0.1265:y2=fny(x2)
+  100 rem calcola la pendenza
+  110 m=(y2-y1)/(x2-x1)
+  120 rem se la pendenza e' maggiore di mf allora i e' punto di discontinuita'
+  130 if abs(m)>mf then next i
+  140 rem il punto e' calcolabile, calcola la coordinata y
+  150 xp=i:yp=fny(i)
+  160 xl=(xp+10)*16:rem calcola lo spostamento x in punti dal bordo sx
+  170 if yp>6.25 or yp<-6.25 then next i:rem se y e' fuori campo allora next
+  180 yl=200-(yp+6.25)*16:rem spostamento del punto dal bordo alto
+  181 yl=int(yl)
+  190 rem segno il punto
+  200 rem calcolo dello spostamento y
+  210 li=int(yl/8)
+  220 co=int(xl/8)
+  300 bi=li*320+co*8+(yl-li*8)
+  310 po=2^(7-(xl-co*8))
+  320 poke 8192+bi,po
+  330 next i
+  340 end
+ 10000 poke vi+17,peek(vi+17)or 32
+ 10010 poke vi+24,peek(vi+24)or 8
+ 10020 for g=8192 to 8192+7999:poke g,0:nextg
+ 10030 return
+

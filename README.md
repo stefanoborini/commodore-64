@@ -189,7 +189,9 @@ control characters to the printer in order to move back of one space and put acc
 
 Apparently a function plotter. I could not get it to work though.
 
-## pp
+## pp, fnz
 
 From the comment, apparently it's a program I wrote to to compute the derivative of a function, 
 but I could not get it to work.
+
+I suspect that the vice emulator is not really working correctly for these programs.

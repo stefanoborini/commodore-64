@@ -146,7 +146,17 @@ from a starting base from a guy called tim hartnell.
 ![image](dome-dweller-1.png)
 ![image](dome-dweller-2.png)
 
-# A
+# A, AA
 
-I have no idea what this code does. Looks like some kind of integration, but I don't know what problem it's supposed to solve.
+Initially, I had no idea what this code was doing. Looks like some kind of
+integration, but I don't know what problem it's supposed to solve.  Then, I
+found AA and I understood that it's some kind of calculator of the distance
+between earth and mars throughout the mars year.  I have no idea why I
+evaluated this, but I was into astronomy for a while and I had [this book from
+Jean
+Meeus](https://books.google.co.uk/books/about/Astronomia_con_il_computer.html?id=Ozm6PQAACAAJ&redir_esc=y)
+which is probably where I found the equations.
+
+![image](a.png)
+![image](aa.png)
 

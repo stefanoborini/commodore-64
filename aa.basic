@@ -1,0 +1,13 @@
+
+
+;aa.prg ==0801==
+   10 print"{clr}":open 4,4
+   20 vt=0.9856533:vm=0.5240175
+   25 for g=1 to 687
+   30 t=(vt/90)*(90-vt*h)
+   40 m=(vm/90)*(90-vm*h)
+   50 d=m-t
+   60 print#4,"g=";g;" t=";t;" m=";m;" d=";d
+  100 get a$:if a$=""then 100
+  110 print"{clr}":next g
+

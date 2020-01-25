@@ -219,3 +219,7 @@ No idea. seems to be a started program about astronomic evaluations
 ## hanoi
 
 A tower of hanoi game, but I could not get it to work.
+
+# fract
+
+Plots a mandelbrot fractal.

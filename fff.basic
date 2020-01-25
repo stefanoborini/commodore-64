@@ -1,0 +1,86 @@
+
+
+;fff.prg ==0801==
+  330 vi=53248
+  340 def fny(x)=sin(x)/x
+  390 poke vi+32,6:poke vi+33,6
+  410 print"{clr}";
+  420 print"attenzione, la funzione da visualizzare"
+  430 print"{down}e' memorizzata alla linea 340."
+  440 print"{down}{down}{down}digita c per visualizzarla"
+  450 print"{down}{down}{down}digita s per modificarla"
+  455 print"{down}{down}{down}digita f per terminare"
+  460 input in$
+  470 if in$="f" then 870
+  475 if in$<>"s" then 500
+  476 print"{clr}"
+  477 list 340
+  500 print"{clr}{clr}{clr}"
+  510 print"{clr}{clr}{clr}"
+  520 rem
+  530 rem
+  540 rem
+  550 rem
+  560 rem
+  620 input"{clr}{down}{down}{down}{down}variazione della x [min,max]";lx,hx
+  630 if lx>=hx then 620
+  650 px=(hx-lx)/319
+  670 ly=fny(lx):hy=ly
+  680 for x=lx to hx step px*4:t=fny(x)
+  690 if t<ly then ly=t:next x:goto 720
+  700 if t>hythen hy=t:next x:goto 720
+  710 next x
+  720 fx=319/(hx-lx)
+  740 fy=199/(hy-ly)
+  760 gosub 950
+  770 gosub 1040
+  780 co=15:gosub 1070
+  790 xp=0:yp=(fny(lx)-ly)*fy
+  800 forx=lx to hx step px
+  810 xs=(x-lx)*fx:ys=(fny(x)-ly)*fy
+  820 gosub 1150
+  830 xp=xs:yp=ys
+  840 next x
+  850 get in$:if in$="" then 850
+  860 gosub 1450
+  865 if in$="c" then 390
+  870 print"{clr}{lblu}"
+  880 poke vi+32,14:end
+  950 poke vi+17,peek(vi+17) or 32
+  970 poke vi+24,peek(vi+24) or 8
+  980 bm=8192:z0=8:z1=320:z2=7:z3=1/z0
+  990 for i=0 to 7
+ 1000 z3(i)=2^i
+ 1010 next i
+ 1020 return
+ 1040 z9=0:for i=bm to bm+7999:pokei,z9:nexti
+ 1050 return
+ 1070 for i=1024 to 2023:poke i,co:nexti
+ 1080 return
+ 1100 by=bm+int(yc*z3)*z1)+int(xc*z3)*z0+(ycandz2)
+ 1110 poke by,peek(by)or z3(z2-(xcandz2))
+ 1120 return
+ 1150 if yp=ys then 1280
+ 1170 if xs=xp then 1330
+ 1190 m=(yp-ys)/(xp-xs)
+ 1200 if abs(m)>1 then m=1/m:goto 1380
+ 1220 q=ys-xs*m
+ 1240 for xc=xp to xs step sgn(xs-xp)
+ 1250 yc=m*xc+q:gosub 1100:next xc
+ 1260 return
+ 1280 yc=yp
+ 1290 for xc=xp to xs step sgn(xs-xp)
+ 1300 gosub 1100:next xc
+ 1310 return
+ 1330 xc=xp
+ 1340 for yc=yp to ys step sgn(ys-yp)
+ 1350 gosub 1100:next yc
+ 1360 return
+ 1380 q=xs-ys*m
+ 1400 for yc=yp to ys step sgn(ys-yp)
+ 1410 xc=m*yc+q:gosub 1100:next yc
+ 1420 return
+ 1450 poke vi+17,peek (vi+17)and 223
+ 1460 poke vi+24,peek(vi+24) and 247
+ 1470 return
+

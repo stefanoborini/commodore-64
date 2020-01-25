@@ -1,0 +1,20 @@
+
+
+;media.prg ==0801==
+   10 print"{clr}"
+   20 b=1
+   30 print"        calcolo della media"
+   31 print"{down}{down}{down}n.b.:per uscire scrivere ''fine''"
+   32 printtab(5)"{down}premi un tasto per continuare"
+   34 get a$:if a$=""then 34
+   40 print"{clr}{down}{down}dato numero ";b
+   50 input"numero";d$
+   60 if d$="fine" then 100
+   65 b=b+1
+   70 s=s+val(d$)
+   80 goto 40
+  100 print"{clr}"
+  110 m=s/(b-1)
+  120 print"{down}{down}{down}{down}{down}la media tra i ";b-1;" numeri introdotti"
+  130 print"e' il numero ";m
+

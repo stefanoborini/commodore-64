@@ -96,3 +96,7 @@ Various versions of a labyrinth game.
 ## Conto
 
 I have no idea.
+
+# media
+
+Computes the average of a set of values

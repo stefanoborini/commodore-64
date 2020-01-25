@@ -1,0 +1,46 @@
+
+
+;doodler.prg ==0801==
+    0 for a=0 to 53:readb:poke24448+a,b:next
+    1 data 169,255,133,87,169,67,133,88,173
+    2 data253,95,160,0,145,87,198,87,208
+    3 data250,198,88,166,88,224,63,208,242
+    4 data96,169,255,133,87,169,127,133,88
+    5 data169,0,168,145,87,198,87,208,250
+    6 data 198,88,166,88,224,95,208,242,96
+   13 input"{clr}b.c.";bc
+   15 input"l.c.";lc
+   20 input"s.c.";sc
+   40 lc=lc*16:if sc*16+bc>255then13
+   50 vc=53248+13*256:v=53248
+   55 poke v+24,8
+   60 poke vc,peek(vc)and254
+   70 pokev+32,bc
+   80 poke v+22,peek(v+22)or 200
+   81 poke v+17,peek(v+17)or 32
+   90 co=lc+sc:poke 24573,co:sys 24448
+   91 poke 17152,co:poke32512,0
+  100 p=1024*24:b=128
+  105 pokep,peek(p)or b
+  110 a=peek(56321)and 31
+  120 if a=30 then 500
+  130 if a=29 then 700
+  140 if a=27 then 1000
+  150 if a=23 then 1300
+  160 if a=15 then 1500
+  170 goto105
+  500 ifp/8=int(p/8)then520
+  510 p=p-1:goto105
+  520 p=p-320+7:goto105
+  700 if(p+1)/8=int((p+1)/8)then 720
+  710 p=p+1:goto 105
+  720 p=p+320-7:goto 105
+ 1000 b=b*2
+ 1010 ifb>128 then 1030
+ 1020 goto105
+ 1030 p=p-8:b=1:goto105
+ 1300 b=b/2:ifb<1then 1320
+ 1310 goto105
+ 1320 b=128:p=p+8:goto105
+ 1500 sys 24476:goto 105
+

@@ -25,3 +25,11 @@ Contact archive. Probably copied from somewhere.
 Some sort of spirograph drawing program. Probably copied from somewhere.
 
 ![image](alta-risoluzione.png)
+
+## Simulaz. dadi
+
+Dice throwing simulator.
+
+## Doodler
+
+I have absolutely no clue

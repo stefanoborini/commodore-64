@@ -124,3 +124,11 @@ Changes the header of a disk. Probably copied from somewhere as it's in English.
 ## porta
 
 Apparently a reaction time test to assess if I was able to be an effective goalkeeper when I played soccer.
+
+## ia (artificial intelligence)
+
+Apparently a sort of toy to prank my friends in believing I had developed artificial intelligence. It 
+asks how many letters has a word to guess, then proceeds to ask facts about the subject. Between every
+facts, it asks to press a key, but since I would be the one at the keyboard, I would not simply play
+a random key. Instead I would write the actual word letter by letter, then it would be printed out
+at the end giving the illusion that it figured it out by itself.

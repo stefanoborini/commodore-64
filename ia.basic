@@ -1,0 +1,17 @@
+
+
+;ia.prg ==0801==
+   10 print"{clr}"
+   20 input"quante lettere ha";a
+   30 for i=1 to a
+   40 print"{clr}introduci il dato numero ";i
+   50 input a$
+   55 print"sto pensando..."
+   60 for g=1 to 1000:next g
+   65 print"{down}premi un tasto"
+   70 get b$:if b$=""then 70
+   80 in$=in$+b$
+   90 next i
+  100 print"{clr}"
+  110 print"la parola e' ";in$
+

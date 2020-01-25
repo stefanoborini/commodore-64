@@ -72,3 +72,7 @@ Like a snake game, minus the tail growth. Probably copied from somewhere.
 ## Sim movimento
 
 Some kind of "road scrolling" simulation. It seems very slow, but it might be the emulator. I need to try it on the real hardware.
+
+## Numeri romani
+
+Converts numerical value to roman numeral

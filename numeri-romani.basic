@@ -1,0 +1,33 @@
+
+
+;numeri-romani.prg ==0801==
+   20 dim v$(3,9)
+   30 data i,ii,iii,iv,v,vi,vii,viii,ix
+   40 data x,xx,xxx,xl,l,lx,lxx,lxxx,xc
+   50 data c,cc,ccc,cd,d,dc,dcc,dccc,cm
+   60 for i=1to3
+   70 for j=1to9
+   80 read v$(i,j)
+   90 nextj
+  100 nexti
+  110 print"{clr}":print"numero"
+  120 input n
+  140 if n>1001 or n=0 then r$="non lo so":goto 280
+  150 n$=right$(str$(n),len(str$(n))-1)
+  160 l=len(n$)
+  170 if l=4 goto 280
+  180 r$=" "
+  190 for k=lto1 step-1
+  200 q$=left$(n$,1)
+  210 q=val(q$)
+  220 if q=0 goto 250
+  230 r$=r$+v$(k,q)
+  240 n$=right$(n$,k-1)
+  250 next k
+  260 goto 290
+  270 rem
+  280 if n=1000 then r$="m"
+  290 print:print"il numero:";n
+  300 print:print"in numero romano si esprime:";r$
+  310 for i=1to 1000:nexti:run
+

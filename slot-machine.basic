@@ -1,0 +1,197 @@
+
+
+;slot-machine.prg ==0801==
+  260 pg$="slot machine"
+  270 gosub 3030
+  290 dim sl$(7)
+  340 sl$(1)="{red}M N{down}{left}{left}{left} V {down}{left}{left}{left}N M{blk}"
+  350 sl$(2)="{lred}{rvon} {rvof}{CBM-K} {down}{left}{left}{left}{rvon}{CBM-I}{rvof}{CBM-B}{CBM-I}{down}{left}{left}{left} {rvon}{CBM-K} {rvof}{blk}"
+  360 sl$(3)="{pur} W {down}{left}{left}{left}WWW{down}{left}{left}{left} {CBM-E} {blk}"
+  370 sl$(4)="{rvon}{grn}   {down}{left}{left}{left}   {down}{left}{left}{left}   {blk}{rvof}"
+  380 sl$(5)="{rvon}{blu}UCI{down}{left}{left}{left}BQB{down}{left}{left}{left}J{SHIFT-*}K{blk}{rvof}"
+  390 sl$(6)="{yel}{CBM-B}{CBM-B}{CBM-B}{down}{left}{left}{left}{CBM-B}{CBM-B}{CBM-B}{down}{left}{left}{left}{CBM-B}{CBM-B}{CBM-B}{blk}"
+  400 sl$(7)="{lgrn} B {down}{left}{left}{left}{SHIFT-*}{SHIFT-+}{SHIFT-*}{down}{left}{left}{left} B {blk}"
+  450 print"{clr}{blk}";tab(9);"s l o t  m a c h i n e"
+  460 printtab(9);"{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{down}{down}"
+  480 printtab(23);"{red}V V V  {blk}200 punti"
+  490 printtab(23);"{lred}{CBM-B} {CBM-B} {CBM-B}  {blk}150 punti"
+  500 printtab(23);"{pur}X X X  {blk}100 punti"
+  510 printtab(23);"{grn}{rvon} {rvof} {rvon} {rvof} {rvon} {rvof}  {blk}50 punti"
+  520 printtab(23);"{blu}{rvon}W{rvof} {rvon}W{rvof} {rvon}W{rvof}  {blk}25 punti"
+  530 printtab(23);"{yel}{CBM-+} {CBM-+} {CBM-+}  {blk}20 punti"
+  540 printtab(23);"{lgrn}{SHIFT-+} {SHIFT-+} {SHIFT-+}  {blk}10 punti"
+  550 printtab(23);"{red}V V {blk}.   6 volte"
+  560 printtab(23);"{lred}{CBM-B} {CBM-B} {blk}.   5 volte"
+  570 printtab(23);"{pur}X X {blk}.   4 volte"
+  580 printtab(23);"{pur}X {blk}. .   2 volte"
+  600 print"{home}{down}{down}{down}{down}";
+  610 print"  U{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}I"
+  620 print"  B {CBM-O}{CBM-O}{CBM-O}  {CBM-O}{CBM-O}{CBM-O}  {CBM-O}{CBM-O}{CBM-O} B"
+  630 print"  B {CBM-H} {CBM-M}  {CBM-G} {CBM-M}  {CBM-G} {CBM-M} B"
+  640 print"  B {CBM-H} {CBM-M}  {CBM-G} {CBM-M}  {CBM-G} {CBM-M} B"
+  650 print"  B {CBM-H} {CBM-M}  {CBM-G} {CBM-M}  {CBM-G} {CBM-M} B"
+  660 print"  B {CBM-U}{CBM-U}{CBM-U}  {CBM-U}{CBM-U}{CBM-U}  {CBM-U}{CBM-U}{CBM-U} B"
+  670 print"  JCCCCCCCCCCCCCCCK"
+  700 print"{home}"
+  710 for i=1 to 15:print:nexti
+  720 print"{rvon}denaro {rvof} = "
+  730 print"{down}{rvon}puntata{rvof} = "
+  740 print"{down}{rvon}vincita{rvof} = "
+  760 print"{home}"
+  770 fori=1to15:print:next i
+  780 printspc(23);"p per puntare"
+  790 print"{down}";spc(23);"g per giocare"
+  800 print"{down}";spc(23);"f per finire"
+  820 cr=100
+  830 pu=0
+  840 vc=0
+  870 gosub 1740
+  880 gosub 1800
+  890 gosub 1850
+  910 gosub 2100
+  920 gosub2150
+  930 gosub 2200
+  950 ti$="000000"
+  970 a=peek(197)
+  980 if a=64 then 970
+  990 if (a<>41) and(a<>26) and(a<>21)then 970
+ 1010 if a=41 then gosub1900:goto 970
+ 1020 if a=21then print"{clr}{down}{down}bravo,hai terminato in attivo.":goto1560
+ 1050 if pu=0then goto 970
+ 1120 gi=int(rnd(0)*51)+50
+ 1140 poke si+24,15
+ 1150 poke si+1,100:poke si,0
+ 1160 poke si+5,15:poke si+6,255
+ 1170 poke si+14,150:poke si+15,0
+ 1180 poke si+19,15:poke si+20,255
+ 1190 poke si+18,17
+ 1200 pokesi+4,21
+ 1220 for i=1to 4*gi
+ 1230 if i<=gi then gosub2200
+ 1240 if i<=2*gi then gosub 2150
+ 1250 gosub2100
+ 1260 next i
+ 1280 for i=0to 24
+ 1290 poke si+i,0
+ 1300 next i
+ 1320 rs=0
+ 1330 if f1=1 and f2=1 and f3=1 then rs=200
+ 1340 if f1=2 and f2=2 and f3=2 then rs=150
+ 1350 if f1=3 and f2=3 and f3=3 then rs=100
+ 1360 if f1=4 and f2=4 and f3=4 then rs=50
+ 1370 if f1=5 and f2=5 and f3=5 then rs=25
+ 1380 if f1=6 and f2=6 and f3=6 then rs=20
+ 1390 if f1=7 and f2=7 and f3=7 then rs=10
+ 1400 if f1=1 and f2=1 and f3<>1 then rs=6
+ 1410 if f1=2 and f2=2 and f3<>2 then rs=5
+ 1420 if f1=3 and f2=3 and f3<>3 then rs=4
+ 1430 if f1=3 and f2<>3 then rs=2
+ 1450 if rs<>0 then gosub 2260
+ 1460 pu=0
+ 1480 gosub 1800
+ 1510 if cr>0 then goto 970
+ 1540 print"{clr}"
+ 1550 print"{down}{down}{down}{down}{blu}hai terminato il denaro"
+ 1560 print"hai giocato per"
+ 1570 print"{down}";mid$(ti$,1,2);"......or";
+ 1580 if mid$(ti$,1,2)="01" then print"a"
+ 1590 if mid$(ti$,1,2)<>"01" then print"e"
+ 1600 print"{down}";mid$(ti$,3,2);"......minut";
+ 1610 if mid$(ti$,3,2)="01" then print"o"
+ 1620 if mid$(ti$,3,2)<>"01" then print"i"
+ 1630 print"{down}";mid$(ti$,5,2);"......second";
+ 1640 if mid$(ti$,5,2)="01" then print"o"
+ 1650 if mid$(ti$,5,2)<>"01" then print"i"
+ 1670 for i=1to10
+ 1680 get a$
+ 1690 next i
+ 1700 print"{blk}{down}{down}{down}"
+ 1710 end
+ 1740 poke214,15:print
+ 1760 printspc(10);"      "
+ 1770 print"{up}";spc(10);cr
+ 1780 return
+ 1800 poke 214,17:print
+ 1810 printspc(10);"      "
+ 1820 print"{up}";spc(10);pu
+ 1830 return
+ 1850 poke 214,19:print
+ 1860 printspc(10);"      "
+ 1870 print"{up}";spc(10);vc
+ 1880 return
+ 1900 if cr=0 then return
+ 1910 cr=cr-1
+ 1920 pu=pu+1
+ 1940 gosub 1740
+ 1960 gosub1800
+ 1980 poke si,0
+ 1990 poke si+1,50
+ 2000 poke si+24,15
+ 2010 poke si+5,15
+ 2020 poke si+6,0
+ 2030 poke si+4,17
+ 2050 for i=1to50:nexti
+ 2060 poke si+24,0
+ 2070 poke si+4,0
+ 2080 return
+ 2100 poke 214,5:print
+ 2110 f1=int(rnd(0)*7)+1
+ 2120 printspc(4);sl$(f1)
+ 2130 return
+ 2150 poke 214,5:print
+ 2160 f2=int(rnd(0)*7)+1
+ 2170 printspc(9);sl$(f2)
+ 2180 return
+ 2200 poke 214,5:print
+ 2210 f3=int(rnd(0)*7)+1
+ 2220 printspc(14);sl$(f3)
+ 2230 return
+ 2260 vc=pu*rs
+ 2280 gosub 1850
+ 2300 poke si+24,15
+ 2310 poke si+5,15+2*16
+ 2320 poke si+6,15*16
+ 2330 poke si,0
+ 2340 poke si+4,17
+ 2350 for j=1to8
+ 2360 for i=1to255 step 16
+ 2370 poke si+1,i
+ 2380 next i
+ 2390 for i=255 to 1 step -16
+ 2400 poke si+1,i
+ 2410 next i
+ 2420 next j
+ 2430 poke si+4,0
+ 2440 poke si+24,0
+ 2460 poke si+24,15
+ 2470 poke si,0
+ 2480 poke si+1,0
+ 2490 poke si+4,33
+ 2500 poke si+5,15
+ 2510 poke si+6,240
+ 2530 vc=vc-1
+ 2550 cr=cr+1
+ 2570 gosub 1740
+ 2580 gosub 1850
+ 2600 poke si+1,90
+ 2610 for i=1to 5:next i
+ 2620 poke si+1,0
+ 2640 if vc>0 then goto 2530
+ 2660 for i=0to24
+ 2670 poke si+i,0
+ 2680 next i
+ 2700 return
+ 2760 vi=53248
+ 2800 si=54272
+ 2840 mv=1024
+ 2880 mc=55296
+ 2920 zl=9
+ 2960 for i=0to24
+ 2970 poke si+i,0
+ 2980 next i
+ 2990 return
+ 3030 gosub 2760
+ 3040 poke vi+32,15
+ 3050 poke vi+33,15
+ 3060 return
+

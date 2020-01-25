@@ -52,3 +52,5 @@ A little toy program that flies a helicopter sprite. Interestingly had a code qu
 # Mastermind
 
 Play mastermind (guess the number)
+
+![image](mastermind.png)

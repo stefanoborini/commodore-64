@@ -1,0 +1,35 @@
+
+
+;aggraf.prg ==0801==
+    5 list -32999
+   10 print"{clr}{down}{down}{down}{down}{down}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}prego attendere":poke 53272,21:rem icona clessidra
+   20 gosub 30000:rem maschera presentazione
+ 29999 end
+ 30000 for i=8192 to 9231:poke i,0:next i
+ 30008 for i=9232 to 9239:read q:poke i,q:next i
+ 30009 a=0
+ 30010 for i=9240 to 9383
+ 30020 if a<>4 then poke i,255
+ 30030 if a=4 then poke i,0
+ 30040 a=a+1
+ 30050 if a=8 then a=0
+ 30060 next i
+ 30070 for i=9384 to 9391:read q:poke i,q:next i
+ 30080 for i=9392 to 9551:poke i,0:next i
+ 30090 for i=9552 to 9559:poke i,247:nexti
+ 30100 for i=9560 to 9567:poke i,255:next i
+ 30110 for i=9568 to 9695:read q:poke i,q:next i
+ 30120 for i=9696 to 9703:poke i,255:next i
+ 30130 for i=9704 to 9711:poke i,239:next i
+ 33000 v=53272
+ 33010 poke v,(peek(v)and 240)or 8
+ 33020 poke 53265,59
+ 60000 data 255,255,255,255,240,247,247,247:rem dati angolo1 m.presentazione
+ 60010 data 255,255,255,255,15,239,239,239:rem angolo2 m.presentazione
+ 60020 data 255,255,255,255,255,255,248,0,255,255,255,255,255,248,0,0,255,255,255
+ 60030 data 255,248,0,0,0,255,255,255,248,0,0,0,0,255,255,248,0,0,0,0,0,255,248,0
+ 60040 data 0,0,0,0,0,255,7,0,0,0,0,0,0,255,255,7,0,0,0,0,0,255,255,255,7,0,0,0,0
+ 60050 data 255,255,255,255,7,0,0,0,255,255,255,255,255,7,0,0,255,255,255,255,255
+ 60060 data 255,7,0,255,255,255,255,255,255,248,0,255,255,255,255,255,248,0,0,255
+ 60070 data 255,255,255,248,0,0,0,255,255,255,248,0,0,0,0:rem datiiniziobandiera
+

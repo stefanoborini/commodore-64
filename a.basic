@@ -1,0 +1,14 @@
+
+
+;a.prg ==0801==
+   10 print"{clr}"
+   20 vt=0.9856533:vm=0.5240175
+   25 for g=1 to 30
+   30 t=(vt/90)*(90-vt*g)
+   40 m=(vm/90)*(90-vm*g)
+   50 d=t-m
+   55 print d
+   60 c=c+d
+  110 next g
+  120 print c
+

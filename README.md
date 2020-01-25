@@ -145,3 +145,8 @@ from a starting base from a guy called tim hartnell.
 
 ![image](dome-dweller-1.png)
 ![image](dome-dweller-2.png)
+
+# A
+
+I have no idea what this code does. Looks like some kind of integration, but I don't know what problem it's supposed to solve.
+

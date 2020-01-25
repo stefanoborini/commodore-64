@@ -179,3 +179,9 @@ I think I was trying to make my own logo for one of my programs so that looked l
 
 Obviously a computation of an approximation of pi using the ratio of random points falling inside and 
 outside of a circle.
+
+## evelina
+
+I suspect this is an attempt to help a friend, by printing special accents in French by using 
+control characters to the printer in order to move back of one space and put accents on letters.
+

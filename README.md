@@ -137,3 +137,11 @@ at the end giving the illusion that it figured it out by itself.
 
 Some sort of 3d plot. This is definitely something I copied from a book or programming magazine.
 It's extremely slow and I am not sure which function is plotting.
+
+## Dome Dweller
+
+Some sort of space-themed resource management game that apparently I extended
+from a starting base from a guy called tim hartnell.
+
+![image](dome-dweller-1.png)
+![image](dome-dweller-2.png)

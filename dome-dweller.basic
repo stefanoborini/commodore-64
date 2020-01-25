@@ -1,0 +1,164 @@
+
+
+;dome-dweller.prg ==0801==
+   10 gosub 1000:rem assegna variabili
+   20 gosub 2000:rem istruzioni
+   30 gosub 3000:rem visualizzazione dati cupola
+   40 gosub 4000:rem stampa possibili condizioni e chiede la scelta
+   50 gosub 10000:rem verifica
+   60 goto 30
+  100 rem fine gioco
+  110 goto 12000
+ 1000 input"{clr}livello(1-3)";qw
+ 1005 yu=5*qw
+ 1010 rem variabili usate:
+ 1020 rem pe:abitanti
+ 1030 rem de:denaro
+ 1040 rem ci:cibo a disposizione
+ 1050 rem cd:costo di ogni unita' di cibo
+ 1060 rem cn:unita'di cibo consumate in un anno da ogni abitante
+ 1070 rem ca:consumo totale di ossigeno per costruire una scultura
+ 1080 rem da:ricavo da ogni pezzo
+ 1090 rem os:ossigeno a disposizione
+ 1100 rem ou:unita' di ossigeno consumate all'anno da ogni persona
+ 1110 rem oc:costo di una unita'di ossigeno
+ 1120 rem ri:costo riparazioni
+ 1130 rem an:anno
+ 1135 rem dm:danni subiti alla cupola
+ 1140 rem o1:operazioni effettuate nell'opzione 1(acquisto ossigeno)
+ 1141 rem o2:operazioni effettuate nell'opzione 2(acquisto cibo)
+ 1142 rem o3:operazioni effettuate nell'opzione 3(costruz.sculture)
+ 1150 pe=70
+ 1160 de=5693
+ 1170 ci=2122
+ 1180 cd=2
+ 1190 cn=3
+ 1200 ca=7
+ 1205 da=30
+ 1210 os=850
+ 1220 ou=5
+ 1230 oc=4
+ 1240 ri=230
+ 1250 an=1
+ 1255 dm=0
+ 1260 o1=0
+ 1270 o2=0
+ 1280 o3=0
+ 1999 return
+ 2000 print"{clr}"
+ 2010 printtab(14);"dome dweller"
+ 2020 print"{down}{rght}{rght}originalmente scritto da tim hartnell"
+ 2030 print"{down}{rght}{rght}{rght}{rght}{rght}interpretato da stefano borini"
+ 2040 print"{down}{down}";tab(15);"istruzioni"
+ 2050 printtab(15);"{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 2055 print"tu sei un abitante di una cupola lunare"
+ 2060 print"e vivi vendendo ad altre cupole delle "
+ 2070 print"straordinarie sculture."
+ 2080 print"devi procurare abbastanza denaro per "
+ 2090 print"riparare la cupola e procurare cibo e"
+ 2100 print"ossigeno agli altri abitanti."
+ 2110 print"dopo queste istruzioni ti saranno comu-"
+ 2120 print"nicati i dati necessari per giocare."
+ 2130 print"dovrai far sopravvivere la cupola per";yu
+ 2140 print"{up}anni."
+ 2145 print"se vi saranno nella cupola piu' di 3 "
+ 2146 print"danneggiamenti il gioco finisce."
+ 2150 printtab(13);"{down}buona fortuna"
+ 2160 get a$:if a$=""then 2160
+ 2999 return
+ 3000 print"{clr}"
+ 3010 print"abitanti:";pe
+ 3020 print"denaro:";de;"$"
+ 3030 print"cibo:";ci;"u."
+ 3035 print"cibo per il prossimo anno:";pe*cn;"-";(pe+9)*cn
+ 3040 print"costo di 1 unita' di cibo:";cd;"$"
+ 3050 print"cibo per 1 persona in 1 anno:";cn;"u."
+ 3060 print"ossigeno per 1 scultura:";ca;"u."
+ 3070 print"ricavo per 1 scultura:";da;"$"
+ 3080 print"ossigeno:";os;"u."
+ 3083 sp=pe*ou:sp$=""+str$(sp)+"":fg$=right$(sp$,len(sp$)-1)
+ 3084 sd=(pe+9)*ou:sd$=""+str$(sd)+"":lo$=right$(sd$,len(sd$)-1)
+ 3085 print"ossigeno per il prossimo anno:";fg$;"-";lo$
+ 3090 print"ossigeno per 1 persona in 1 anno:";ou;"u."
+ 3100 print"costo di 1 unita' di ossigeno:";oc;"$"
+ 3105 print"costo riparazioni";ri;"$ per ogni danno"
+ 3106 print"danni:";dm
+ 3110 print"{home}{rvon}anno:";an;"{rvof}"
+ 3999 return
+ 4000 print"{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}";
+ 4010 print"opzioni possibili:"
+ 4020 if o1=1 then 4040
+ 4030 print"1.acquisto ossigeno"
+ 4040 if o2=1 then 4060
+ 4050 print"2.acquisto cibo"
+ 4060 if o3=1 then 4075
+ 4070 print"3.costruzione sculture"
+ 4075 print"4.passo al prossimo anno"
+ 4076 print"5.riparazione cupola"
+ 4080 input"scelta";sc
+ 4090 if sc=1 then goto 5000
+ 4092 if sc=2 then goto 6000
+ 4094 if sc=3 then goto 7000
+ 4096 if sc=4 then goto 50
+ 4098 if sc=5 then goto 8000
+ 4100 print"{up}{up}":goto 4080
+ 5000 print"{home}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}":for i=1 to 320:print" ";:nexti
+ 5010 print"{home}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}"
+ 5020 input"unita' da acquistare";cv
+ 5025 if cv=0 then 5060
+ 5030 if cv*oc>de then 5000
+ 5040 de=de-(cv*oc):os=os+cv
+ 5050 o1=1:print"spesa:";cv*oc
+ 5055 for i=1 to 1000:next i
+ 5060 goto 30
+ 6000 print"{home}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}":for i=1 to 320:print" ";:nexti
+ 6010 print"{home}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}"
+ 6020 input"unita' da acquistare";ch
+ 6025 if ch=0 then 6060
+ 6030 if ch*cd>de then 6000
+ 6040 de=de-(ch*cd):ci=ci+ch
+ 6050 o2=1:print"spesa:";ch*cd
+ 6055 for i=1 to 1000:next i
+ 6060 goto 30
+ 7000 print"{home}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}":for i=1 to 320:print" ";:nexti
+ 7010 print"{home}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}"
+ 7020 input"sculture da fabbricare";we
+ 7025 if we=0 then 30
+ 7030 if we*ca>os then 7000
+ 7040 os=os-(we*ca):print"ricavo:";we*da;"$":de=de+(we*da)
+ 7045 print"consumo di ossigeno:";ca*we
+ 7050 for i= 1 to 1000:next i:o3=1:goto 30
+ 8000 print"{home}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}":for i=1 to 320:print" ";:nexti
+ 8010 print"{home}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}"
+ 8020 input"quanti danni vuoi riparare";df
+ 8025 if df=0 then 30
+ 8030 if df*ri>de then 8000
+ 8040 dm=dm-df:de=de-(df*ri)
+ 8050 goto 30
+ 10000 pe=pe+int(rnd(1)*10)
+ 10005 o1=0:o2=0:o3=0
+ 10010 ci=ci-(cn*pe)
+ 10020 os=os-(ou*pe)
+ 10025 dm=dm+int(rnd(1)*3)
+ 10030 an=an+1
+ 10040 if ci<=0 then fr$="mancanza di cibo":goto 110
+ 10045 if dm=>3 then fr$="rottura della cupola":goto 110
+ 10050 if os<=0 then fr$="mancanza di ossigeno":goto 110
+ 10060 if an=yu then 15000
+ 10070 return
+ 12000 print"{clr}mi dispiace."
+ 12010 print"hai sopravvissuto solo per";an-1;"anni"
+ 12015 print"siete morti a causa di:"
+ 12016 printfr$
+ 12020 print"{down}{down}giochi ancora?"
+ 12030 input"(s/n)";jk$
+ 12040 if jk$="s" then run
+ 12050 end
+ 15000 print"{clr}complimenti."
+ 15010 print"sei sopravvissuto";an;"anni sulla luna"
+ 15020 print"ora ritorni sulla terra con i tuoi amici"
+ 15030 print"e con";de;"$"
+ 15040 if de<5693 then print"hai perso";5693-de;"$":end
+ 15050 if de>5693 then print"hai guadagnato";de-5693;"$":end
+ 15060 if de=5693 then print"hai sempre 5693 $ come all'inizio":end
+

@@ -1,0 +1,6 @@
+
+
+;cc.prg ==0801==
+   10 print"ciao"
+   20 goto 10
+

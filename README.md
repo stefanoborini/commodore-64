@@ -195,3 +195,7 @@ From the comment, apparently it's a program I wrote to to compute the derivative
 but I could not get it to work.
 
 I suspect that the vice emulator is not really working correctly for these programs.
+
+## cc
+
+The typical hello world program in basic. 

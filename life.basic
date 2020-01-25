@@ -1,0 +1,71 @@
+
+
+;life.prg ==0801==
+   10 dim cg(24,39):dim po(999)
+   20 print"{clr}"
+   30 rem definire creature
+   50 print"{clr}*":l=0:c=0:n=0
+   60 get a$:if a$=""then 60
+   70 if a$="{down}" and l<24 then nl=l+1
+   80 if a$="{up}" and l>0 then nl=l-1
+   90 if a$="{rght}" and c<39 then nc=c+1
+  100 if a$="{left}" and c>0 then nc=c-1
+  110 if a$=chr$(13) and cg(l,c)<>1 then cg(l,c)=1:poke 1024+(l*40)+c,42:n=n+1
+  120 if a$=" " and cg(l,c)=1 then cg(l,c)=0:n=n-1
+  130 if a$="{f1}" and n<>0 then print"{clr}":goto 209
+  140 if cg(l,c)=1 then b=42:goto 190
+  150 b=32
+  190 poke 1024+(l*40)+c,b:poke 1024+(nl*40)+nc,42:l=nl:c=nc
+  200 goto 60
+  209 s=n
+  210 print"{clr}{down}{down}{rght}hai introdotto";n;"soggetti"
+  230 print"{home}{down}{down}{down}{down}{down}{down}{rght}devi definire"s"soggetti"
+  240 input"{home}{down}{down}{down}{down}{down}{down}{down}{down}{rght}aggressivita'    {left}{left}{left}{left}";ag
+  245 if ag<0 or ag>9 then 240
+  250 input"{home}{down}{down}{down}{down}{down}{down}{down}{down}{down}{rght}forza    {left}{left}{left}{left}";fo
+  255 if fo<0 or fo>9  then 250
+  260 input"{home}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{rght}figli per incontro    {left}{left}{left}{left}";fi
+  265 if fi<0 or fi>9 then 260
+  270 input"{home}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{rght}sesso(0=m,1=f)      {left}{left}{left}{left}{left}{left}";se
+  275 if se<>0 and se<>1 then 270
+  280 input"{home}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{rght}velocita'    {left}{left}{left}{left}";ve
+  285 if ve<0 or ve>9 then 280
+  290 input"{home}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{rght}cibo al di'    {left}{left}{left}{left}";cd
+  295 if cd<1 or cd>9 then290
+  300 input"{home}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{rght}eta'massima    {left}{left}{left}{left}";em
+  305 if em<1 or em>9 then 300
+  310 print "{down}premere f1 per definire le creature"
+  320 print "premere f3 per ridefinire i parametri"
+  330 print "premere f5 per ricominciare"
+  335 cg=int(ag)+int(fo)*10+int(fi)*100+se*1000+int(ve)*10000+int(cd)*100000
+  336 cg=cg+int(em)*1000000
+  340 get a$:if a$="" then 340
+  350 if a$="{f1}" then 380
+  360 if a$="{f3}" then 240
+  370 if a$="{f5}" then clr:goto 20
+  375 goto 340
+  380 print "{clr}":for i=0 to 24: for j=0 to 39
+  390 if cg(i,j)<>0 then poke 1024+(i*40)+j,42
+  395 if cg(i,j)<>0 and cg(i,j)<>1 then poke 55296+(i*40)+j,1
+  400 next j:next i
+  410 l=0:c=0:nl=0:nc=0:print"{home}W"
+  420 get a$:if a$="" then 420
+  430 if a$="{down}" and l<24 then nl=l+1
+  440 if a$="{up}" and l>0  then nl=l-1
+  450 if a$="{rght}" and c<39 then nc=c+1
+  460 if a$="{left}" and c>0  then nc=c-1
+  470 if a$=chr$(13) and cg(l,c)=1 then cg(l,c)=cg:poke55296+(l*40)+c,1:s=s-1
+  475 if a$=chr$(13) and cg(l,c)<>0 and cg(l,c)<>1 then cg(l,c)=cg
+  480 ifa$=" "andcg(l,c)<>0andcg(l,c)<>1thencg(l,c)=1:poke 55296+(l*40)+c,14:s=s+1
+  490 if a$="{f1}" and s=0 then 550
+  495 if a$="{f1}" then 210
+  500 if cg(l,c)<>0 then poke 1024+(40*l)+c,42:goto 520
+  510 poke 1024+(40*l)+c,32
+  520 poke 1024+(40*nl)+nc,87:l=nl:c=nc
+  530 goto 420
+  550 for i=0 to 24:for j=0 to 39
+  560 if cg(i,j)<>0 then po(c)=i*100+j+10000:c=c+1
+  570 next j:next i
+  580 rem definite posizioni e codici delle creature inizio spostamento
+  590 rem depongo cibo
+

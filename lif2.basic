@@ -1,0 +1,56 @@
+
+
+;lif2.prg ==0801==
+  100 print"{clr}":list -9999
+  110 gosub 10000:rem inizializzazione
+  120 rem gosub 11000:rem istruzioni
+  130 print"{clr}{down}{rght}definire i parametri genetici"
+  135 print"{home}{down}{down}{rght}(-1 per casuale)"
+  140 input"{home}{down}{down}{down}{down}{rght}forza     {left}{left}{left}{left}{left}";a
+  145 if a=-1 then b=0:gosub 12000
+  150 a=int(a):if a<0ora>9 then 140
+  155 fo=a
+  160 input"{home}{down}{down}{down}{down}{down}{rght}riproducibilita'    {left}{left}{left}{left}";a
+  165 if a=-1 then b=0:gosub 12000
+  170 a=int(a):if a<0ora>9 then 160
+  175 fi=a
+  180 input"{home}{down}{down}{down}{down}{down}{down}{rght}velocita'     {left}{left}{left}{left}{left}";a
+  185 if a=-1 then b=0:gosub 12000
+  190 a=int(a):if a<0 or a>9 then 180
+  195 ve=a
+  200 input"{home}{down}{down}{down}{down}{down}{down}{down}{rght}sesso     {left}{left}{left}{left}{left}";a
+  205 if a=-1 then b=2:gosub 12000
+  210 if a<>0 and a<>1 then 200
+  215 se=a
+  220 input"{home}{down}{down}{down}{down}{down}{down}{down}{down}{rght}cibo     {left}{left}{left}{left}{left}";a
+  225 if a=-1 then b=1:gosub 12000
+  230 a=int(a):if a<1 or a>9 then 220
+  235 ci=a
+  240 input"{home}{down}{down}{down}{down}{down}{down}{down}{down}{down}{rght}eta'massima     {left}{left}{left}{left}{left}";a
+  245 if a=-1 then b=1:gosub 12000
+  250 a=int(a):if a<1 or a>9 then 240
+  255 et=a
+  260 print"{down}{down}{down}{down}{rght}premere f1 per definire le creature"
+  270 print"{rght}premere f3 per ridefinire i parametri"
+  280 print"{rght}premere f5 per proseguire"
+  290 get a$:if a$="" then 290
+  300 if a$="{f1}" then gosub 9000:rem def cre
+  310 if a$="{f3}" then goto 130
+  320 if a$="{f5}" and nc<>0 then goto 340
+  330 goto 290
+  340 end
+ 9000 print"{clr}":ks=0:i=0
+ 9010 poke mv+ks,32:poke mv+ks+i,42:ks=ks+i
+ 9020 get a$:if a$=""then 9020
+ 9030 if a$="{rght}" and ks<999 then i=+1
+ 9040 if a$="{left}" and ks>0 then i=-1
+ 9050 if a$="{up}" and ks>39 then i=-40
+ 9060 if a$="{down}" and ks<960 then i=40
+ 9070 goto 9010
+ 10000 mv=1024
+ 10010 return
+ 12000 a=int(rnd(0)*10)
+ 12010 if b=1 and a=0 then goto12000
+ 12020 if b=2 and a>1 then goto12000
+ 12030 return
+

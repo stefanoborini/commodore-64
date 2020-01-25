@@ -199,3 +199,7 @@ I suspect that the vice emulator is not really working correctly for these progr
 ## cc
 
 The typical hello world program in basic. 
+
+# life, lif1, lif2, lif3, liv1
+
+Some kind of game of life attempt. Could not make them work. Probably I stopped halfway.

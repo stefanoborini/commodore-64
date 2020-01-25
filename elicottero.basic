@@ -1,0 +1,63 @@
+
+
+;elicottero.prg ==0801==
+    0 rem fatto il 15/1/89 da stefano
+    1 ti$="000000"
+    3 for n=0to62:read q:poke 832+n,q:next
+   10 si=54272:fl=si:fh=si+1:l=si+24:a=si+5:h=si+6:w=si+4:tl=si+2:th=si+3
+   15 goto 90
+   20 fori =1 to ia :next
+   25 poke l,15
+   30 poke w,129
+   40 poke a,6
+   50 poke h,6
+   60 poke fl,6:poke fh,6
+   75 poke w,0:poke a,0:pokeh,0
+   80 return
+   90 print"{clr}"
+   91 gosub 10000
+   92 print"{up} {rvon}                               {rvof}"
+  100 v=53248
+  110 pokev+21,4
+  115 pokev+41,15
+  120 poke 2042,13
+  140 for x=0to 200
+  150 pokev+4,x
+  160 poke v+5,x
+  161 get q$:if q$= "" then 165
+  162 ia=val(q$)*10
+  165 gosub20
+  170 nextx
+  175 if ia<60 then goto  230
+  176 if ti$>"000013"then gosub 230
+  180 goto266
+  200 data3,255,240,0,8,0,0,127,0,224,248,128,113,248,64
+  210 data63,249,64,31,249,64,0,255,192,0,127,128,0,33,0
+  220 data0,161,64,0,127,128,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+  230 for x=15 to 0 step-1
+  240 pokel,x:poke a,15:poke h,0:pokefh,40:pokefl,200:poke w,129
+  250 nextx
+  260 poke w,0:poke a,0
+  265 end
+  266 print"{up}{up}{up}{up}{up}{up}{up}{up}{up}{up}{up}{up}{up}{up}{up}{up}{up}{up}{up}{up} {rvon}                               {rvof}"
+  267 x=200
+  268 z=200
+  270 get h$:if h$=""then 270
+  271 if x>197 then x=197
+  272 if x<65 then x=67
+  273 if z>250 then z=250
+  274 if z<41 then z=41
+  280 if h$="{down}"then x=x+1:poke v+5,x:gosub25
+  282 if h$="{up}"then x=x-1:poke v+5,x:gosub25
+  284 if h$="{rght}"then z=z+1:poke v+4,z:gosub25
+  286 if h$="{left}"then z=z-1:poke v+4,z:gosub25
+  290 goto 270
+ 10000 print" {rvon} {rvof}{rvon} {rvof}     {rvon}                       {rvof}{rvon} {rvof}"
+ 10009 for z=0 to 18
+ 10010 print" {rvon} {rvof}                             {rvon} {rvof}"
+ 10011 next z
+ 10012 return
+ 63997 end
+ 63998 open 1,8,15:print#1,"s0:elicottero":close1
+ 63999 save"elicottero",8
+

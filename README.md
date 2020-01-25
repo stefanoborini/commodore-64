@@ -113,6 +113,10 @@ A "password check"
 
 Not sure. Seems to be loading something.
 
-# oa
+## oa
 
 Alphabetically orders a set of names.
+
+## header
+
+Changes the header of a disk. Probably copied from somewhere as it's in English.

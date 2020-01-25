@@ -1,0 +1,22 @@
+
+
+;grafica.prg ==0801==
+    0 clr
+    1 gosub 1000
+    5 printchr$(142)
+   10 poke 52,48:poke 56,48
+   20 poke 56334,peek(56334) and 254
+   30 poke1,peek(1) and251
+   40 for i=1 to 511:pokei+12288,peek(i+53248):next i
+   50 poke(1),peek(1) or4
+   60 poke 56334,peek(56334) or 1
+   70 poke 53272,(peek(53272)and 240)+12
+   80 for i=12288+(8*d) to (12288+(8*d))+7:read a:poke i,a:nexti
+   90 data 224,192,168,16,40,6,7,2
+  100 end
+ 1000 input"{clr}lettera da trasformare";lt$
+ 1010 f=64:d=0
+ 1020 if asc(lt$)=f then return
+ 1030 f=f+1:d=d+1
+ 1040 goto 1020
+

@@ -84,3 +84,7 @@ Computes greatest common divisor and lowest common multiple of a pair of numbers
 ## Slot machine
 
 simulates a slot machine. Probably copied from somewhere.
+
+## Grafica
+
+changes a letter to a different graphical glyph.

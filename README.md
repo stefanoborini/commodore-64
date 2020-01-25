@@ -27,6 +27,8 @@ Seems to be something that reads a disk block and shows its content in hex
 
 Contact archive. Probably copied from somewhere.
 
+![image](archivio.png)
+
 ## Alta risoluzione
 
 Some sort of spirograph drawing program. Probably copied from somewhere.
@@ -54,3 +56,9 @@ A little toy program that flies a helicopter sprite. Interestingly had a code qu
 Play mastermind (guess the number)
 
 ![image](mastermind.png)
+
+# Entrap
+
+TRON-like game. Probably copied from somewhere.
+
+![image](entrap.png)

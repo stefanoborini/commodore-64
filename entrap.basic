@@ -1,0 +1,74 @@
+
+
+;entrap.prg ==0801==
+    5 p1=1514:p2=1533:c1=1:c2=6:fora=0to 3:readdi(a),m(a):next:d1=3:d2=4:di(4)=0
+   10 gosub 10000
+   20 poke 53280,7:poke 53281,3
+   21 gosub 400
+   22 print"{clr}";:gosub 300
+   24 l=peek(56320)
+   25 if l=126then d1=0:goto 29
+   26 if l=125then d1=2:goto 29
+   27 if l=123then d1=3:goto 29
+   28 if l=119then d1=1:goto 29
+   29 poke s+1,20:pokes+4,65:pokes+4,64
+   30 k=peek(56321)
+   31 if k=254 then d2=0:goto35
+   32 if k=253 thend2=2:goto 35
+   33 if k=251 then d2=3:goto35
+   34 if k=247 then d2=1:goto35
+   35 poke s+1,20:pokes+4,65:pokes+4,64
+   40 p1=p1+di(d1)
+   41 p2=p2+di(d2):if peek(p1)<>32andpeek(p2)<>32then 230
+   42 if peek(p1)<>32then 100
+   43 ifpeek(p2)<>32then 200
+   44 poke p1,204:poke 54272+p1,c1
+   45 poke p2,204:poke 54272+p2,c2
+   46 for z=1 to 50 :next:goto 24
+  100 for a=1to 4:for b=2to12:pokep1,m(b and3):poke 53281,b:pokes+1,25-b*2
+  101 pokes+4,129:forn=1to10:next
+  102 next:poke 53280,a:next:pokes+6,250:pokes+4,128
+  103 print"giocatore 1(bianco) ha perso"
+  104 print"giocate ancora(s/n)?":w=w+1
+  105 get ty$:if ty$=""then105
+  106 if ty$="s"then 20
+  107 if ty$="n"then goto 63997
+  108 goto 105
+  200 for a=1to4:for b=2to12:poke p2,m(b and 3):poke 53281,b:pokes+1,25-b*2
+  201 poke s+4,129:for n=1to10:next
+  202 next:poke 53280,a:next:pokes+6,250:pokes+4,128
+  203 print"giocatore 2(blu) ha perso"
+  204 print"giocate ancora(s/n)?":bh=bh+1
+  205 goto 105
+  230 for a=1to4:for b=2to12:pokep2,m(b and 3):poke 53281,b:pokes+1,25-b*2
+  231 pokep1,m(b and 3):poke 53281,b:pokes+1,25-b*2
+  232 pokes+4,129:forn=1to10:next
+  233 next:poke 53280,a:next:pokes+6,250:pokes+4,128
+  234 print"entrambi i giocatori hanno perso":w=w+1:bh=bh+1
+  235 print"giocate ancora(s/n)"
+  236 goto 105
+  300 for a=0to24:poke1024+40*a,160:poke55296+40*a,5:poke1063+40*a,160
+  301 poke 55335+40*a,5:pokes+1,a:pokes+4,33:next:forx=1to 100:next
+  302 fora=1to38:poke1024+a,160:poke1984+a,160:poke55296+a,5:poke56256+a,5
+  303 pokes+4,65:pokes+1,40-a:next:pokes+4,128
+  305 return
+  400 s=54272
+  401 pokes+24,15:pokes+5,0:pokes+6,244:pokes+3,10:pokes+2,100
+  402 pokes,0:pokes+1,0
+  403 p1=1514:p2=1533:d1=3:d2=1:return
+ 9999 end
+ 10000 poke 53281,3:print"{clr}{blk}istruzioni"
+ 10002 print"{up}questo e' un gioco per due giocatori e"
+ 10004 print"ognuno deve intrappolare il compagno"
+ 10006 print"o in un angolo o chiudendogli la strada."
+ 10007 print"(attenzione:i punteggi finali indicano"
+ 10008 print"gli errori e non le vincite)"
+ 10019 print"il giocat. 1 parte da sinistra"
+ 10020 print"premi un tasto"
+ 10025 poke 198,0:wait198,1:poke 198,0:return
+ 10030 data -40,66,1,77,40,64,-1,78
+ 63996 end
+ 63997 if w<bh then print"{clr}giocatore 1 vince:";w"-";bh:end
+ 63998 if w>bh then print"{clr}giocatore 2 vince:";bh"-";w:end
+ 63999 if w=bh then print"{clr}parita'";bh"-";w:end
+

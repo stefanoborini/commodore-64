@@ -1,0 +1,21 @@
+
+
+;led.prg ==0801==
+    5 print"{clr}"
+   10 gosub 1000
+   25 if a=-1 then goto 60
+   30 print"{home}";tab(a);a$
+   40 a=a-1
+   45 for i= 1 to 5:nexti
+   50 goto 25
+   60 if b=-1 then end
+   70 print"{home}";tab(b);b$
+   80 b=b-1
+   90 for i= 1 to 5:nexti
+  100 goto 60
+ 1000 a$="ciao,mi chiamo stefano "
+ 1010 a=18
+ 1020 b$="{down}{down}tu come ti chiami? "
+ 1030 b=22
+ 1040 return
+

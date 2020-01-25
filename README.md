@@ -97,6 +97,10 @@ Various versions of a labyrinth game.
 
 I have no idea.
 
-# media
+## media
 
 Computes the average of a set of values
+
+## LED
+
+Scrolling of text

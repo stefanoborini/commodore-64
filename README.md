@@ -57,8 +57,12 @@ Play mastermind (guess the number)
 
 ![image](mastermind.png)
 
-# Entrap
+## Entrap
 
 TRON-like game. Probably copied from somewhere.
 
 ![image](entrap.png)
+
+## Blob squasher
+
+Like a snake game, minus the tail growth. Probably copied from somewhere.

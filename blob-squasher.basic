@@ -1,0 +1,53 @@
+
+
+;blob-squasher.prg ==0801==
+    0 ti$="000000"
+    1 poke 54296,15:poke54277,0:poke54278,240
+   10 gosub 1000
+   15 poke 53281,1
+   16 input"{clr}livello(1 - 5) 1=diff.";l
+   17 ifl<1 orl>5 then 16
+   20 print"{clr}";:fora=1to24:print"{red}                                      ";:next
+   30 print"                                       {clr}";
+   31 poke 56295,2
+   35 p=1522:d=1:ti$="000000"
+   40 fora=0to3:readdi(a):next:c=0:m=0
+   43 j=peek(56320)
+   45 ifj=127 then 100
+   46 ifj=126 then d=0:goto100
+   47 ifj=125 then d=2:goto100
+   48 ifj=123 then d=3:goto100
+   49 ifj=119 then d=1:goto100
+  100 m=m+1
+  101 p=p+di(d):ifp>2023 or p<1024 then p=p-di(d)
+  103 ifpeek(p)=42 then pokep,32:goto250
+  104 pokep-di(d),32:pokep,81
+  105 ifm=(l*9)then200
+  106 goto 43
+  200 m=0:z=int(999*rnd(1))
+  202 ifpeek(1024+z)<>32 then 200
+  205 fors=255 to 0 step-40:poke54273,s:poke54276,33:next:poke54273,0:poke54276,0
+  210 poke 1024+z,42:c=c+1:if c>15then l=l+1
+  220 goto 43
+  250 c=c-1:ifc<1 then 350
+  255 fors=0to 255 step30:poke54273,s:poke54276,17:next:poke54276,0:poke54273,0
+  256 goto 103
+  260 goto 103
+  350 print"{clr}bravo,hai cancellato tutte le macchie"
+  351 print"hai impiegato ";ti/60;" secondi"
+  355 print"{down}giochi ancora(s/n)"
+  356 geta$:ifa$=""then 356
+  357 ifa$="s"then restore:goto 16
+  358 if a$="n"then end
+  359 goto356
+  999 end
+ 1000 print"{clr}l tuo compito e' quello di cancella-"
+ 1001 print"re il piu'rapidamente possibile tutte"
+ 1002 print"le macchie(*) con il pallino(Q)che muo-"
+ 1003 print"vete con la joystick in porta 2."
+ 1004 print"per cancellare le macchie dovete ''cam-"
+ 1005 print"minarci sopra''"
+ 1006 print"premi un tasto"
+ 1010 poke 198,0:wait198,1:poke198,0:return
+ 1020 data -40,1,40,-1
+

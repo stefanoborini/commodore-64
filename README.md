@@ -222,4 +222,9 @@ A tower of hanoi game, but I could not get it to work.
 
 # fract
 
-Plots a mandelbrot fractal.
+Plots a mandelbrot fractal. This is apparently not working as intended, as this is the result I got, after a night of computation
+
+![image](fract.png)
+
+I need to fix it.
+

@@ -1,0 +1,20 @@
+
+
+;mxprod ==0801==
+    5 dim a(20,20),b(20,20),c(20,20)
+   10 print"{clr}"
+   20 input"introdurre m,n matr 1";m1,n1
+   30 input"introdurre m,n matr 2";m2,n2
+   35 if n1<>m2 then end
+   40 for i=1 to n1:for j=1 to m1:input a(j,i):next j:next i
+   50 for i=1 to n2:for j=1 to m2:input b(j,i):next j:next i
+   60 for i=1 to n2
+   70 for j=1 to m1
+   80 for k=1 to n1
+   90 c(i,j)=c(i,j)+a(i,k)*b(k,j)
+  100 next k:nextj:next i
+  110 for i=1 to n2
+  120 for j=1 to m1
+  130 printc(i,j);
+  140 next j:print:next i
+

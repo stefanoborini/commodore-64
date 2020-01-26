@@ -1,0 +1,56 @@
+
+
+;dos-hex-dumper.prg ==0801==
+    1 open 15,8,15
+    4 for t=32768 to 33767:if peek(t)=32 then next
+    5 co=8:ll=1:if t>32768+50 then co=16:ll=2
+    6 gosub 1000
+    7 gosub 2000
+   10 input"indirizzo di partenza";ad
+   15 input"indirizzo finale";ea
+   20 input"{down}{rvon}v{rvof}ideo o {rvon}s{rvof}tampante";p$
+   21 dv=3:if p$="s"then dv=4
+   22 open 4,dv:if dv=4 then co=16
+   23 print#4,"{clr}ind. iniziale=";mid$(str$(ad),2) ;"  ind.finale=";mid$(str$(ea),2)
+   24 print#4,"--------------";:for t=1 to len(str$(ad)):print#4,"-";:next
+   25 print#4,"  ------------";:for t=1 to len(str$(ea)):print#4,"-";:next
+   27 print#4:print#4
+   30 gosub 490
+   40 close 4:print"{down}{down}":goto 10
+  300 a%=ad/b:ad$=h$(a%)+h$(ad-a%*b):return
+  490 gosub 300:print#4,"> ";ad$;" ";
+  500 for t= 1 to co
+  510 gosub 10000:ad=ad+1:ip(t)=d
+  520 print#4,h$(d);" ";
+  530 next t
+  550 print#4,"{rvon}";
+  560 for t=1 to co:n=ip(t) and not 128
+  565 if n<32 then n=46
+  570 print#4,chr$(n);
+  580 next:print#4
+  581 if ad>=ea then return
+  582 get x$:if x$="" then 490
+  584 get x$:if x$="" then 584
+  600 goto 490
+ 1000 print"{clr}";chr$(160);
+ 1005 a$="****                   ****":printtab((20*ll)-len(a$)/2);a$
+ 1010 a$="***** dos hex dumper  *****":printtab((20*ll)-len(a$)/2);a$
+ 1020 a$="****                   ****":printtab((20*ll)-len(a$)/2);a$
+ 1030 print"
+ 1035 a$="{down}by stefano borini e raffaele arveda":printtab((20*ll)-len(a$)/2);a$
+ 1037 print"
+ 1040 a$="{down}(c)copyright 1990":printtab((20*ll)-len(a$)/2);a$
+ 1050 print
+ 1080 return
+ 2000 rem
+ 2010 rem
+ 2020 dim d$(15),h$(255),ip(17)
+ 2040 for j=0 to 15:read d$(j):next
+ 2070 for j=0 to 15:for d=0 to 15:h$(j*16+d)=d$(j)+d$(d):next d,j
+ 2080 b=256:return
+ 6000 data 0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f
+ 10000 rem
+ 10010 rem
+ 10020 print#15,"m-r";chr$(ad-int(ad/256)*256)chr$(ad/256)
+ 10030 get#15,d$:d=asc(d$+chr$(0)):return
+

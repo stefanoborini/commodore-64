@@ -212,7 +212,7 @@ Apparently, it's a program that plays tris against itself and shows statistics o
 
 No idea. Totogol is a chance game in Italy. I think I used this to estimate probabilities.
 
-## Astronomy
+## Astronomy, astronomy-2
 
 No idea. seems to be a started program about astronomic evaluations
 
@@ -228,3 +228,17 @@ Plots a mandelbrot fractal. This is apparently not working as intended, as this 
 
 I need to fix it.
 
+# mxprod
+
+Matrix multiplication
+
+# medie
+
+Apparently something to evaluate the expected final school grade given the current average
+
+# dos hex dumper
+
+A memory dump program I wrote with a friend. Not sure why I called it "dos".
+
+![image](dos-hex-dumper.png)
+![image](dos-hex-dumper-2.png)

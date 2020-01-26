@@ -1,0 +1,32 @@
+
+
+;medie.prg ==0801==
+   10 print"{clr}"
+   20 input"{down}media a.s.";as
+   30 input"media esame";es
+   40 md=(as+es)/2
+   50 if md=>5.75 and md<6 goto 100
+   60 if md=>6 and md<7 goto 200
+   70 if md=>7 goto 300
+   80 end
+  100 k=6.25+((md-5.75)/(6-5.75)*(6.50-6.25))
+  110 print"{down}{down}media= ";md
+  120 print"voto= ";md*k
+  130 print"k (6.25-6.5)= ";k
+  140 print"voto v.m.=";md*6.25
+  190 goto 500
+  200 k=6.50+((md-6)/(7-6)*(6.70-6.50))
+  210 print"{down}{down}media= ";md
+  220 print"voto= ";md*k
+  230 print"k (6.5-6.7)= ";k
+  240 print"voto v.m.=";md*6.50
+  290 goto 500
+  300 k=6.70+((md-7)/(8-7)*(6.80-6.70))
+  310 print"{down}{down}media= ";md
+  320 print"voto= ";md*k
+  330 print"k (6.7-)= ";k
+  340 if md<8 then print"voto v.m.=";md*6.7
+  350 if md=>8 then print"voto v.m.=";md*6.8
+  500 get a$:if a$<>" " then 500
+  600 goto20
+

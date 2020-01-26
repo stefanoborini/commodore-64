@@ -1,0 +1,50 @@
+
+
+;astronomy ==0801==
+    1 list -9998
+   10 rem elenco subroutines
+   20 rem 10000 creazione subroutines in linguaggio macchina
+   30 rem 10010 posizionamento cursore ** in li,co **
+   40 rem 10020 stampa intestazione
+   50 rem 10030 introduzione dato ** in le,fi ** out vi$ **
+  200 vi=53248
+  210 pokevi+32,0:pokevi+33,0:print"{clr}{red}":li=12:co=12:gosub 10010
+  220 print"attendere, prego":gosub 10000:gosub 10020
+  221 rem *******************************
+  222 rem *******************************
+  223 rem ******inizio programma*********
+  224 rem *******************************
+  225 rem *******************************
+  228 li=7:co=3:gosub 10010:print"1)introduzione data/ora"
+  230 li=9:co=3:gosub 10010:print"2)tempo"
+  240 li=11:co=3:gosub 10010:print"3)interpolazione"
+  250 li=13:co=3:gosub 10010:print"4)coordinate"
+  300 li=23:co=15:gosub 10010:print"scelta:";:le=2:fi=0:gosub 10030
+  310 if vi=>1 and vi<=4 then on vi goto 600
+  320 goto 300
+  600 print"{clr}":rem introduzione data/ora
+ 9999 end
+ 10000 a=49152
+ 10005 readt:if t<>-1 then poke a,t:a=a+1:goto 10005
+ 10009 return
+ 10010 poke 211,co:poke 214,li:sys 58640:return
+ 10020 print"{clr}":sys 49152:li=1:co=13:gosub 10010:print"{rvon}astronomy calc":return
+ 10030 fori=1 to le:print" ";:nexti
+ 10040 fori=1 to le:print"{left}";:nexti
+ 10050 vi$="":tc=ti
+ 10060 get a$:if a$<>""then10100
+ 10070 iftc<ti and not(fc)thenprint"{CBM-@}{left}";:fc=not(fc):tc=ti+10
+ 10080 iftc<tiandfcthenprint" {left}";:fc=not(fc):tc=ti+10
+ 10090 goto 10060
+ 10100 a=asc(a$):la=len(vi$)
+ 10110 if a=13 then print" {left}";:vi=val(vi$):return
+ 10120 if a=20 and la>0 then vi$=left$(vi$,la-1):print" {left}{left}";:goto 10060
+ 10130 if la=le then 10060
+ 10140 if (fi=0 or fi=2) and (a>47 and a<58) then 10170
+ 10150 if(fi=1orfi=2)and((a>57anda<96)or(a>31anda<48))andnot(a=34)then 10170
+ 10160 goto 10060
+ 10170 printa$;:vi$=vi$+a$:goto 10060
+ 60000 rem dati produzione intestazione sys 49152
+ 60010 data 169,160,170,157,255,3,202,208,250,96,-1
+ 60020 rem                              sys 49162
+

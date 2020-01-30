@@ -1,0 +1,9 @@
+
+
+;p2.prg ==0801==
+   10 print"{clr}"
+   20 rem poke53281,15:poke53280,15
+   30 poke53272,(peek(53272)and 240)or8
+   40 fori=0to1:poke8192+i,192:print i:nexti
+   50 fori=0 to 999:poke 1024+i,15:next i
+

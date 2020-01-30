@@ -243,9 +243,18 @@ A memory dump program I wrote with a friend. Not sure why I called it "dos".
 ![image](dos-hex-dumper.png)
 ![image](dos-hex-dumper-2.png)
 
-## Dumper II
+## Dumper - Dumper II
 
-Disk dumper.
+Disk dumper. 
+This utility I wrote is able to read track and sector from disk and print out 
+its content either as a hexadecimal dump or as a assembler dump, at the expected
+memory address.
+
+![image](dumper-1.png)
+![image](dumper-2.png)
+![image](dumper-3.png)
+
+I have multiple versions of this program, scattered around my various disks.
 
 ## Previsioni
 

@@ -253,6 +253,7 @@ memory address.
 ![image](dumper-1.png)
 ![image](dumper-2.png)
 ![image](dumper-3.png)
+![image](dumper-4.png)
 
 I have multiple versions of this program, scattered around my various disks.
 

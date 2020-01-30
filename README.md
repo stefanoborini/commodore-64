@@ -262,3 +262,28 @@ I have multiple versions of this program, scattered around my various disks.
 Some sort of "fake-ish" weather forecast program. 
 
 ![image](previsioni.png)
+
+## ciccio
+
+No idea
+
+## comp
+
+No idea
+
+## p
+
+No idea
+
+## pr
+
+No idea
+
+## prega
+
+No idea
+
+## ps2
+
+No idea
+

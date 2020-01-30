@@ -1,0 +1,11 @@
+
+
+;pigreco-2.prg ==0801==
+   10 input n:print"{clr}"
+   20 for i=1 to n
+   30 x=rnd(1)
+   40 y=rnd(1)
+   50 if x^2+y^2<1 then g=g+1
+   60 print"{home}";i,g:next
+   70 print4*g/n
+

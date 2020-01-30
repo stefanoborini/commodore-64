@@ -246,3 +246,9 @@ A memory dump program I wrote with a friend. Not sure why I called it "dos".
 ## Dumper II
 
 Disk dumper.
+
+## Previsioni
+
+Some sort of "fake-ish" weather forecast program. 
+
+![image](previsioni.png)

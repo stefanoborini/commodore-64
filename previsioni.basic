@@ -1,0 +1,107 @@
+
+
+;previsioni.prg ==0801==
+   10 print"{clr}"
+   20 poke 53280,0:poke 53281,0:print"{yel}";
+   30 printtab(16);"meteo 64"
+   40 for i= 1 to 40 :print"{grn}{CBM-Y}{yel}";:next i
+   50 print"{down}{down}programma per analisi dati metereologici"
+   55 printtab(13);"per basic 4.0"
+   60 printtab(7);"{down}scritto da stefano borini"
+   70 get a$:if a$=""then 70
+   80 print"{clr}":poke 53280,15:poke 53281,15:goto 140
+   90 print"          {gry1}{CBM-O}{CBM-O}{CBM-O}"
+  100 print"         {CBM-O}{rvon}     {rvof}{CBM-O}{CBM-O}"
+  110 print"       {CBM-O}{CBM-O}{rvon}         {rvof}{CBM-O}{CBM-O}"
+  120 print"      {CBM-U}{CBM-U}{CBM-U}{rvon}        {rvof}{CBM-U}{CBM-U}{CBM-U}{CBM-U}{CBM-U}{CBM-U}"
+  130 print"          {CBM-U}{CBM-U}{CBM-U}{CBM-U}{CBM-U}   ":return
+  140 gosub 90:print"{down}{down}{down}{down}1. immissione dati"
+  160 print"{down}2. previsione"
+  170 print"{down}3. aggiunta condiz.tempo"
+  175 print"{down}4. fine"
+  180 input"{down}{down}{down}scelta";sc
+  190 on sc goto 1000,2000,3000,4000
+  200 print"{up}{up}{up}{up}{up}":goto 180
+ 1000 print"{clr}":gosub 90:print"{down}{down}{down}{down}misurare le"
+ 1010 print"seguenti cose:"
+ 1020 print"1.temperatura"
+ 1030 print"2.variazioni temperatura."
+ 1040 print"3.pressione"
+ 1050 print"4.variazione pressione"
+ 1055 print"5.tipo nubi"
+ 1060 print"6.parte cielo coperta(in frazioni)"
+ 1070 print"7.velocita' vento"
+ 1080 print"8.direz.vento"
+ 1090 print"9.umidita' relativa"
+ 1100 get b$:if b$=""then 1100
+ 1110 print"{clr}":gosub 90:print"{down}{down}{down}{down}"
+ 1130 input"rilevamento n.";n$
+ 1140 input"temperatura (c):";te
+ 1150 input"variazioni temperatura:";vt
+ 1160 input"pressione:";pr
+ 1170 input"variazioni pressione:";vp
+ 1180 input"tipo nuvole:";tn$
+ 1190 input"cielo coperto (in frazioni):";cc$
+ 1200 input"velocita'vento:";vv$
+ 1210 input"direz.vento:";dv$
+ 1220 input"umidita' relativa (%):";ur
+ 1230 print"salvo i dati"
+ 1240 get c$:if c$="" then 1240
+ 1250 open 2,8,2,n$+",w"
+ 1260 print#2,te
+ 1270 print#2,vt
+ 1280 print#2,pr
+ 1290 print#2,vp
+ 1300 print#2,tn$
+ 1310 print#2,cc$
+ 1320 print#2,vv$
+ 1330 print#2,dv$
+ 1340 print#2,ur
+ 1350 close 2
+ 1360 goto 80
+ 2000 print"{clr}":gosub 90:print"{down}{down}{down}{down}"
+ 2010 input"temperatura";d1
+ 2020 input"var.temp.";d2
+ 2030 input"pressione";d3
+ 2040 input"var.press.";d4
+ 2050 input"nuvole presenti";d5$
+ 2060 input"parte coperta";d6$
+ 2070 input"velocita'vento";d7$
+ 2080 input"direz.vento";d8$
+ 2090 input"umidita' rel.";d9
+ 2100 input"rilevamento da controllare 0=esci:";nr$
+ 2110 if nr$="0" then 80
+ 2130 open 2,8,2,nr$+",r"
+ 2140 input#2,a1
+ 2150 input#2,a2
+ 2160 input#2,a3
+ 2170 input#2,a4
+ 2180 input#2,a5$
+ 2190 input#2,a6$
+ 2200 input#2,a7$
+ 2210 input#2,a8$
+ 2220 input#2,a9
+ 2230 input#2,a0$
+ 2240 close 2
+ 2250 if a1<>d1 then 2900
+ 2260 if a2<>d2 then 2900
+ 2270 if a3<>d3 then 2900
+ 2280 if a4<>d4 then 2900
+ 2290 if a5$<>d5$ then 2900
+ 2300 if a6$<>d6$ then 2900
+ 2310 if a7$<>d7$ then 2900
+ 2320 if a8$<>d8$ then 2900
+ 2330 if a9<>d9 then 2900
+ 2340 print"{clr}";"previsioni:";a0$
+ 2350 for y=1 to 2000:next y:goto 80
+ 2900 goto 2100
+ 2910 goto 2115
+ 3000 print"{clr}":gosub 90:print"{down}{down}{down}{down}"
+ 3010 input"rilevamento n.";n$
+ 3020 input"condizioni rilevate:";cr$
+ 3030 print"salvo i dati"
+ 3040 get d$:if d$="" then 3040
+ 3050 gocont#2,(n$):print#2,cr$:close 2
+ 3060 goto 80
+ 4000 print"{clr}{lblu}":poke 53280,14:poke 53281,6
+

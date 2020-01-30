@@ -1,0 +1,31 @@
+
+
+;p.prg ==0801==
+   10 t=1:s=0:dim da(255):dim db(255)
+   15 open 15,8,15
+   20 open 5,8,5,"#"
+   30 print#15,"u1:5,0,"t","s""
+   50 fori=0to255
+   60 get#5,a$
+   65 da(i)=asc(a$+chr$(0))
+   70 nexti
+   75 close 15:close 5
+   80 open 15,9,15
+   90 open 5,9,5,"#"
+  100 print#15,"u1:5,0,"t","s""
+  110 fori=0to255
+  120 get#5,a$
+  130 db(i)=asc(a$+chr$(0))
+  140 nexti
+  150 for i=0 to 255
+  160 if da(i)=db(i) then 180
+  170 print t;s;da(i);db(i)
+  180 next i
+  190 s=s+1
+  200 if t>=1 and t<=17 then if s>20 then s=0:t=t+1
+  210 if t>=18 and t<=24 then if s>18 then s=0:t=t+1
+  220 if t>=25 and t<=30 then if s>17 then s=0:t=t+1
+  230 if t>=31 and t<=35 then if s>16 then s=0:t=t+1
+  240 close 15:close 16:close 5:close 6:goto 15
+  250 open 15,9,15:input#15,a$,b$:print a$,b$:close 15
+

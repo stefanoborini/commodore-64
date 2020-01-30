@@ -1,0 +1,25 @@
+
+
+;comp.prg ==0801==
+  100 gosub 1000:rem presentazione
+  110 gosub 2000:rem variabili e tracce
+  120 gosub 3000:rem lettura disco 1
+  130 gosub 4000:rem lettura disco 2
+  140 gosub 5000:rem comparazione.
+  150 end
+ 1000 print"{clr}{down}{down}{down}";:poke 53280,0:poke 53281,0
+ 1010 print"{wht}O{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}P"
+ 1020 print"{wht}{CBM-H}                         {CBM-N}{rvon}{CBM-M}{rvof}"
+ 1030 print"{wht}{CBM-H}                         {CBM-N}{rvon}{CBM-M}{rvof}"
+ 1040 print"{wht}{CBM-H}                         {CBM-N}{rvon}{CBM-M}{rvof}"
+ 1050 print"{wht}{CBM-H}                         {CBM-N}{rvon}{CBM-M}{rvof}"
+ 1060 print"{wht}{CBM-H}                         {CBM-N}{rvon}{CBM-M}{rvof}"
+ 1070 print"{wht}{CBM-H}                         {CBM-N}{rvon}{CBM-M}{rvof}"
+ 1090 print"{wht}{CBM-H}                         {CBM-N}{rvon}{CBM-M}{rvof}"
+ 1100 print"{wht}{CBM-H}                         {CBM-N}{rvon}{CBM-M}{rvof}"
+ 1110 print"{wht}{CBM-H}                         {CBM-N}{rvon}{CBM-M}{rvof}"
+ 1120 print"{wht}{CBM-H}                         {CBM-N}{rvon}{CBM-M}{rvof}"
+ 1130 print"{wht}{CBM-H}                         {CBM-N}{rvon}{CBM-M}{rvof}"
+ 1140 print"{wht}L{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{SHIFT-@}{rvon}{CBM-M}{rvof}"
+ 1150 print" {rvon}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{CBM-P}{SHIFT-@}{rvof}"
+

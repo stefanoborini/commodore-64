@@ -1,0 +1,11 @@
+
+
+;ciccio.prg ==0801==
+  140 t=18:s=6:i=0
+  141 open 15,8,15
+  143 open 5,8,5,"#"
+  170 print#15,"u1:5,0,";t;",";s
+  190 get#5,b$
+  200 print asc(b$+chr$(0));i
+  210 i=i+1:for h=1 to 100:nexth:goto 190
+

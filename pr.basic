@@ -1,0 +1,31 @@
+
+
+;pr.prg ==0801==
+   99 t=1:s=0
+  100 rem programma per la ricerca
+  110 rem di differenze tra due dischi
+  120 rem gosub 5000:rem presentazione
+  130 print"{clr}introdurre i dischi nei drive 8 e 9":dim ta$(i):dim tb$(i)
+  140 get a$:if a$="" then 140
+  141 open 15,8,15
+  142 open 16,9,15
+  143 open 5,8,5,"#"
+  144 open 6,9,5,"#"
+  170 print#15,"b-r:5,0,";t;",";s
+  190 get#5,b$
+  240 print#16,"b-r:6,0,";t;",";s
+  260 get#6,c$
+  300 if asc(b$+chr$(0))=asc(c$+chr$(0)) then 340
+  310 print"traccia";t;" settore";s
+  320 print"byte";i
+  330 print"differenza";asc(b$+chr$(0));" ";asc(c$+chr$(0))
+  340 i=i+1:if i=255 then i=0:goto 350
+  345 goto 143
+  350 s=s+1
+  360 if t>=1 and t<=17 then if s>20 then s=0:t=t+1
+  370 if t>=18 and t<=24 then if s>18 then s=0:t=t+1
+  380 if t>=25 and t<=30 then if s>17 then s=0:t=t+1
+  390 if t>=31 and t<=35 then if s>16 then s=0:t=t+1
+  400 if t>35 then end
+  410 goto 140
+

@@ -7,7 +7,7 @@ it was probably not particulary interesting.
 Some of this stuff is probably copied from books and personalised. Other was written together with a friend (hence the
 A & B soft mark).
 
-## Gestione C-64
+## Gestione C-64, ges
 
 Utility I wrote to manage disk and other features of the C64. I had multiple
 versions of this application, and I kept adding more and more features or
@@ -341,4 +341,10 @@ Another astronomy program that computes something.
 
 A wheel of fortune program.
 
+## leggi, leggi2
 
+Some kind of image reading code.
+
+## new\_dir
+
+No idea

@@ -1,0 +1,14 @@
+
+
+;leggi.prg ==0801==
+   45 open 15,8,15
+   50 open 5,8,5,"0:{orng}pic i dragon  ,p,r"
+   60 gosub 200
+   70 get#5,a$
+   80 if st<> 0 then print st:stop
+   90 print asc(a$+chr$(0));
+  100 goto 70
+  200 input#15,a$,b$,c$,d$
+  210 if val(a$)>0 then print a$,b$,c$,d$:stop
+  220 return
+

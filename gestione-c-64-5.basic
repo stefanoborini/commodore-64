@@ -1,0 +1,457 @@
+
+
+;gestione-c-64-5.prg ==0801==
+    0 clr
+    1 print"{clr}":vi=53248:pokevi+33,0:pokevi+32,0
+    2 printchr$(14)
+    3 print"{cyn}"
+    4 a$="                 A.& B."
+    5 fori=1to4:forh=1to500:nexth:print"{clr}":forj=1to999:nextj:printa$:nexti:gosub10
+    6 goto 330
+   10 s=54272
+   20 forl=0to24:pokes+l,0:next
+   30 pokes+3,8
+   40 pokes+5,41:pokes+6,89
+   50 pokes+14,117
+   60 pokes+18,16
+   70 pokes+24,143
+   80 readfr,dr
+   90 if fr=0then return
+  100 pokes+4,65
+  110 fort=1todr*2
+  120 fq=fr+peek(s+27)/2
+  130 hf=int(fq/256):lf=fqan255
+  140 pokes,hf:pokes+1,hf
+  150 next
+  160 pokes+4,64
+  170 goto80
+  180 data4817,2,5103,2,5407,2
+  190 data8583,4,5407,2,8583,4
+  200 data 5407,4,8583,13,9634,2
+  210 data 10207,2,10814,2,8583,2
+  220 data 9634,4,10414,2,8583,2
+  230 data 9634,4,8583,13
+  240 data4817,2,5103,2,5407,2
+  250 data8583,4,5407,2,8583,4
+  260 data 5407,4,8583,13,9634,2
+  270 data 10207,2,10814,2,8583,2
+  280 data 9634,4,10414,2,8583,2
+  290 data 9634,4,8583,13
+  300 data0,0
+  310 end
+  330 b$="{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{down}{down}{down}{down}presenta"
+  340 c$="{blk}{wht}{red}{cyn}{pur}{grn}{blu}{yel}{orng}{brn}{lred}{gry1}{gry2}{lgrn}{lblu}{gry3}{blk}{wht}{red}{cyn}{pur}{grn}{blu}{yel}{orng}{brn}{lred}{gry1}{gry2}{lgrn}{lblu}{gry3}{cyn}"
+  345 for n=1to 33:d$=left$(c$,n)
+  350 printd$;b$
+  353 print"{up}{up}{up}{up}{up}{up}"
+  354 for i=1 to 100:next i
+  355 next n
+  360 for i=1 to 500:next i
+  370 e$="{down}{down}{down}{down}{down}{down}{down}{down}{down}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}GESTIONE  C-64"
+  380 fori=1tolen(e$):printmid$(e$,1,i);:print"{up}{up}{up}{up}{up}{up}{up}{up}{up}{up}":forz=1to90:nextz:nexti
+  390 print"{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}premi {rvon}RETURN{rvof} per continuare"
+  400 get aa$:if aa$<>chr$(13) then 400
+  410 print"{clr}":bb$="":printchr$(142)
+  420 printtab(14);"{wht}{up}{up}{up}gestione  c-64"
+  430 print"{grn}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+  440 printtab(17);"{wht}menu '"
+  450 printtab(17);"{grn}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}"
+  460 print"{down}{down}{rght}{rvon}{wht}f{rvof}{yel}ormattazione            {rvon}{wht}c{rvof}{yel}ancellamento"
+  470 print"{down}{rght}{rvon}{wht}l{rvof}{yel}ettura sequenziali      {rvon}{wht}s{rvof}{yel}tampante"
+  480 print"{down}{rght}{rvon}{wht}w{rvof}{yel}ord processing          c{rvon}{wht}a{rvof}{yel}ricamento"
+  490 print"{down}{rght}all{rvon}{wht}i{rvof}{yel}neamento testine     s{rvon}{wht}u{rvof}{yel}icide"
+  500 print"{down}{rght}{rvon}{wht}d{rvof}{yel}irectory                {rvon}{wht}p{rvof}{yel}rova joystick"
+  501 print"{rght}{rvon}{wht}r{rvof}{yel}ename                   s{rvon}{wht}t{rvof}{yel}atus"
+  502 print"{rght}{down}{rvon}{wht}v{rvof}{yel}elocita' drive          validat{rvon}{wht}e{rvof}{yel}"
+  510 print"{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{down}scelta:";
+  511 get bb$:if bb$=""then 511
+  520 if bb$="f"then printbb$:fori=1to1000:nexti:goto 2000
+  521 if bb$="c"then printbb$:fori=1to1000:nexti:goto 3000
+  522 if bb$="l"then printbb$:fori=1to1000:nexti:goto 4000
+  523 if bb$="s"then printbb$:fori=1to1000:nexti:goto 5000
+  524 if bb$="w"then printbb$:for i=1to 1000:nexti:goto6000
+  525 if bb$="a"then printbb$:fori=1to 1000:nexti:goto 7000
+  526 if bb$="i"then printbb$:fori=1 to 1000:nexti:goto8000
+  527 if bb$="u"then printbb$:fori=1to 1000:nexti:goto9000
+  528 if bb$="d"then printbb$:fori=1to 1000:nexti:x=0:goto 1100
+  529 if bb$="p"then printbb$:fori=1to 1000:nexti:goto 10000
+  530 if bb$="r" then printbb$:fori=1to1000:nexti:goto11000
+  540 if bb$="t"then printbb$:fori=1to 1000:nexti:goto12000
+  550 if bb$="v" then printbb$:fori=1to1000:nexti:goto 13000
+  551 if bb$="e" then printbb$:fori=1to1000:nexti:goto 14000
+  553 goto 511
+ 1100 print"{clr}"
+ 1105 r$=""
+ 1110 open1,8,0,"$0"
+ 1120 get#1,a$,b$
+ 1130 get#1,a$,b$
+ 1140 get#1,a$,b$
+ 1150 c=0
+ 1155 r=len(r$):if r>95 then fori=1to 1000:next i:print"{clr}":r$=""
+ 1160 ifa$<>""thenc=asc(a$)
+ 1170 ifb$<>""then c=c+asc(b$)*256
+ 1180 print"{rght}{rght}";mid$(str$(c),2);tab(7);
+ 1190 get#1,b$:if st<>0then1280
+ 1200 if b$<>chr$(34)then1190
+ 1210 get#1,c$:ifc$<>chr$(34)thenprintc$;:r$=r$+c$:goto1210
+ 1220 get#1,b$:ifb$=chr$(32)then1220
+ 1230 printtab(25);
+ 1240 c$=c$+b$:get#1,b$:ifb$<>""then1240
+ 1250 printmid$(c$,2,5)
+ 1260 get t$:if t$<>""then goto 1290
+ 1270 if st=0then1130
+ 1280 print"{left}{left} blocks free"
+ 1290 close 1
+ 1292 open 15,8,15:input#15,ab$,bc$,cd$,de$
+ 1293 if bc$<>"ok" then print"{clr}";ab$;" ";bc$;" ";cd$;" ";de$:close 15
+ 1294 if bc$="ok" then print"{down}{down}";ab$;" ";bc$;" ";cd$;" ";de$:close 15
+ 1300 print"{down}premi {rvon}return{rvof} per continuare"
+ 1310 get q$:if q$<>chr$(13) then 1310
+ 1320 if x=0 then 410
+ 1321 if x=1 then 2000
+ 1322 if x=2 then 3000
+ 1323 if x=3 then 4000
+ 1324 if x=4 then 7000
+ 1325 if x=5 then 11000
+ 1326 if x=6 then 15000
+ 1330 end
+ 2000 print"{clr}"
+ 2010 printtab(13);"{up}{wht}formattazione"
+ 2020 print"{grn}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 2030 print"{down}{down}{down}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f1{rvof}   {yel}per proseguire"
+ 2040 print"{down}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f3{rvof}   {yel}directory"
+ 2050 print"{down}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f5{rvof}   {yel}suicide"
+ 2060 print"{down}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f7{rvof}   {yel}ritorno al main menu'"
+ 2070 print"{down}{down}{rght}{rght}scelta:";
+ 2080 get ac$:if ac$=""then 2080
+ 2090 if ac$="{f1}"then print"f1":for i=1to 1000:nexti:goto 2140
+ 2100 if ac$="{f3}"then print"f3":fori=1to1000:nexti:x=1:goto 1100
+ 2110 if ac$="{f5}"then print"f5":sys64738
+ 2120 if ac$="{f7}"then print"f7":fori=1to1000:nexti:goto 410
+ 2130 goto 2080
+ 2140 print"{clr}"
+ 2150 printtab(13);"{up}{wht}formattazione"
+ 2160 print"{grn}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 2170 input"{down}{down}{down}{rght}{yel}nome disco";no$
+ 2190 input"{down}id";id$
+ 2200 open1,8,15:print#1,"n0:"+no$+","+id$:close1:gosub 63000
+ 2290 forj=1to1000:nextj:goto2000
+ 2300 end
+ 3000 print"{clr}"
+ 3010 printtab(13);"{up}{wht}cancellamento"
+ 3020 print"{grn}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 3030 print"{down}{down}{down}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f1{rvof}   {yel}per proseguire"
+ 3040 print"{down}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f3{rvof}   {yel}directory"
+ 3050 print"{down}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f5{rvof}   {yel}suicide"
+ 3060 print"{down}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f7{rvof}   {yel}ritorno al main menu'"
+ 3070 print"{down}{down}{rght}{rght}scelta:";
+ 3080 get ac$:if ac$=""then 3080
+ 3090 if ac$="{f1}"then print"f1":for i=1to 1000:nexti:goto 3140
+ 3100 if ac$="{f3}"then print"f3":fori=1to1000:nexti:x=2:goto 1100
+ 3110 if ac$="{f5}"then print"f5":sys64738
+ 3120 if ac$="{f7}"then print"f7":fori=1to1000:nexti:goto 410
+ 3130 goto 3080
+ 3140 print"{clr}"
+ 3150 printtab(13);"{up}{wht}cancellamento"
+ 3160 print"{grn}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 3170 input"{down}{down}{down}{rght}{yel}nome programma";no$
+ 3200 open1,8,15:print#1,"s0:";no$:close1
+ 3201 gosub 63000
+ 3210 forj=1to1000:nextj:goto3000
+ 3300 end
+ 4000 print"{clr}"
+ 4010 printtab(11);"{up}{wht}lettura sequenziali"
+ 4020 print"{grn}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 4030 print"{down}{down}{down}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f1{rvof}   {yel}per proseguire"
+ 4040 print"{down}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f3{rvof}   {yel}directory"
+ 4050 print"{down}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f5{rvof}   {yel}suicide"
+ 4060 print"{down}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f7{rvof}   {yel}ritorno al main menu'"
+ 4070 print"{down}{down}{rght}{rght}scelta:";
+ 4080 get ac$:if ac$=""then 4080
+ 4090 if ac$="{f1}"then print"f1":for i=1to 1000:nexti:goto 4140
+ 4100 if ac$="{f3}"then print"f3":fori=1to1000:nexti:x=3:goto 1100
+ 4110 if ac$="{f5}"then print"f5":sys64738
+ 4120 if ac$="{f7}"then print"f7":fori=1to1000:nexti:goto 410
+ 4130 goto 4080
+ 4140 print"{clr}":printchr$(14)
+ 4150 printtab(11);"{up}{wht}LETTURA{$a0}SEQUENZIALI"
+ 4160 print"{grn}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 4170 input"{down}{down}{down}{rght}{yel}NOME{$a0}SEQUENZIALE";no$
+ 4200 print"{clr}"
+ 4210 open 2,8,2,no$
+ 4220 get#2,lk$
+ 4230 if st<>66then printlk$;:goto 4220
+ 4240 close2
+ 4245 gosub 63000
+ 4250 for i=1to 2000:nexti
+ 4260 printchr$(142):goto 4000
+ 4270 end
+ 5000 print"{clr}"
+ 5010 printtab(15);"{up}{wht}stampante"
+ 5020 print"{grn}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 5030 print"{down}{down}{down}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f1{rvof}   {yel}per proseguire"
+ 5050 print"{down}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f3{rvof}   {yel}suicide"
+ 5060 print"{down}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f5{rvof}   {yel}ritorno al main menu'"
+ 5070 print"{down}{down}{rght}{rght}scelta:";
+ 5080 get ac$:if ac$=""then 5080
+ 5090 if ac$="{f1}"then print"f1":for i=1to 1000:nexti:goto 5140
+ 5110 if ac$="{f3}"then print"f3":sys64738
+ 5120 if ac$="{f5}"then print"f5":fori=1to1000:nexti:goto 410
+ 5130 goto 5080
+ 5140 print"{clr}"
+ 5150 printtab(15);"{up}{wht}stampante"
+ 5160 print"{grn}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 5180 print"{down}{down}{down}{rght}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f1{rvof}{yel}   scrittura minuscola"
+ 5190 print"{down}{down}{down}{rght}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f3{rvof}{yel}   scrittura maiuscola"
+ 5200 print"{down}{down}{down}{rght}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f5{rvof}{yel}   scrittura reverse"
+ 5201 print"{down}{down}{down}{rght}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f7{rvof}{yel}   scrittura estesa"
+ 5320 print"{down}{down}{down}scelta:";
+ 5330 gett$:ift$=""then5330
+ 5340 ift$="{f1}"thenprint"f1":fort=1to1000:next:goto 5400
+ 5350 ift$="{f3}"thenprint"f3":fort=1to1000:next:goto 5510
+ 5360 ift$="{f5}"thenprint"f5":fort=1to1000:next:goto 5640
+ 5361 ift$="{f7}"thenprint"f7":fort=1to1000:next:goto 5760
+ 5362 goto 5330
+ 5400 print"{clr}"
+ 5410 printtab(15);"{up}{wht}stampante"
+ 5420 print"{grn}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 5430 input"{down}{down}{yel}quante righe (max 15)";oi
+ 5440 if oi<0 or oi>15then5400
+ 5450 print"{clr}":open 4,4
+ 5460 for i=1to oi
+ 5461 input hh$
+ 5470 print#4,chr$(17);hh$
+ 5480 next i
+ 5490 close 4
+ 5500 goto5000
+ 5510 print"{clr}"
+ 5520 printtab(15);"{up}{wht}stampante"
+ 5530 print"{grn}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 5540 input"{down}{down}{yel}quante righe (max 15)";oi
+ 5550 if  oi<0 or oi>15then5400
+ 5560 print"{clr}":open 4,4
+ 5570 for i=1to oi
+ 5581 input hh$
+ 5590 print#4,hh$
+ 5600 next i
+ 5610 close 4
+ 5620 goto5000
+ 5640 print"{clr}"
+ 5650 printtab(15);"{up}{wht}stampante"
+ 5660 print"{grn}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 5670 input"{down}{down}{yel}quante righe (max 15)";oi
+ 5680 if  oi<0 or oi>15then5400
+ 5690 print"{clr}":open 1,4
+ 5700 for i=1to oi
+ 5710 input hh$
+ 5720 print#1,chr$(18);hh$
+ 5730 next i
+ 5740 close 1
+ 5750 goto5000
+ 5760 print"{clr}"
+ 5770 printtab(15);"{up}{wht}stampante"
+ 5780 print"{grn}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 5790 input"{down}{down}{yel}quante righe (max 15)";oi
+ 5800 if  oi<0 or oi>15then5400
+ 5810 print"{clr}":open 1,4
+ 5820 for i=1to oi
+ 5830 input hh$
+ 5840 print#1,chr$(14);hh$
+ 5850 next i
+ 5860 close 1
+ 5870 goto5000
+ 6000 print"{clr}":printtab(12)"{wht}word  processing"
+ 6010 for i=1to 40
+ 6020 print"{grn}{CBM-Y}{yel}";
+ 6030 nexti
+ 6040 print"{down}{down}{down}{yel}       inserisci il dischetto"
+ 6050 print"{down}       contenente l' {rvon}{wht}easy script{rvof}"
+ 6060 print"{yel}{down}       e premi {rvon}{wht}return{rvof}"
+ 6070 get ak$:if ak$<>chr$(13) then 6070
+ 6080 load"easy script",8,1:new
+ 6090 end
+ 7000 print"{clr}":printtab(14)"{wht} caricamento"
+ 7010 for i=1to 40
+ 7020 print"{grn}{CBM-Y}{yel}";
+ 7030 nexti
+ 7040 print"{down}{down}{down}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f1{rvof}    {yel}per proseguire"
+ 7050 print"{down}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f3{rvof}    {yel}directory"
+ 7060 print"{down}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f5{rvof}    {yel}ritorno al menu'"
+ 7070 print"{down}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f7{rvof}    {yel}suicide"
+ 7080 print"{down}{down}{rght}{rght}{rght}{rght}{rght}scelta:";
+ 7090 get al$:if al$=""then 7090
+ 7100 if al$="{f1}"then print"f1":fori=1to 500:nexti:goto 7150
+ 7110 if al$="{f3}"then print"f3":fori=1to500:nexti:x=4:goto 1100
+ 7120 if al$="{f5}"then print"f5":fori=1to500:nexti:goto 410
+ 7130 if al$="{f7}"then print"f7":fori=1to500:next i:sys 64738
+ 7140 goto 7090
+ 7150 print"{clr}":printtab(13)" {wht}caricamento"
+ 7151 for i=1to40
+ 7152 print"{grn}{CBM-Y}{yel}";
+ 7153 nexti
+ 7157 print"{home}{down}{down}{down}{rght}{rght}{rght}{rght}{rght}{rght}{rvon}{gry3}                           "
+ 7158 print"{home}{down}{down}{down}{rght}{rght}{rght}{rght}{rght}{rght}{rvon}{gry3}                           "
+ 7159 print"{rght}{rght}{rght}{rght}{rght}{rght}{rvon}{gry3}  {gry2}1570  floppy disk c-64{gry3}   "
+ 7160 print"{rght}{rght}{rght}{rght}{rght}{rght}{rvon}{gry3}                           "
+ 7170 print"{rght}{rght}{rght}{rght}{rght}{rght}{rvon}{gry3}                           "
+ 7180 print"{rght}{rght}{rght}{rght}{rght}{rght}{rvon}{gry3}    CCCCCC{rvof}     {rvon}CCCCCC      "
+ 7190 print"{rght}{rght}{rght}{rght}{rght}{rght}{rvon}{gry3}                           "
+ 7200 print"{rght}{rght}{rght}{rght}{rght}{rght}{rvon}{gry3}    Q   {rvof}{grn}Q{rvon}{gry3}                  "
+ 7210 print"{rght}{rght}{rght}{rght}{rght}{rght}{rvon}{gry3}                           "
+ 7220 input"{down}{down}{down}{rght}{rght}{rght}{rght}nome programma";cr$
+ 7230 print"{up}{up}{up}{up}{up}{up}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{red}Q"
+ 7240 print"{yel}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}loading ";cr$
+ 7250 loadcr$,8,1:new
+ 8000 print"{clr}"
+ 8010 printtab(10);"{wht}allineamento testina"
+ 8020 print"{grn}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 8030 print"{down}{down}{down}{down}{down}{rght}{rght}{rght}{rght}{wht}{rvon}f1{rvof}     {yel}per continuare"
+ 8040 print"{down}{rght}{rght}{rght}{rght}{wht}{rvon}f3{rvof}     {yel}suicide"
+ 8050 print"{down}{rght}{rght}{rght}{rght}{wht}{rvon}f5{rvof}     {yel}ritorno al menu'"
+ 8060 print"{down}{down}{down}{rght}{rght}scelta:";
+ 8070 get cq$:if cq$=""then 8070
+ 8080 if cq$="{f1}"then print"f1":for i=1to 1000:nexti:goto 8120
+ 8090 if cq$="{f3}"then print"f3":for i=1to 1000:nexti:sys 64738
+ 8100 if cq$="{f5}"then print"f5":for i=1to 1000:nexti:goto 410
+ 8110 goto 8070
+ 8120 print"{clr}"
+ 8130 printtab(10);"{wht}allineamento testina"
+ 8140 print"{grn}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 8160 print"{down}{rght}{rght}{yel}premi {rvon}{wht}return{rvof}{yel} quando sei pronto"
+ 8170 get jj$:if jj$<>chr$(13) then 8170
+ 8180 print"{clr}"
+ 8190 open 15,8,15:print#15,"i0":close 15
+ 8200 print"{down}{down}{down}{down}{down}{down}{down}{down}";tab(17);"finito"
+ 8210 goto 8000
+ 9000 print"{clr}"
+ 9100 input"sei sicuro";si$
+ 9200 if si$="si"or si$="s"then sys 64760
+ 9300 if si$="no"or si$="n"then 410
+ 9400 goto 9000
+ 10000 print"{clr}"
+ 10010 printtab(13);"{wht}prova joystick"
+ 10020 for i=1to40
+ 10030 print"{grn}{CBM-Y}";
+ 10040 nexti
+ 10050 print"{down}{down}{down}{rght}{rght}{rght}{rght}{rvon}{wht}f1{rvof}   {yel}per proseguire"
+ 10060 print"{down}{rght}{rght}{rght}{rght}{rvon}{wht}f3{rvof}   {yel}ritorno al menu'"
+ 10070 print"{down}{rght}{rght}{rght}{rght}{rvon}{wht}f5{rvof}   {yel}suicide"
+ 10080 print"{down}{down}{down}{rght}{rght}{rght}{rght}scelta:";
+ 10090 get gk$:if gk$=""then 10090
+ 10100 if gk$="{f1}"then print"f1":for i=1 to 1000:nexti:goto 10140
+ 10110 if gk$="{f3}"then print"f3":for i=1 to 1000:nexti:goto 410
+ 10120 if gk$="{f5}"then print"f5":for i=1 to 1000:nexti:sys 64738
+ 10130 goto 10090
+ 10140 print"{clr}"
+ 10150 printtab(13);"{wht}prova joystick"
+ 10160 for i=1to40
+ 10170 print"{grn}{CBM-Y}";
+ 10180 nexti
+ 10190 print"{down}premendo il pulsante si ritorna al menu'"
+ 10210 print"{wht}{down}{down}{down}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}n"
+ 10220 print"{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}ne{rght}{rght}B  no"
+ 10230 print"{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}M{rght}B N"
+ 10240 print"{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}MBN"
+ 10250 print"{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}e{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-+}{SHIFT-*}{SHIFT-*}{SHIFT-*}o      UI "
+ 10260 print"{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}   NBM         JK "
+ 10270 print"{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}  N B M"
+ 10280 print"{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}se  B  so"
+ 10290 print"{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}    s"
+ 10420 print"{down}{yel}comando(porta 2):";
+ 10421 s=peek(56320)
+ 10430 if s=126 then print"n":for i=1to1000:nexti:goto 10140
+ 10440 if s=118 then print"no":for i=1to1000:nexti:goto 10140
+ 10450 if s=119 then print"o":for i=1to1000:nexti:goto 10140
+ 10460 if s=117 then print"so":for i=1to1000:nexti:goto 10140
+ 10470 if s=125 then print"s":for i=1to1000:nexti:goto 10140
+ 10480 if s=121 then print"se":for i=1to1000:nexti:goto 10140
+ 10490 if s=123 then print"e":for i=1to1000:nexti:goto 10140
+ 10500 if s=122 then print"ne":for i=1to1000:nexti:goto 10140
+ 10510 if s=111 then print"pulsante":for i=1to1000:nexti:goto 10000
+ 10520 goto 10421
+ 11000 print"{clr}"
+ 11010 printtab(17)"rename"
+ 11020 for i=1 to 40
+ 11030 print"{grn}{CBM-Y}";
+ 11040 next i
+ 11050 print"{down}{down}{down}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f1{rvof}   {yel}per continuare"
+ 11060 print"{down}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f3{rvof}   {yel}directory"
+ 11070 print"{down}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f5{rvof}   {yel}suicide"
+ 11080 print"{down}{rght}{rght}{rght}{rght}{rght}{rvon}{wht}f7{rvof}   {yel}ritorno al main menu'"
+ 11090 print"{down}{down}{down}{rght}{rght}{rght}scelta:";
+ 11100 get hk$:if hk$="" then 11100
+ 11110 if hk$="{f1}"then print"f1":fori=1to 1000:next i:goto 11160
+ 11120 if hk$="{f3}"then print"f3":fori=1 to1000:next i:x=5:goto 1100
+ 11130 if hk$="{f5}"then print"f5":sys 64738
+ 11140 if hk$="{f7}"then print"f7":fori=1to 1000:next i:goto 410
+ 11150 goto 11100
+ 11160 print"{clr}"
+ 11170 printtab(17)"rename"
+ 11180 for i=1 to 40
+ 11190 print"{grn}{CBM-Y}";
+ 11200 nexti
+ 11210 input"{down}{rght}{rght}{yel}nome attuale";na$
+ 11220 input"{down}{rght}{rght}nuovo nome";nn$
+ 11230 open 15,8,15
+ 11240 print#15,"r0:"+nn$+"="+na$+""
+ 11250 close 15:gosub 63000
+ 11260 fori=1 to 1000:nexti:goto 11000
+ 12000 rem disk status
+ 12010 open 15,8,15
+ 12020 input#15,ab$,bc$,cd$,de$
+ 12030 print"{clr}"
+ 12040 printtab(14)"disk  status"
+ 12050 for i=1 to 40
+ 12060 print"{grn}{CBM-Y}";
+ 12070 next i
+ 12080 print"{down}{down}{rght}{rght}{rght}{cyn}numero dell' errore:";ab$
+ 12090 print"{down}{down}{rght}{rght}{rght}nome dell' errore:";bc$
+ 12100 print"{down}{down}{rght}{rght}{rght}traccia:";cd$
+ 12110 print"{down}{down}{rght}{rght}{rght}blocco:";de$
+ 12120 print"{down}{down}{down}{rght}{rght}premi return per continuare":close 15
+ 12130 get yg$:if yg$<>chr$(13) then 12130
+ 12140 goto 410
+ 13000 rem *****velocita' drive*****
+ 13010 print"{clr}"
+ 13020 printtab(12);"{wht}velocita' drive "
+ 13030 for i= 1to 40:print"{grn}{CBM-Y}";:nexti
+ 13040 print"{down}{down}{down}{down}{down}{rght}{rght}computer posseduto:"
+ 13050 print"{down}{down}{rght}{rght}{rvon}{wht}f1{rvof}   {yel}commodore 64"
+ 13060 print"{down}{rght}{rght}{rvon}{wht}f3{rvof}   {yel}vic-20"
+ 13070 print"{down}{down}{rght}{rght}scelta:";
+ 13080 get jq$:if jq$=""then 13080
+ 13090 if jq$="{f1}"then print"f1":for i=1 to 1000:nexti:goto13120
+ 13100 if jq$="{f3}"then print"f3":for i=1 to 1000:nexti:goto13140
+ 13110 goto 13080
+ 13120 open 15,8,15,"ui+":close 15
+ 13130 goto 410
+ 13140 open 15,8,15,"ui-":close 15
+ 13150 goto 410
+ 14000 print"{clr}"
+ 14010 printtab(16);"validate"
+ 14020 fori=1to 40:print"{grn}{CBM-Y}";:nexti
+ 14030 print"{down}{down}{down}{rght}{rght}{rght}{rvon}{wht}f1{rvof}   {yel}per continuare"
+ 14040 print"{down}{rght}{rght}{rght}{rvon}{wht}f3{rvof}   {yel}ritorno al menu'"
+ 14050 print"{down}{rght}{rght}{rght}{rvon}{wht}f5{rvof}   {yel}suicide"
+ 14060 print"{down}{down}{down}{rght}{rght}{rght}{rght}{rght}{rght}scelta:";
+ 14070 get wx$:if wx$=""then 14070
+ 14080 if wx$="{f1}"then print"f1":fori=1to 1000:nexti:goto 14120
+ 14090 if wx$="{f3}"then print"f3":fori=1to 1000:nexti:goto 410
+ 14100 if wx$="{f5}"then print"f5":sys 64738
+ 14110 goto 14070
+ 14120 print"{clr}"
+ 14130 printtab(16);"validate"
+ 14140 fori=1to 40:print"{grn}{CBM-Y}";:nexti
+ 14150 print"{down}{down}{down}{down}{rght}{rght}{rght}{rght}{rght}{rght}{yel}inserire il disco desiderato"
+ 14155 printtab(12);"{down}e premere {rvon}return{rvof}"
+ 14160 get wm$:if wm$<>chr$(13) then 14160
+ 14170 open 15,8,15:print#15,"v":close 15
+ 14180 gosub 63000
+ 14190 goto 410
+ 63000 open 15,8,15
+ 63010 input#15,ab$,bc$,cd$,de$
+ 63020 print"{down}{down}";ab$;" ";bc$;" ";cd$;" ";de$
+ 63025 close 15
+ 63026 for i= 1 to 1000:next i
+ 63030 return
+

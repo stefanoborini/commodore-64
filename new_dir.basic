@@ -1,0 +1,40 @@
+
+
+;new_dir.prg ==0801==
+   10 poke 53280,12:poke 53281,11
+   20 print"{gry2}{clr}"
+   30 printtab(14);"caricamento "
+   40 print"{down}{down}{down}{down}{down}{rght}{rght}{rght}{rght}{rght}1) directory"
+   50 print"{down}{rght}{rght}{rght}{rght}{rght}2) caricamento"
+   60 print"{down}{down}{down}{rght}{rght}{rght}{rght}scelta:";
+   70 get x$:if x$="" then 70
+   75 printx$:for i=1 to 1000:next i
+   80 on val(x$) goto 1100,10000
+   90 end
+ 1100 print"{clr}"
+ 1105 r$=""
+ 1110 open 1,8,0,"$0"
+ 1120 get#1,a$,b$
+ 1130 get#1,a$,b$
+ 1140 get#1,a$,b$
+ 1150 c=0
+ 1155 r=len(r$):if r>95 then fori=1to 1000:next i:print"{clr}":r$=""
+ 1160 if a$<>"" then c=asc(a$)
+ 1170 if b$<>"" then c=c+asc(b$)*256
+ 1175 if c=0 then 1190
+ 1180 print"{rght}{rght}";mid$(str$(c),2);tab(4);
+ 1190 get#1,b$:if st<>0 then 1280
+ 1200 if b$<>chr$(34) then 1190
+ 1205 print"{rght}{rght}";
+ 1210 get#1,c$:if c$<>chr$(34)thenprintc$;:r$=r$+c$:goto 1210
+ 1220 get#1,b$:if b$=chr$(32) then 1220
+ 1230 printtab(25);
+ 1240 c$=c$+b$:get#1,b$:if b$<>"" then 1240
+ 1250 printmid$(c$,2,5)
+ 1260 get t$:if t$<>"" then 1290
+ 1270 if st=0 then 1130
+ 1280 print" blocks free"
+ 1290 close 1
+ 1295 get m$:if m$=""then 1295
+ 1300 goto 10
+

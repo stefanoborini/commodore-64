@@ -299,3 +299,6 @@ no idea
 
 A regression program.
 
+## luna
+
+Computes the lunar illumination for a given date.

@@ -1,0 +1,31 @@
+
+
+;regcolli.prg ==0801==
+   10 print"{clr}":n=0:dim x(100),y(100)
+   20 print"dato numero";n+1
+   30 input"x";x$
+   40 input"{up}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}y";y$
+   50 if x$="f" or y$="f" then 80
+   60 x(n)=val(x$):y(n)=val(y$)
+   70 n=n+1:if n=100 then 80
+   75 goto 20
+   80 print"{clr}"
+   90 for i=0 to int(n/20):for j=0+i*20 to 19+i*20:printx(j),y(j):next j
+  100 get a$:if a$="" then100
+  110 next i
+  120 print"{clr}"
+  130 xy=0:sx=0:sy=0:x2=0:s2=0:y2=0
+  140 for i=0 to n
+  150 xy=xy+x(i)*y(i):y2=y2+y(i)^2
+  160 sx=sx+x(i)
+  170 sy=sy+y(i)
+  180 x2=x2+x(i)^2
+  190 next i
+  200 s2=sx^2
+  210 m=(n*xy-sx*sy)/(n*x2-s2)
+  220 q=(sy*x2-sx*xy)/(n*x2-s2)
+  230 r=(n*xy-sx*sy)/(sqr(n*x2-s2)*sqr(n*y2-sy^2))
+  240 print"m= ";m
+  250 print"q= ";q
+  260 print"r= ";r
+

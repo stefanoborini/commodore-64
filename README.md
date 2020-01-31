@@ -306,3 +306,39 @@ Computes the lunar illumination for a given date.
 ## Adter
 
 A terminator 2 based adventure I started to write.
+
+## ci
+
+No idea.
+
+## co
+
+No idea
+
+## ephti
+
+A program to compute some temporal parameter in astronomy
+
+## equaecli
+
+No sure but it apparently calculates some celestial coordinates
+ 
+## giulday
+
+conversion program to giulian day.
+
+# pp-2
+
+Some sort of game I started to make?
+
+![image](pp-2.png)
+
+## rgvet
+
+Another astronomy program that computes something.
+
+## ruota
+
+A wheel of fortune program.
+
+

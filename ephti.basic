@@ -1,0 +1,11 @@
+
+
+;ephti.prg ==0801==
+   10 print"{clr}"
+   20 input"giorno giuliano";jd
+   30 t=(jd-2415020.0)/36525
+   40 dt=+0.41+1.2053*t+0.4992*t^2
+   50 input"ut";ut
+   60 et=ut+(dt/60)
+   70 print"et=";et
+

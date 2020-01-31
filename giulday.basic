@@ -1,0 +1,106 @@
+
+
+;giulday.prg ==0801==
+    5 clr
+   10 print"{clr}":print chr$(14)
+   11 print"1)gregoriano-giuliano"
+   12 print"2)giuliano-gregoriano"
+   13 print"3)conversione oreminutisecondi-giorni"
+   14 print"4)conversione giorni-oreminutisecondi"
+   15 print"5)giorno della settimana"
+   16 print"6)differenza in giorni"
+   17 print"7)giorno dell'anno e 8)problema inverso"
+   18 input a:on a goto 20,200,500,600,700,800,900,1000
+   19 end
+   20 print"{clr}gregoriano-giuliano"
+   30 print"ANNO,MESE,GIORNO E DEC.(+YYYY.MMDDdd)"
+   40 input aa$:if left$(aa$,1)<>"+" and left$(aa$,1)<>"-" then 20
+   50 yy=val(left$(aa$,5))
+   60 mm=abs(val(mid$(aa$,7,2)))
+   70 dd=abs(val(mid$(aa$,9,2)))
+   80 c=len(aa$)-10:de=val(right$(aa$,c))
+   90 if int(de)>0 then de=de/10:goto 90
+  100 dd=dd+de
+  110 if mm>2 then y=yy:m=mm
+  120 if mm=1 or mm=2 then y=yy-1:m=mm+12
+  130 if val(aa$)>=1582.1015 then a=int(y/100):b=2-a+int(a/4):goto 150
+  140 a=0:b=0
+  150 jd=int(365.25*(y+4716))+int(30.6*(m+1))+dd+b-1524.5
+  160 print jd
+  170 end
+  200 print"{clr}giuliano-gregoriano"
+  210 input"giorno giuliano";jd
+  220 jd=jd+.5
+  230 z=int(jd):f=jd-z
+  240 if z>=2299161 then k=int((z-1867216.25)/36524.25):a=z+1+k-int(k/4):goto260
+  250 a=z
+  260 b=a+1524:c=int((b-122.1)/365.25):d=int(365.25*c):e=int((b-d)/30.6001)
+  270 dd=b-d-int(30.6001*e)+f
+  280 if e<13.5 then mm=e-1
+  290 if e>13.5 then mm=e-13
+  300 if mm>2.5 then yy=c-4716
+  310 if mm<2.5 then yy=c-4715
+  311 for i=1 to mm:read mm$:next i
+  320 print "giorno: ";dd
+  330 print "mese:    ";mm$
+  340 print "anno:   ";yy
+  345 data "Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio"
+  346 data "Agosto","Settembre","Ottobre","Novembre","Dicembre"
+  350 end
+  500 print"{clr}oreminutisecondi-giorni"
+  510 input"ore";o
+  520 input"minuti";mi
+  530 input"secondi";se
+  540 gi=(o+(mi+(se/60))/60)/24
+  550 print gi
+  560 end
+  600 print"{clr}giorni-oreminutisecondi"
+  610 input"giorni";gi
+  620 o=gi*24
+  630 if o<>int(o) then mi=(o-int(o))*60
+  640 if mi<>int(mi) then se=(mi-int(mi))*60
+  641 if mi=60 then mi=0
+  642 if se=60 then se=0
+  643 d=int(o):e=int(mi+.5):f=int(se+.5)
+  650 print "ore    :";int(o)
+  660 print "minuti :";int(mi+.5)
+  670 print "secondi:";f
+  680 print "verifica  :";(d+(e+(f/60))/60)/24
+  690 end
+  700 print"{clr}giorno della settimana"
+  710 input"giorno giuliano";jd
+  720 jd=jd+1.5
+  730 gg=jd/7
+  740 re=int((gg-int(gg))*7)
+  750 for i=1 to re+12:read da$:next i
+  760 restore:print"{down}{down}{down}{down}giorno della settimana:";da$
+  770 data "Lunedi'","Martedi'","Mercoledi'","Giovedi'","Venerdi'","Sabato"
+  780 data "Domenica"
+  790 end
+  800 print"{clr}differenza in giorni"
+  810 input"giorno giuliano iniziale";ji
+  820 input"giorno giuliano finale";jf
+  830 di=jf-ji
+  840 print"{down}{down}{down}differenza";di
+  850 end
+  900 print"{clr}giorno dell'anno"
+  910 input"mese";m
+  920 input"giorno";d
+  930 input"anno 1)comune 2)bisestile";a
+  940 if a=1 then n=int((275*m)/9)-2*int((m+9)/12)+d-30:goto 960
+  950 if a=2 then n=int((275*m)/9)-int((m+9)/12)+d-30:goto 960
+  955 goto 900
+  960 print"{down}{down}giorno dell'anno:";n
+  970 end
+ 1000 input"{clr}numero del giorno";n
+ 1010 input"anno 1)comune 2)bisestile";jl
+ 1020 if jl=1 then a=1889
+ 1030 if jl=2 then a=1523
+ 1040 b=int((n+a-122.1)/365.25):c=n+a-int(365.25*b):e=int(c/30.6001)
+ 1050 if e<13.5 then m=e-1
+ 1060 if e>13.5 then m=e-13
+ 1070 d=c-int(30.6001*e)
+ 1080 for i=1 to m:read dd$:next i
+ 1090 print "{down}{down}mese   :  ";dd$
+ 1100 print"giorno :  ";d
+

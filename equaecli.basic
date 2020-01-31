@@ -1,0 +1,27 @@
+
+
+;equaecli.prg ==0801==
+   10 print"{clr}"
+   20 def fnr(d)=(d*~)/180
+   25 e=fnr(23.4392911)
+   30 input"declinazione(+ddmmss)";de$
+   40 input"ascensione retta(+hhmmss)";ar$
+   50 ss=val(right$(ar$,2))
+   51 sd=val(right$(de$,2))
+   60 mm=val(mid$(ar$,4,2))
+   61 md=val(mid$(de$,4,2))
+   70 hh=val(mid$(ar$,2,2))
+   71 dd=val(mid$(de$,2,2))
+   80 hh=hh+(mm+(ss/60))/60
+   82 dd=dd+(md+(sd/60))/60
+   90 ar=hh*15
+  100 dd=fnr(dd)
+  101 if left$(de$,1)="-"then dd=dd*(-1)
+  110 ar=fnr(ar)
+  111 if left$(ar$,1)="-"then ar=ar*(-1)
+  120 be=sin(dd)*cos(e)-cos(dd)*sin(e)*sin(ar)
+  130 co=sqr(1-be^2)
+  140 tg=be/co
+  150 an=atn(tg)
+  160 print(an*180)/~
+

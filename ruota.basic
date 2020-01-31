@@ -1,0 +1,21 @@
+
+
+;ruota.prg ==0801==
+    5 print"{clr}":poke 19,64
+   10 input"frase:";a$
+   20 input"{home}{down}{down}{down}{down}definizione:";b$
+   30 print"{clr}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}";b$
+   40 print"{home}"
+   50 for i=1 to len (a$)
+   60 c$=mid$(a$,i,1):if c$<>" "then print"-";:goto 80
+   70 print" ";
+   80 next i
+   90 input"{home}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}";h$
+   95 print"{home}"
+  100 for i=1 to len(a$)
+  110 c$=mid$(a$,i,1)
+  120 if c$=h$ then printc$;
+  125 if c$<>h$ then print"{rght}";
+  130 next i
+  140 goto 90
+

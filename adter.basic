@@ -1,0 +1,94 @@
+
+
+;adter.prg ==0801==
+  100 print"{clr}"
+  110 rem *************************
+  120 rem ***** terminator  2 *****
+  130 rem ***** the adventure *****
+  140 rem *************************
+  150 rem
+  160 rem        scritto da
+  170 rem      stefano borini
+  180 rem
+  190 rem -------------------------
+  200 rem spazio definizione variabili
+  210 rem lu$(x) direzioni possibili
+  220 rem de$(x,y) descrizione del luogo
+  230 rem og$(x) nome degli oggetti
+  240 rem vo$(x) vocabolario
+  250 rem lu numero luoghi
+  500 rem inizio gioco
+  510 rem dimensionamento
+  515 lk=6
+  520 dim lu$(lk),de$(lk,10),og$(3),vo$(500)
+  530 rem carica direzioni possibili
+  540 for i=1 to lk:read lu$(i):next i
+  550 rem carica descrizioni
+  560 a=1:b=1
+  565 if a>lk then 600
+  570 read de$(a,b)
+  580 if de$(a,b)="fine" then de$(a,b)="":a=a+1:b=1:goto 565
+  590 b=b+1:goto 570
+  600 for i= 1 to 6:read vo$(i):next i
+  601 lu=1
+  610 print"sei ";de$(lu,1);".":
+  620 s=2
+  630 if de$(lu,s)="" then 660
+  640 print de$(lu,s)
+  650 s=s+1:goto 630
+  660 input dc$
+  670 for i= 1 to 6:if dc$=vo$(i)then co=i:goto 690
+  680 next i
+  685 print"non capisco":goto 660
+  690 on co goto 1000,1050,1100,1150,1200,1250
+  999 rem direzione nord
+ 1000 dp=val(left$(lu$(lu),2))
+ 1010 if dp=0 then print"non puoi.":goto 660
+ 1020 lu=dp:goto 610
+ 1030 rem
+ 1040 rem direzione sud
+ 1050 dp=val(mid$(lu$(lu),3,2))
+ 1060 if dp=0 then print"non puoi.":goto 660
+ 1070 lu=dp:goto 610
+ 1080 rem
+ 1090 rem direzione ovest
+ 1100 dp=val(mid$(lu$(lu),5,2))
+ 1110 if dp=0 then print"non puoi.":goto 660
+ 1120 lu=dp:goto 610
+ 1130 rem
+ 1140 rem direzione est
+ 1150 dp=val(mid$(lu$(lu),7,2))
+ 1160 if dp=0 then print"non puoi.":goto 660
+ 1170 lu=dp:goto 610
+ 1180 rem
+ 1190 rem direzione alto
+ 1200 dp=val(mid$(lu$(lu),9,2))
+ 1210 if dp=0 then print"non puoi.":goto 660
+ 1220 lu=dp:goto 610
+ 1230 rem
+ 1240 rem direzione basso
+ 1250 dp=val(right$(lu$(lu),2))
+ 1260 if dp=0 then print"non puoi.":goto 660
+ 1270 lu=dp:goto 610
+ 1280 rem
+ 50000 data "000002000000","000503010000","040000020000","000300000006"
+ 50010 data "020000000000","000000000400"
+ 50020 data "in un parcheggio","i tuoi sensori registrano un elevato tasso di"
+ 50030 data "umidita'. ti trovi all'interno di un cratere, probabilmente"
+ 50040 data "formato dalla sfera temporale che ti ha trasferito."
+ 50050 data "di fianco a te vi sono due camion, anch'essi danneggiati"
+ 50060 data "dalla sfera. a ovest un bagliore verdastro indica la sicura"
+ 50070 data "presenza di una luce, molto probabilmente al neon.","fine"
+ 50080 data "di fronte a un bar","il bagliore, prodotto dall'insegna, illumina"
+ 50090 data "tre moto, ma non ne distingui chiaramente i particolari."
+ 50100 data "dalle finestre del bar vedi alcune persone sedute ai tavoli"
+ 50110 data "e dalla porta socchiusa esce il rumore di un juke-box.","fine"
+ 50120 data "dentro al bar","le persone scrutano intimorite il tuo corpo nudo."
+ 50130 data "accanto al juke-box vi e' un camionista dall'aria incredula."
+ 50140 data "anche le cameriere osservano stupefatte.","fine"
+ 50150 data "in cucina","il cuoco osserva sbalordito. prima del tuo ingresso"
+ 50160 data "era intento a cucinare alcuni hamburger su una graticola.","fine"
+ 50170 data "non so","fine"
+ 50180 data "non so","fine"
+ 60000 data "n","s","w","e","u","d"
+

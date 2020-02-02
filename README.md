@@ -53,7 +53,7 @@ Prints one letter at a time, slowly.
 
 A little toy program that flies a helicopter sprite. Interestingly had a code quick save feature at line 63998-63999.
 
-# Mastermind
+## Mastermind
 
 Play mastermind (guess the number)
 
@@ -220,7 +220,7 @@ No idea. seems to be a started program about astronomic evaluations
 
 A tower of hanoi game, but I could not get it to work.
 
-# fract
+## fract
 
 Plots a mandelbrot fractal. This is apparently not working as intended, as this is the result I got, after a night of computation
 
@@ -228,15 +228,15 @@ Plots a mandelbrot fractal. This is apparently not working as intended, as this 
 
 I need to fix it.
 
-# mxprod
+## mxprod
 
 Matrix multiplication
 
-# medie
+## medie
 
 Apparently something to evaluate the expected final school grade given the current average
 
-# dos hex dumper
+## dos hex dumper
 
 A memory dump program I wrote with a friend. Not sure why I called it "dos".
 
@@ -263,39 +263,8 @@ Some sort of "fake-ish" weather forecast program.
 
 ![image](previsioni.png)
 
-## ciccio
 
-No idea
-
-## comp
-
-No idea
-
-## p
-
-No idea
-
-## pr
-
-No idea
-
-## prega
-
-No idea
-
-## ps2
-
-No idea
-
-# p2
-
-No idea
-
-# prova
-
-no idea
-
-# regcolli
+## regcolli
 
 A regression program.
 
@@ -306,14 +275,6 @@ Computes the lunar illumination for a given date.
 ## Adter
 
 A terminator 2 based adventure I started to write.
-
-## ci
-
-No idea.
-
-## co
-
-No idea
 
 ## ephti
 
@@ -327,7 +288,7 @@ No sure but it apparently calculates some celestial coordinates
 
 conversion program to giulian day.
 
-# pp-2
+## pp-2
 
 Some sort of game I started to make?
 
@@ -345,27 +306,15 @@ A wheel of fortune program.
 
 Some kind of image reading code.
 
-## new\_dir
-
-No idea
-
-## branch
-
-no idea
-
 ## Finder
 
 Seems to be something that searches consecutive values in the memory, kind of like grep for memory
 
+## carica-pic
 
-## Ricopia
+Something to load a koala painter bitmap image
 
-no idea
-
-# Colok
+## new\_dir, branch, Ricopia, Colok, ciccio, comp, p, pr, prega, ps2, p2, prova, ci, co
 
 No idea
 
-# carica-pic
-
-Something to load a koala painter bitmap image

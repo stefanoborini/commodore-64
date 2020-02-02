@@ -341,7 +341,7 @@ Another astronomy program that computes something.
 
 A wheel of fortune program.
 
-## leggi, leggi2
+## leggi, leggi2, funziona
 
 Some kind of image reading code.
 
@@ -361,3 +361,4 @@ Seems to be something that searches consecutive values in the memory, kind of li
 ## Ricopia
 
 no idea
+

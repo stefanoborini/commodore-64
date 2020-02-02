@@ -1,0 +1,56 @@
+
+
+;funziona.prg ==0801==
+   10 print"{clr}":b=8192
+   20 poke 53272,peek(53272)or 8:poke 53265,peek(53265)or 32
+   30 poke 53270,peek(53270)or 16
+   40 open 5,8,5,"0:{orng}pic c agenda  ,p,r"
+   50 get#5,zx$,zy$
+   60 get#5,a$,b$,c$,d$,e$,f$,g$,h$,i$,j$,k$,l$,m$,n$,o$,p$
+   61 poke b,asc(a$+chr$(0)):b=b+1
+   62 poke b,asc(b$+chr$(0)):b=b+1
+   63 poke b,asc(c$+chr$(0)):b=b+1
+   64 poke b,asc(d$+chr$(0)):b=b+1
+   65 poke b,asc(e$+chr$(0)):b=b+1
+   66 poke b,asc(f$+chr$(0)):b=b+1
+   67 poke b,asc(g$+chr$(0)):b=b+1
+   68 poke b,asc(h$+chr$(0)):b=b+1
+   69 poke b,asc(i$+chr$(0)):b=b+1
+   70 poke b,asc(j$+chr$(0)):b=b+1
+   71 poke b,asc(k$+chr$(0)):b=b+1
+   72 poke b,asc(l$+chr$(0)):b=b+1
+   73 poke b,asc(m$+chr$(0)):b=b+1
+   74 poke b,asc(n$+chr$(0)):b=b+1
+   75 poke b,asc(o$+chr$(0)):b=b+1
+   76 poke b,asc(p$+chr$(0)):b=b+1
+   80 if b-8192=8000 then 100
+   90 goto 60
+  100 b=1024
+  110 get#5,q$,r$,s$,t$,u$,v$,w$,x$,y$,z$
+  120 poke b,asc(q$+chr$(0)):b=b+1
+  121 poke b,asc(r$+chr$(0)):b=b+1
+  122 poke b,asc(s$+chr$(0)):b=b+1
+  123 poke b,asc(t$+chr$(0)):b=b+1
+  124 poke b,asc(u$+chr$(0)):b=b+1
+  125 poke b,asc(v$+chr$(0)):b=b+1
+  126 poke b,asc(w$+chr$(0)):b=b+1
+  127 poke b,asc(x$+chr$(0)):b=b+1
+  128 poke b,asc(y$+chr$(0)):b=b+1
+  129 poke b,asc(z$+chr$(0)):b=b+1
+  130 if b-1024=1000 then 140
+  131 goto 110
+  140 b=55296
+  150 get#5,aa$,ab$,ac$,ad$,ae$,af$,ag$,ah$,ai$,aj$
+  160 poke b,asc(aa$+chr$(0)):b=b+1
+  170 poke b,asc(ab$+chr$(0)):b=b+1
+  180 poke b,asc(ac$+chr$(0)):b=b+1
+  190 poke b,asc(ad$+chr$(0)):b=b+1
+  200 poke b,asc(ae$+chr$(0)):b=b+1
+  210 poke b,asc(af$+chr$(0)):b=b+1
+  220 poke b,asc(ag$+chr$(0)):b=b+1
+  230 poke b,asc(ah$+chr$(0)):b=b+1
+  240 poke b,asc(ai$+chr$(0)):b=b+1
+  250 poke b,asc(aj$+chr$(0)):b=b+1
+  260 if b-55296=1000 then close 5:end
+  270 goto 150
+

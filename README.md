@@ -362,3 +362,10 @@ Seems to be something that searches consecutive values in the memory, kind of li
 
 no idea
 
+# Colok
+
+No idea
+
+# carica-pic
+
+Something to load a koala painter bitmap image

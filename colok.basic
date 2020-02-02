@@ -1,0 +1,21 @@
+
+
+;colok ==0801==
+   10 print"{clr}"
+   20 poke 53272,peek(53272)or 8:poke 53265,peek(53265)or 32
+   30 poke 53270,peek(53270)or 16
+   40 open 5,8,5,"0:{orng}pic i dragon  ,p,r"
+   50 get#5,zx$,zy$
+   60 for i=0 to 7999
+   70 get#5,a$
+   80 poke 8192+i,asc(a$+chr$(0))
+   90 next i
+  100 for i=0 to 999
+  110 get#5,b$
+  120 poke 1024+i,asc(b$+chr$(0))
+  130 next i
+  140 for i=0 to 999
+  150 get#5,c$
+  160 poke 55296+i,asc(c$+chr$(0))
+  170 next i
+

@@ -1,0 +1,65 @@
+
+
+;carica-pic ==0801==
+    1 rem display a koalapainter screen
+    5 print"{clr}":gosub2000
+   10 ifa=1then90
+   20 fora=49154to49317:readi:pokea,i:next
+   30 geta$:ifa$=""then30
+   32 ifa$="p"then500
+   34 ifa$="q"thensys64738
+   35 ifa$<"a"ora$>"o"then30
+   40 a$="pic "+a$+"*"
+   50 f$=chr$(129)+a$
+   60 fc=peek(53281):cc=peek(646)
+   70 a=1:loadf$,8,1
+   80 end
+   90 sys49154
+  100 goto30
+  200 data173,17,208,41,239,141,17,208
+  210 data162,127,160,64,32,156,192,162
+  220 data4,160,0,32,161,192,162,131
+  230 data160,39,32,114,192,162,131,160
+  240 data40,32,156,192,162,216,160,0
+  250 data32,161,192,162,135,160,15,32
+  260 data114,192,173,16,135,141,33,208
+  270 data173,17,208,9,34,141,17,208
+  280 data173,22,208,41,223,9,16,141
+  290 data22,208,173,24,208,9,8,141
+  300 data24,208,162,96,160,0,32,156
+  310 data192,162,32,160,0,32,161,192
+  320 data162,127,160,63,32,114,192,173
+  330 data17,208,9,16,141,17,208,96
+  340 data142,1,192,140,0,192,160,0
+  350 data177,251,145,253,165,252,205,1
+  360 data192,208,8,165,251,205,0,192
+  370 data208,1,96,230,251,208,2,230
+  380 data252,230,253,208,227,230,254,76
+  390 data122,192,134,252,132,251,96,134
+  400 data254,132,253,96
+  500 open4,4:dimz%(199)
+  510 s=12288:rem start of bit map
+  520 fori=39to0step-1:forj=0to24
+  530 fork=0to7
+  540 q=j*8+k
+  550 z%(q)=z%(q)+(peek(s+320*j+i*8+k))*2^y
+  560 a$=a$+chr$((z%(q)and127)+128)
+  570 z%(q)=z%(q)/128
+  580 nextk:nextj
+  590 print#4,chr$(8)a$:a$=""
+  600 y=y+1:ify=7theny=0:goto1000
+  610 nexti
+  620 r=1
+ 1000 forl=0to199
+ 1010 a$=a$+chr$((z%(l)and127)+128)
+ 1020 z%(l)=z%(l)/128:nextl
+ 1030 print#4,chr$(8)a$:a$=""
+ 1040 ifr=0then610
+ 1050 close4
+ 1060 goto100
+ 2000 print"{down}{down}per vedere i disegni devi premere un"
+ 2010 print"{down}tasto da {rvon}a{rvof} ad {rvon}o{rvof}."
+ 2020 print"{down}{down}se vuoi stampare il disegno premi {rvon}p{rvof}."
+ 2025 print"{down}per uscire premi {rvon}q{rvof}."
+ 2030 return
+

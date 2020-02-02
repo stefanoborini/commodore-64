@@ -1,0 +1,15 @@
+
+
+;branch.prg ==0801==
+   10 print"{clr}"
+   20 input"locazione";lo
+   30 for i=-130 to +130
+   40 a=peek(lo+i)
+   50 ifa=144ora=176ora=240ora=48ora=208ora=16ora=80ora=112then gosub 80
+   60 next i
+   70 end
+   80 b=peek(lo+i+1)
+   90 if b<128 then if i+b=-2 then printlo+i
+  100 if i+b=254 then printlo+i
+  110 return
+

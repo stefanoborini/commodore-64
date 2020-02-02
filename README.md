@@ -348,3 +348,11 @@ Some kind of image reading code.
 ## new\_dir
 
 No idea
+
+## branch
+
+no idea
+
+## Finder
+
+Seems to be something that searches consecutive values in the memory, kind of like grep for memory

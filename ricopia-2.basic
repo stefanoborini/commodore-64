@@ -1,0 +1,7 @@
+
+
+;ricopia-2.prg ==0801==
+   10 forx=40960to49151:pokex,peek(x):nextx:forx=57344to65535:pokex,peek(x):nextx
+   20 poke1,53:poke41848,67:poke41849,73:poke41850,65:poke41851,79:poke41852,33
+   30 poke 41853,160
+

@@ -1,0 +1,75 @@
+
+
+;finder-2.prg ==0801==
+   10 print"{clr}":dim a(100)
+   20 input"valori consecutivi da cercare";nv
+   30 for i=1 to nv
+   40 print"valore n.";i
+   50 print"(d)ec. (h)ex."
+   60 get a$:if a$=""then 60
+   70 if a$<>"d" and a$<>"h" then 60
+   80 print"{up}             {up}":input"valore";va$
+   90 if a$="h" and va$<>"-1" then gosub 1000
+  100 va=val(va$)
+  110 if (va<0 or va>255) and va<>-1 then 80
+  120 v(i)=va
+  130 next i
+  140 print"{clr}"
+  150 print"indirizzo di partenza"
+  160 print"(d)ec. (h)ex."
+  170 get a$:if a$=""then 170
+  180 if a$<>"d" and a$<>"h" then 170
+  190 print"{up}             {up}":input"valore";va$
+  200 if a$="h"then gosub1000
+  210 fa=val(va$)
+  220 if fa<0 or fa>65535 then 190
+  230 print"indirizzo di arrivo"
+  240 print"(d)ec. (h)ex."
+  250 get a$:if a$=""then 250
+  260 if a$<>"d" and a$<>"h" then 250
+  270 print"{up}             {up}":input"valore";va$
+  280 if a$="h"then gosub 1000
+  290 la=val(va$)
+  300 if la<fa or la>65535 then 270
+  305 k=1:gg=0:print"{clr}locazione "
+  310 for i=fa to la:print"{home}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}";i
+  320 if peek(i)=v(k) or v(k)=-1 then k=k+1:goto 340
+  330 k=1
+  340 if k=nv+1 then gg=gg+1:print"{home}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}{rght}";gg:a(gg)=i-nv+1:k=1
+  345 if gg=100 then print"trovate eccessive corrispondenze":goto370
+  350 next i
+  360 print"trovate";gg;"corrispondenze"
+  365 if gg=0 then end
+  370 print"desideri il report su video o stampa"
+  380 get a$:if a$=""then 380
+  390 if a$="v" then ch=3:goto 420
+  400 if a$="s" then ch=4:goto 420
+  410 goto 380
+  420 print"{clr}"
+  430 open 1,ch
+  440 for i=1 to gg:ar=a(i):gosub 1200:print#1,chr$(13)ar;ar$
+  441 for h=0 to nv-1
+  442 ar=peek(a(i)+h):gosub 1200:print#1,"(";ar;":";ar$;")";
+  443 next h:next i
+  450 end
+ 1000 cv=len(va$):va=0
+ 1010 for j=1tocv
+ 1020 r$=mid$(va$,j,1)
+ 1030 if asc(r$)>=65 and asc(r$)<=70 then va=va+(asc(r$)-55)*16^(cv-j)
+ 1040 va=va+val(r$)*16^(cv-j)
+ 1050 next j
+ 1060 va$=str$(va)
+ 1070 return
+ 1200 f=ar:ar$="":c$=""
+ 1205 if ar=0 then ar$="0":return
+ 1210 if f=0 then 1270
+ 1220 c=((f/16)-int(f/16))*16
+ 1230 if c>=10 then c$=c$+chr$(55+c):goto 1250
+ 1240 c$=c$+right$(str$(c),1)
+ 1250 f=int(f/16)
+ 1260 goto 1210
+ 1270 for j=len(c$)to 1 step-1
+ 1280 ar$=ar$+mid$(c$,j,1)
+ 1290 next j
+ 1300 return
+

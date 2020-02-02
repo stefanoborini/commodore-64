@@ -356,3 +356,8 @@ no idea
 ## Finder
 
 Seems to be something that searches consecutive values in the memory, kind of like grep for memory
+
+
+## Ricopia
+
+no idea

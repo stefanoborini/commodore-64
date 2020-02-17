@@ -228,6 +228,12 @@ Plots a mandelbrot fractal. This is apparently not working as intended, as this 
 
 I need to fix it.
 
+# mandel10, mandelasc5
+
+Fix for the mandelbrot calculator above
+
+![image](mandelbrot.png)
+
 ## mxprod
 
 Matrix multiplication

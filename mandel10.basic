@@ -1,0 +1,21 @@
+
+
+;/Users/sbo/Work/Projects/stefanoborini/commodore-64/mandel10.prg ==0801==
+    5 poke 53265,59:poke53272,29
+    6 fori=8192 to 8192+7999:pokei,0:next
+    7 print chr$(147)
+   10 rs=-3:re=1:is=-1:ie=1.5:rd=(re-rs)/320:id=(ie-is)/200
+   20 for co=0 to 319
+   30 for ro=0 to 199
+   50 r=rs+co*rd:i=is+ro*id
+   55 it=0:a=0:b=0
+   57 a1=a^2-b^2+r:b1=2*a*b+i
+   59 if (a1^2+b1^2)>4 then goto 130
+   61 a=a1:b=b1:it=it+1
+   63 if it < 100 then goto 57
+   80 ad=8192+8*int(co/8)+40*8*int(ro/8)+ro-(8*int(ro/8))
+   90 va=2^(7-(co-8*int(co/8)))
+  100 poke ad,(peek(ad) or va)
+  130 next ro
+  140 next co
+

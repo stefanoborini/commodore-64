@@ -1,11 +1,12 @@
 # My commodore 64 programs when I was a kid
 
 These are programs I recovered from my old Commodore 64 disks. I wrote them
-when I was around 10-12 years old. Earlier stuff has been lost, but considering it was on tape and my initial coding
-it was probably not particulary interesting.
+when I was around 10-12 years old. Earlier stuff has been lost, but considering
+it was on tape and my initial coding it was probably not particulary
+interesting.
 
-Some of this stuff is probably copied from books and personalised. Other was written together with a friend (hence the
-A & B soft mark).
+Some of this stuff is probably copied from books and personalised. Other was
+written together with a friend (hence the A & B soft mark).
 
 ## Gestione C-64, ges
 
